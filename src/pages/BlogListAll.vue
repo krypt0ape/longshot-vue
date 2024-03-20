@@ -21,5 +21,5 @@ const items = computed(()=>{
 })
 </script>
 <template>
-	<BlogList :items="items" :loading="loading" />
+	<BlogList :items="items" :loading="loading" :error="error" />
 </template>

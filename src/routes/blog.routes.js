@@ -1,7 +1,7 @@
 export default [
 	{
 		path: "/blog/category",
-		component: () => import("../layouts/BlogList.vue"),
+		component: () => import("../layouts/BlogListLayout.vue"),
 		children:[
 			{
 				path: "all",

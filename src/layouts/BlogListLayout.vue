@@ -1,5 +1,5 @@
 <script setup>
-import BlogCategories from "@/components/BlogCategories.vue";
+import BlogCategoryTabs from "@/components/BlogCategoryTabs.vue";
 </script>
 <template>
 	<div class="relative">
@@ -12,7 +12,7 @@ import BlogCategories from "@/components/BlogCategories.vue";
 			class="absolute -top-[70px] mx-auto left-0 right-0 opacity-50 z-10"
 		/>
 		<div class="relative z-20">	
-			<BlogCategories />
+			<BlogCategoryTabs />
 			<router-view></router-view>
 		</div>
 	</div>

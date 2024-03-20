@@ -1,17 +1,15 @@
 <script setup>
 import useApi from "@/composables/useApi";
 import useAsyncApi from "@/composables/useAsyncApi";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
+import BlogList from "@/components/BlogList.vue";
 
-
-const loading = ref(false);
-const error = ref(null);
 const data = ref(null);
 
-const { call: getCategory, error: getCategoryError } = useAsyncApi("post", "/contentful/entries");
-const { call: getBlogsForCategory } = useAsyncApi(
+const { call: getCategory, error: getCategoryError, loading: getCategoryLoading } = useAsyncApi("post", "/contentful/entries");
+const { call: getBlogsForCategory, error: getBlogsError, loading: getBlogsLoading } = useAsyncApi(
 	"post",
 	"/contentful/entries"
 );
@@ -20,12 +18,21 @@ const route = useRoute();
 const category = route.params.category;
 const { locale, locales, t } = useI18n();
 
+const loading = computed(()=>{
+	return getCategoryLoading.value || getBlogsLoading.value;
+});
+
+const error = computed(()=>{
+	return getCategoryError.value || getBlogsError.value;
+});
+
 onMounted(async () => {
-	loading.value = true;
 	const response = await getCategory({
-		content_type: "blogCategory",
+		content_type: "blotPostType",
 		"fields.slug": category,
 	});
+	// Error is set in the return object of the hooks
+	if(! response) return;
 	data.value = await getBlogsForCategory({
 		content_type: "blogPost",
 		order: "-sys.createdAt",
@@ -35,9 +42,8 @@ onMounted(async () => {
 			locale: locale.value !== "en" ? locale.value : "en-US",
 		links_to_entry: response.items[0].sys.id,
 	});
-	loading.value = false;
 });
 </script>
 <template>
-	<BlogList :items="data" />
+	<BlogList :items="items" :loading="loading" :error="error" />
 </template>
