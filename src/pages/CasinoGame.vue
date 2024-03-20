@@ -13,8 +13,8 @@
       </div>
       <div class="flex justify-between items-center bg-brand-dark-light rounded-b-xl py-3 px-6">
         <div class="flex gap-x-8 text-xl text-brand-darkerGrey">
-          <i @click="onResize(Size.FULLSCREEN)" class="fa-solid fa-expand" />
-          <i @click="onResize(Size.THEATRE)" class="fa-solid fa-rectangle-wide" />
+          <i @click="onResize('fullscreen')" class="fa-solid fa-expand" />
+          <i @click="onResize('theatre')" class="fa-solid fa-rectangle-wide" />
           <i class="fa-solid fa-chart-line" />
           <CasinoGameFavouriteToggle />
         </div>
@@ -53,7 +53,7 @@ const listener = (evt) => {
   }
 }
 
-const fullscreen = computed(() => size.value === Size.FULLSCREEN)
+const fullscreen = computed(() => size.value === 'fullscreen')
 
 onMounted(async () => {
   writeHistory()
@@ -72,8 +72,8 @@ const writeHistory = () => {
 
 const onResize = (v) => {
   const element = document.getElementById('main-layout')
-  const toggleFromFullScreen = (v !== Size.FULLSCREEN && size.value === Size.FULLSCREEN)
-  const toggleToFullScreen = v === Size.FULLSCREEN
+  const toggleFromFullScreen = (v !== 'fullscreen' && size.value === 'fullscreen')
+  const toggleToFullScreen = v === 'fullscreen'
   if (toggleFromFullScreen || toggleToFullScreen) {
     element?.classList.toggle('z-20')
     element?.classList.toggle('z-50')
