@@ -1,6 +1,6 @@
 import axios, { AxiosHeaders } from "axios";
 import { useAuth0 } from "@auth0/auth0-vue";
-import type { Currency } from "~/components/CurrencyOverlay.vue";
+import type { Currency } from "@/components/CurrencyOverlay.vue";
 
 export type LaunchOptions = {
   game_launcher_url: string;

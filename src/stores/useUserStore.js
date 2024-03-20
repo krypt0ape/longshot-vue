@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { request } from '~/api/api';
+import { request } from '@/api/api';
 
 export default defineStore('user', () => {
 	const user = ref({});

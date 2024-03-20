@@ -16,7 +16,7 @@
           <MenuItems class="absolute z-50">
             <MenuItem :id="v.name" :disabled="false" :key="v.name" v-for="v in currencies" @click="() => onSelect(v)"
               class="text-white base-btn tracking-wide hover:opacity-80 p-2 text-md font-medium rounded-lg neutral-btn cursor-pointer"
-              as="div" v-slot="active">
+              as="div">
             {{ v.name }}
             </MenuItem>
           </MenuItems>
