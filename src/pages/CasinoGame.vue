@@ -78,7 +78,9 @@ const writeHistory = () => {
 
 const onResize = (v?: Size) => {
   const element = document.getElementById('main-layout')
-  if (v === Size.FULLSCREEN || (v !== Size.FULLSCREEN && size.value === Size.FULLSCREEN)) {
+  const toggleFromFullScreen = (v !== Size.FULLSCREEN && size.value === Size.FULLSCREEN)
+  const toggleToFullScreen = v === Size.FULLSCREEN
+  if (toggleFromFullScreen || toggleToFullScreen) {
     element?.classList.toggle('z-20')
     element?.classList.toggle('z-50')
   }
