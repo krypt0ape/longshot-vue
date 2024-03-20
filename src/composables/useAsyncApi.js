@@ -1,15 +1,14 @@
 import { ref } from "vue";
 import { request } from "../api/api";
 import { useAuth0 } from "@auth0/auth0-vue";
-import { Method } from "axios";
 
-export default function useAsyncApi(method: Method, path: string) {
+export default function useAsyncApi(method, path) {
   const loading = ref(true);
   const error = ref(null);
 
   const { getAccessTokenSilently } = useAuth0();
 
-  const call = async (data?: any, uri?: string) => {
+  const call = async (data, uri) => {
     const token = await getAccessTokenSilently();
 
     try {
@@ -22,7 +21,7 @@ export default function useAsyncApi(method: Method, path: string) {
       });
       loading.value = false;
       return r;
-    } catch (err: any) {
+    } catch (err) {
       loading.value = false;
       error.value = err;
       console.log(err);

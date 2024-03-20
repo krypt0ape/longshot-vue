@@ -28,24 +28,18 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { onMounted, ref, computed } from "vue";
 import { startSession } from '@/api/game'
 import CurrencyOverlay from '@/components/CurrencyOverlay.vue'
 import { useRoute } from "vue-router";
-import type { Currency } from "@/components/CurrencyOverlay.vue";
 import { LOCAL_STORAGE_KEY, useLocalStorage } from "@/composables/useLocalStorage";
 import Authentificator from "@/components/Authentificator.vue";
 
-enum Size {
-  FULLSCREEN = 'fullscreen',
-  THEATRE = 'theatre'
-}
-
 const route = useRoute()
-const wrapper = ref<number>(1)
-const selectedCurrency = ref<Currency>()
-const size = ref<Size | null>()
+const wrapper = ref(1)
+const selectedCurrency = ref()
+const size = ref()
 
 const ls = useLocalStorage()
 
@@ -53,7 +47,7 @@ const providerLogo = computed(() => {
   return null;
 });
 
-const listener = (evt: KeyboardEvent) => {
+const listener = (evt) => {
   if (evt.key === 'Escape') {
     onResize();
   }
@@ -70,13 +64,13 @@ onMounted(async () => {
 })
 
 const writeHistory = () => {
-  const games = ls.get<string[]>(LOCAL_STORAGE_KEY.LAST_GAMES, [])
-  games.unshift(route.params.game as string)
+  const games = ls.get(LOCAL_STORAGE_KEY.LAST_GAMES, [])
+  games.unshift(route.params.game)
   const set = Array.from(new Set(games))
   ls.set(LOCAL_STORAGE_KEY.LAST_GAMES, set)
 }
 
-const onResize = (v?: Size) => {
+const onResize = (v) => {
   const element = document.getElementById('main-layout')
   const toggleFromFullScreen = (v !== Size.FULLSCREEN && size.value === Size.FULLSCREEN)
   const toggleToFullScreen = v === Size.FULLSCREEN
@@ -87,18 +81,18 @@ const onResize = (v?: Size) => {
   size.value = v === size.value ? null : v
 }
 
-const loadGame = async (currency?: Currency) => {
+const loadGame = async (currency) => {
   if (currency?.ISO === selectedCurrency.value?.ISO) {
     return
   }
   selectedCurrency.value = currency
   wrapper.value += 1
   const gameLaunchOptions = {
-    target_element: 'game_wrapper', launch_options: await startSession(route.params.game as string, currency)
+    target_element: 'game_wrapper', launch_options: await startSession(route.params.game, currency)
   };
 
   // Game launching command
-  (window as any).sg.launch(gameLaunchOptions);
+  window.sg.launch(gameLaunchOptions);
 }
 </script>
 

@@ -30,19 +30,13 @@
   </TransitionRoot>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-export interface Props {
-  open: boolean,
-  cross?: boolean,
-  shadow?: boolean
-}
-
-withDefaults(defineProps<Props>(), {
-  open: () => false,
-  shadow: () => true,
-  cross: () => true,
+defineProps({
+  open: false,
+  cross: true,
+  shadow: true
 })
 
 const emit = defineEmits(['close']);

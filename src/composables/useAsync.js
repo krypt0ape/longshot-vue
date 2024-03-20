@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-export default function useAsync(func: Function) {
+export default function useAsync(func) {
   const loading = ref(false);
   const error = ref(false);
 
@@ -8,7 +8,7 @@ export default function useAsync(func: Function) {
     try {
       loading.value = true;
       return await func(body);
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       error.value = err;
     } finally {

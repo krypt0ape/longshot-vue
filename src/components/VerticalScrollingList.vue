@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 //https://cdn.softswiss.net/i/s2/<provider>/<game.identifier>.png
 import { ref, onMounted, onUnmounted } from "vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
@@ -8,10 +8,10 @@ const track = ref();
 const canScrollLeft = ref(false);
 const canScrollRight = ref(true);
 
-defineProps<{
-  name: string,
-  icon: string,
-}>();
+defineProps({
+  name: String,
+  icon: String,
+});
 
 const scrollLeft = () => {
   if (track.value) {

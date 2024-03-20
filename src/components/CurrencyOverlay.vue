@@ -34,20 +34,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-export type Currency = {
-  ISO: string[3] | string[4];
-  name: string;
-};
+<script setup>
 
-type Props = {
-  fullscreen?: Boolean;
-}
-
-import {ref} from "vue";
+import { ref } from "vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 
-const currencies = ref<Currency[]>([
+const currencies = ref([
   { ISO: "EUR", name: "Euro" },
   { ISO: "USD", name: "US Dollar" },
   { ISO: "JPY", name: "Japan" },
@@ -62,9 +54,9 @@ const currencies = ref<Currency[]>([
 
 const open = ref(true);
 
-const currency = ref<Currency>({ ISO: "USD", name: "US Dollar" });
+const currency = ref({ ISO: "USD", name: "US Dollar" });
 
-const onSelect = (v: Currency | null) => {
+const onSelect = (v) => {
   currency.value = v || { ISO: "USD", name: "US Dollar" };
 };
 
@@ -75,7 +67,7 @@ const onConfirm = (real = false) => {
 
 const emit = defineEmits(["select"]);
 
-withDefaults(defineProps<Props>(), {
-  fullscreen: () => false,
+defineProps({
+  fullscreen: false,
 })
 </script>

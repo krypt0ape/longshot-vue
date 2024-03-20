@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useAuth0 } from "@auth0/auth0-vue";
 import { useRoute } from "vue-router";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
@@ -32,15 +32,11 @@ const login = () => {
 };
 
 
-export interface Props {
-  className?: string,
-  showControls?: Boolean,
-}
-
-withDefaults(defineProps<Props>(), {
+defineProps({
   className: '',
-  showControls: () => true,
+  showControls: true,
 })
+
 </script>
 <template>
   <slot v-if="isAuthenticated" />

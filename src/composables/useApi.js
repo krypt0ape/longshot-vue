@@ -1,10 +1,9 @@
 import { ref, onMounted } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { request } from "../api/api";
-import { Method } from "axios";
 
-export default function useApi<T>(method: Method, path: string, options?: any) {
-  const data = ref<T>();
+export default function useApi(method, path, options) {
+  const data = ref();
   const loading = ref(true);
   const error = ref(null);
 

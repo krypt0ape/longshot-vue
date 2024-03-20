@@ -1,11 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from "vue";
 
-import { GameType } from "@/types/game";
-
-const props = defineProps<{
-  gameType: GameType,
-}>()
+const props = defineProps({
+  gameType: Object,
+})
 
 const image = computed(() => {
   return `https://cdn.softswiss.net/i/s4/${props.gameType.providerIdentifier}/${props.gameType.identifier2}.png`;
@@ -15,9 +13,9 @@ const element = ref(null);
 
 const icon = computed(() => props.gameType.favoured ? 'fa-solid fa-star' : 'fa-regular fa-star')
 
-const emit = defineEmits<{
+const emit = defineEmits({
   favourite: []
-}>()
+})
 
 </script>
 <template>
