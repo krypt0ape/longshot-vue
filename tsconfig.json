@@ -5,9 +5,9 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-	"baseUrl": ".",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
     /* Bundler mode */
@@ -24,6 +24,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/routes/blog.routes.js", "src/routes/casino.routes.js", "src/routes/sportsbook.routes.js", "src/routes/promotion.routes.js", "src/routes/index.js", "src/main.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/routes/blog.routes.js",
+    "src/routes/casino.routes.js",
+    "src/routes/sportsbook.routes.js",
+    "src/routes/promotion.routes.js",
+    "src/routes/index.js",
+    "src/main.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

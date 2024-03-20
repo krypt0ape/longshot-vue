@@ -9,7 +9,7 @@
           </template>
           <CurrencyOverlay :fullscreen="fullscreen" @select="loadGame" />
         </Authentificator>
-	<div :key="wrapper" class="size" :class="size" id="game_wrapper"></div>
+        <div :key="wrapper" class="size" :class="size" id="game_wrapper"></div>
       </div>
       <div class="flex justify-between items-center bg-brand-dark-light rounded-b-xl py-3 px-6">
         <div class="flex gap-x-8 text-xl text-brand-darkerGrey">
@@ -31,10 +31,10 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from "vue";
 import { startSession } from '@/api/game'
-import CurrencyOverlay from '../components/CurrencyOverlay.vue'
+import CurrencyOverlay from '@/components/CurrencyOverlay.vue'
 import { useRoute } from "vue-router";
 import type { Currency } from "@/components/CurrencyOverlay.vue";
-import { useLocalStorage } from "@/composables/useLocalStorage";
+import { LOCAL_STORAGE_KEY, useLocalStorage } from "@/composables/useLocalStorage";
 import Authentificator from "@/components/Authentificator.vue";
 
 enum Size {
@@ -100,7 +100,7 @@ const loadGame = async (currency?: Currency) => {
 }
 </script>
 
-<style  scoped>
+<style scoped>
 #game_wrapper {
   width: 100%;
   height: 100%;
