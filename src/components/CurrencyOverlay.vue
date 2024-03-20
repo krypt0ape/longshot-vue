@@ -22,14 +22,14 @@
           </MenuItems>
         </transition>
       </Menu>
-      <ButtonsPrimaryButton @click="() => onConfirm(true)">
-        <FontAwesome icon="fa-solid fa-cards" class="text-white text-xl" />
-        Real Play!
-      </ButtonsPrimaryButton>
       <ButtonsSecondaryButton @click="() => onConfirm()">
         <FontAwesome icon="fa-solid fa-cards" class="text-white text-xl" />
         Fun Play!
       </ButtonsSecondaryButton>
+      <ButtonsPrimaryButton @click="() => onConfirm(true)">
+        <FontAwesome icon="fa-solid fa-cards" class="text-white text-xl" />
+        Real Play!
+      </ButtonsPrimaryButton>
     </div>
   </div>
 </template>

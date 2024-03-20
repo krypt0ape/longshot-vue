@@ -7,7 +7,7 @@
           <template #content>
             <div class="text-lg">Login to Play</div>
           </template>
-          <CurrencyOverlay :fullscreen="fullscreen" @select="loadGame" />
+          <CurrencyOverlay :fullscreen="fullscreen" @select="onConfirm" />
         </Authentificator>
         <div :key="wrapper" class="size" :class="size" id="game_wrapper"></div>
       </div>
@@ -18,7 +18,16 @@
           <i class="fa-solid fa-chart-line" />
           <CasinoGameFavouriteToggle />
         </div>
-        <div></div>
+        <div :class="disabledSwitch && 'opacity-30'">
+          <span class="text-white">Fun Play</span>
+          <Switch :disabled="disabledSwitch" @update:modelValue="onSwitch" :value="realPlay"
+            :class="[realPlay ? 'bg-blue-600' : 'bg-gray-200']"
+            class="relative inline-flex h-6 w-11 items-center rounded-full cursor-pointer">
+            <span :class="realPlay ? 'translate-x-6' : 'translate-x-1'"
+              class="inline-block h-4 w-4 transform rounded-full bg-white transition" />
+          </Switch>
+          <span class="text-white">Real Play</span>
+        </div>
         <div>
           <img v-if="providerLogo" :src="providerLogo" />
           <img src="/img/LOGO-faded.png" alt="" />
@@ -29,6 +38,7 @@
 </template>
 
 <script setup>
+import { Switch } from '@headlessui/vue'
 import { onMounted, ref, computed } from "vue";
 import { startSession } from '@/api/game'
 import CurrencyOverlay from '@/components/CurrencyOverlay.vue'
@@ -40,6 +50,7 @@ const route = useRoute()
 const wrapper = ref(1)
 const selectedCurrency = ref()
 const size = ref()
+const disabledSwitch = ref(true)
 
 const ls = useLocalStorage()
 
@@ -53,6 +64,7 @@ const listener = (evt) => {
   }
 }
 
+const realPlay = computed(() => Boolean(selectedCurrency.value))
 const fullscreen = computed(() => size.value === 'fullscreen')
 
 onMounted(async () => {
@@ -81,6 +93,15 @@ const onResize = (v) => {
   size.value = v === size.value ? null : v
 }
 
+const onConfirm = (v) => {
+  disabledSwitch.value = false
+  loadGame(v)
+}
+
+const onSwitch = (realPlay) => {
+  loadGame(realPlay ? ls.get('DEFAULT_CURRENCY', { ISO: 'USD', name: 'US Dollar' }) : null)
+}
+
 const loadGame = async (currency) => {
   if (currency?.ISO === selectedCurrency.value?.ISO) {
     return
@@ -90,7 +111,7 @@ const loadGame = async (currency) => {
   const gameLaunchOptions = {
     target_element: 'game_wrapper', launch_options: await startSession(route.params.game, currency)
   };
-
+  realPlay.value = Boolean(selectedCurrency.value)
   // Game launching command
   window.sg.launch(gameLaunchOptions);
 }
