@@ -17,6 +17,7 @@ export default function useAsyncApi(method, path) {
 			return r;
 		}catch(err){
 			loading.value = false;
+			error.value = err;
 			console.log(err);
 		}
 	}
