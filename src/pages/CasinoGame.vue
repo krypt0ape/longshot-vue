@@ -33,7 +33,7 @@ import { onMounted, ref, computed } from "vue";
 import { startSession } from '@/api/game'
 import CurrencyOverlay from '@/components/CurrencyOverlay.vue'
 import { useRoute } from "vue-router";
-import { LOCAL_STORAGE_KEY, useLocalStorage } from "@/composables/useLocalStorage";
+import { useLocalStorage } from "@/composables/useLocalStorage";
 import Authentificator from "@/components/Authentificator.vue";
 
 const route = useRoute()
@@ -60,14 +60,14 @@ onMounted(async () => {
   document.removeEventListener('keyup', listener)
   document.addEventListener('keyup', listener);
 
-  await loadGame(ls.get(LOCAL_STORAGE_KEY.DEFAULT_CURRENCY, { ISO: 'USD', name: 'US Dollar' }));
+  await loadGame(ls.get('DEFAULT_CURRENCY', { ISO: 'USD', name: 'US Dollar' }));
 })
 
 const writeHistory = () => {
-  const games = ls.get(LOCAL_STORAGE_KEY.LAST_GAMES, [])
+  const games = ls.get('LAST_GAMES', [])
   games.unshift(route.params.game)
   const set = Array.from(new Set(games))
-  ls.set(LOCAL_STORAGE_KEY.LAST_GAMES, set)
+  ls.set('LAST_GAMES', set)
 }
 
 const onResize = (v) => {
