@@ -35,7 +35,7 @@ const posts = computed(() => {
 			</template>
 			<div>
 				<PostListLayout
-					v-if="props.items.length"
+					v-if="props.items?.length"
 					:featured="props.items[0]"
 					:posts="posts"
 				/>

@@ -45,5 +45,5 @@ onMounted(async () => {
 });
 </script>
 <template>
-	<BlogList :items="items" :loading="loading" :error="error" />
+	<BlogList :items="data?.items" :loading="loading" :error="error" />
 </template>
