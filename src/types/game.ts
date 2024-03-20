@@ -1,0 +1,27 @@
+export type GameType = {
+  identifier: string;
+  title: string;
+  identifier2?: string;
+  providerIdentifier: string;
+  producerIdentifier?: string;
+  category: string;
+  featureGroup: string;
+  payout?: string;
+  volatilityRating?: string;
+  description?: string;
+  lines?: number;
+  ways?: number;
+  multiplier?: number;
+  hasJackpot?: Boolean;
+  hasFreespins?: Boolean;
+  hasLive?: Boolean;
+  hd?: Boolean;
+  releasedAt?: string;
+  recalledAt?: string;
+  devices?: string[];
+  restrictions?: object;
+  isActive: Boolean;
+  createdAt: string;
+  upstringdAt?: string;
+  favoured?: any;
+};

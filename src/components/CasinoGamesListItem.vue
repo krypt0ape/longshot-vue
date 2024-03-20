@@ -1,37 +1,29 @@
-<script setup>
+<script setup lang="ts">
 import { computed, ref } from "vue";
 
-import ButtonsSecondaryButton from '../components/Buttons/SecondaryButton.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import useAsyncApi from "@/composables/useAsyncApi";
+import { GameType } from "@/types/game";
 
-const { call: toggleFavourit } = useAsyncApi("post", "/game-type/favourite");
-
-const props = defineProps({
-  gameType: Object,
-});
+const props = defineProps<{
+  gameType: GameType,
+}>()
 
 const image = computed(() => {
-  // https://cdn.softswiss.net/i/s2/<provider>/<game.identifier>.png
   return `https://cdn.softswiss.net/i/s4/${props.gameType.providerIdentifier}/${props.gameType.identifier2}.png`;
 });
 
 const element = ref(null);
-const visible = ref(true);
 
-const icon = computed(() => props.gameType?.favoured ? 'far' : 'fas')
+const icon = computed(() => props.gameType.favoured ? 'fa-solid fa-star' : 'fa-regular fa-star')
 
-const onToggeFavourite = () => {
-  toggleFavourit({ identifier: props.gameType?.identifier })
-}
+const emit = defineEmits<{
+  favourite: []
+}>()
 
 </script>
 <template>
   <div ref="element" class=" relative  w-[150px]">
-    <ButtonsSecondaryButton @click="onToggeFavourite">
-      <FontAwesomeIcon :icon="[icon, 'star']" class="text-white text-xl" />
-      {{ icon }}
-    </ButtonsSecondaryButton>
+    <i :class="icon" @click="emit('favourite')"
+      class="relative top-12 left-2 text-xl bg-purple-600 text-white rounded-md p-1 z-50 cursor-pointer"></i>
     <img :src="image"
       class="w-full h-[201px] rounded-xl transition shadow-lg ease-in-out duration-300 hover:-translate-y-3 cursor-pointer" />
     <p class="w-[150px] flex items-center mt-2 justify-center text-sm">
