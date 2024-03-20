@@ -1,66 +1,62 @@
 <script setup>
-import { computed, ref, onMounted, onUnmounted } from "vue";
+import { computed, ref } from "vue";
+
+import ButtonsSecondaryButton from '../components/Buttons/SecondaryButton.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import useAsyncApi from "@/composables/useAsyncApi";
+
+const { call: toggleFavourit } = useAsyncApi("post", "/game-type/favourite");
 
 const props = defineProps({
-	gameType: Object,
+  gameType: Object,
 });
 
 const image = computed(() => {
-	// https://cdn.softswiss.net/i/s2/<provider>/<game.identifier>.png
-	return `https://cdn.softswiss.net/i/s4/${props.gameType.providerIdentifier}/${props.gameType.identifier2}.png`;
+  // https://cdn.softswiss.net/i/s2/<provider>/<game.identifier>.png
+  return `https://cdn.softswiss.net/i/s4/${props.gameType.providerIdentifier}/${props.gameType.identifier2}.png`;
 });
 
 const element = ref(null);
 const visible = ref(true);
 
+const icon = computed(() => props.gameType?.favoured ? 'far' : 'fas')
+
+const onToggeFavourite = () => {
+  toggleFavourit({ identifier: props.gameType?.identifier })
+}
 
 </script>
 <template>
-	<div
-		ref="element"
-		class=" relative  w-[150px]"
-	>
-		<img :src="image" class="w-full h-[201px] rounded-xl transition shadow-lg ease-in-out duration-300 hover:-translate-y-3 cursor-pointer" />
-		<p class="w-[150px] flex items-center mt-2 justify-center text-sm">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="12"
-				height="13"
-				viewBox="0 0 12 13"
-				fill="none"
-			>
-				<circle
-					cx="6"
-					cy="6.5"
-					r="5"
-					fill="url(#paint0_linear_619_2322)"
-					stroke="#142C13"
-					stroke-width="2"
-				/>
-				<defs>
-					<linearGradient
-						id="paint0_linear_619_2322"
-						x1="6"
-						y1="2.5"
-						x2="6"
-						y2="10.5"
-						gradientUnits="userSpaceOnUse"
-					>
-						<stop stop-color="#68D763" />
-						<stop offset="1" stop-color="#3AAA35" />
-					</linearGradient>
-				</defs>
-			</svg>
-			<span class="mx-2 font-semibold text-brand-lightGrey">2,542</span
-			><span class="text-brand-light text-brand-darkerGrey">Playing</span>
-		</p>
-	</div>
+  <div ref="element" class=" relative  w-[150px]">
+    <ButtonsSecondaryButton @click="onToggeFavourite">
+      <FontAwesomeIcon :icon="[icon, 'star']" class="text-white text-xl" />
+      {{ icon }}
+    </ButtonsSecondaryButton>
+    <img :src="image"
+      class="w-full h-[201px] rounded-xl transition shadow-lg ease-in-out duration-300 hover:-translate-y-3 cursor-pointer" />
+    <p class="w-[150px] flex items-center mt-2 justify-center text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+        <circle cx="6" cy="6.5" r="5" fill="url(#paint0_linear_619_2322)" stroke="#142C13" stroke-width="2" />
+        <defs>
+          <linearGradient id="paint0_linear_619_2322" x1="6" y1="2.5" x2="6" y2="10.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#68D763" />
+            <stop offset="1" stop-color="#3AAA35" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="mx-2 font-semibold text-brand-lightGrey">2,542</span><span
+        class="text-brand-light text-brand-darkerGrey">Playing</span>
+    </p>
+  </div>
 </template>
 <style scoped>
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
