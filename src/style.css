@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.overflow-x-scroll::-webkit-scrollbar {
+	display: none;
+}
+
+.font-inter {
+	font-family: "Inter", sans-serif;
+}
+
+.font-khand {
+	font-family: "Khand", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Khand", sans-serif;
+}
+p, body {
+	font-family: "Inter", sans-serif;
+}
+
+.purple-gradient-text {
+	background: linear-gradient(180deg, #fb80ff 0%, #9550ad 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

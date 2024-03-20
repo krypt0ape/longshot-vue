@@ -1,0 +1,3 @@
+<template>
+	vip club
+</template>

@@ -1,0 +1,40 @@
+{
+	"global" : {
+		"view_all" : "View All",
+		"support" : "Support",
+		"partners" : "Partners",
+		"press" : "Press",
+		"sports" : "Sports",
+		"casino" : "Casino",
+		"community" : "Community",
+		"social" : "Social",
+		"about_us" : "About Us",
+		"language" : "Language",
+		"home" : "Home",
+		"live" : "Live",
+		"sports_rules" : "Sports Rules",
+		"games" : "Games",
+		"fairness" : "Fairness",
+		"preferences" : "Preferences",
+		"profile" : "Profile",
+		"wallet" : "Wallet",
+		"my_bets" : "My Bets",
+		"statistics" : "Statistics"
+ 	},
+	"primary_sidebar" : {
+		"promotions" : "Promotions",
+		"affiliate" : "Affiliate",
+		"vip_club" : "VIP Club",
+		"blog" : "Blog"
+	},
+	"secondary_sidebar" : {
+		"policies" : "Policies",
+		"live_support" : "Live Support",
+		"language" : "Language"
+	},
+	"footer": {
+		"all_rights_reserved" : "All Rights Reserved",
+		"copy" : "betlongshot.com is owned and operated by [Company Name]. registraion number: [Number], registered address: [Full Legal Address]. Contact us support{'@'}betlongshot.com. betlongshot.com is licensed and regulated by the Government of the Autonomous Island of Anjouan, Union of Comoros and operates under License No. [License Number]. Betlongshot.com has passed all regulatory compliance and is legally authorized to conduct gaming operaions for any and all games of chance and wagering.",
+		"gamble_aware" : "Gamble Aware"
+	}
+}

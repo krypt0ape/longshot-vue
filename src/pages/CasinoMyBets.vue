@@ -1,0 +1,3 @@
+<template>
+	my bets
+</template>

@@ -1,0 +1,41 @@
+{
+  "name": "longshot-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@auth0/auth0-vue": "^2.3.3",
+    "@chenfengyuan/vue-countdown": "^2.1.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/pro-solid-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "^3.0.6",
+    "@headlessui/vue": "^1.7.19",
+    "@heroicons/vue": "^2.1.1",
+    "@types/vue": "^2.0.0",
+    "axios": "^1.6.8",
+    "contentful-rich-text-vue-renderer": "^3.1.0",
+    "date-fns": "^3.6.0",
+    "gasp": "^0.0.2",
+    "gsap": "^3.12.5",
+    "loadash": "^1.0.0",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-i18n": "^9.10.2",
+    "vue-router": "^4.3.0",
+    "vue-tippy": "^6.4.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.36",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.6",
+    "vue-tsc": "^1.8.27"
+  }
+}
