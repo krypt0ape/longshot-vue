@@ -22,6 +22,6 @@ export default function useAsyncApi(method, path) {
 	}
 
 	return {
-		data, loading, error, call
+		loading, error, call
 	}
 }
