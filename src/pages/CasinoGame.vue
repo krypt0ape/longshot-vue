@@ -40,7 +40,7 @@
 <script setup>
 import { Switch } from '@headlessui/vue'
 import { onMounted, ref, computed } from "vue";
-import { startSession } from '@/api/game'
+import { useGameApi } from '@/composables/useGameApi'
 import CurrencyOverlay from '@/components/CurrencyOverlay.vue'
 import { useRoute } from "vue-router";
 import { useLocalStorage } from "@/composables/useLocalStorage";
@@ -53,6 +53,7 @@ const size = ref()
 const disabledSwitch = ref(true)
 
 const ls = useLocalStorage()
+const gameApi = useGameApi()
 
 const providerLogo = computed(() => {
   return null;
@@ -103,13 +104,14 @@ const onSwitch = (realPlay) => {
 }
 
 const loadGame = async (currency) => {
+  console.log(currency)
   if (currency?.ISO === selectedCurrency.value?.ISO) {
     return
   }
   selectedCurrency.value = currency
   wrapper.value += 1
   const gameLaunchOptions = {
-    target_element: 'game_wrapper', launch_options: await startSession(route.params.game, currency)
+    target_element: 'game_wrapper', launch_options: await gameApi.startSession(route.params.game, currency)
   };
   realPlay.value = Boolean(selectedCurrency.value)
   // Game launching command
