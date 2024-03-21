@@ -27,3 +27,26 @@ p, body {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+
+.green-gradient-bg {
+background: linear-gradient(180deg, #68D763 0%, #3AAA35 100%);
+}
+
+.glow-purple {
+	border-radius: 981px;
+	/* background: url('/img/PURPLE-GLOW-TOP.png') lightgray 50% / cover no-repeat, rgba(203, 12, 251, 0.40); */
+	background: linear-gradient(rgba(203, 12, 251, 0.40), rgba(203, 12, 251, 0.40)), url('/img/PURPLE-GLOW-TOP.png') 50% / cover no-repeat;
+	background-blend-mode: luminosity, normal;
+	filter: blur(32px);
+	width: 981px;
+height: 272px;
+flex-shrink: 0;
+}
+
+.glow-green {
+	border-radius: 981px;
+	/* background: url('/img/GREEN-GLOW-TOP.png') lightgray 50% / cover no-repeat, #4A9532; */
+	background: #4A9532 url('/img/GREEN-GLOW-TOP.png') 50% / cover no-repeat;
+	background-blend-mode: luminosity, normal;
+	filter: blur(32px);
+}

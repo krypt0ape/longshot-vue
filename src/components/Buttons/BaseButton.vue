@@ -35,7 +35,7 @@ const classString = computed(() => {
 })
 </script>
 <template>
-  <component :is="props.as" :class="classString" v-bind="$attrs">
+  <component :is="props.as" v-bind="$attrs" :class="classString" >
     <slot />
   </component>
 </template>

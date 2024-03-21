@@ -33,12 +33,12 @@ const logo = computed(() => {
         <i class="fa-solid fa-bars text-white" />
       </div>
       <RouterLink to="/sports/home">
-        <PrimaryButton class="px-[12px] py-[14px]"   v-if="sportsActive">Sports</PrimaryButton>
-        <NeutralButton class="px-[12px] py-[14px]" v-else>Sports</NeutralButton>
+        <PrimaryButton class="!px-[12px] py-[14px]"   v-if="sportsActive">Sports</PrimaryButton>
+        <NeutralButton class="!px-[12px] py-[14px]" v-else>Sports</NeutralButton>
       </RouterLink>
       <RouterLink to="/casino/home">
-        <SecondaryButton class="px-[12px] py-[14px]"  v-if="casinoActive">Casino</SecondaryButton>
-        <NeutralButton class="px-[12px] py-[14px]"  v-else>Casino</NeutralButton>
+        <SecondaryButton class="!px-[12px] py-[14px]"  v-if="casinoActive">Casino</SecondaryButton>
+        <NeutralButton class="!px-[12px] py-[14px]"  v-else>Casino</NeutralButton>
       </RouterLink>
     </div>
     <div v-if="!store.open" class="cursor-pointer text-xl w-[70px] flex items-center justify-center transition"

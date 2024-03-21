@@ -23,7 +23,7 @@ const promotions = computed(() => {
 <template>
 	<div class="grid grid-cols-3 gap-x-8 relative">
 		<div
-			class="absolute glow -top-[170px] mx-auto left-0 right-0 opacity-75 z-10 "
+			class="absolute glow-purple -top-[170px] mx-auto left-0 right-0 opacity-75 z-10 "
 		>&nbsp;</div>
 		<PromoBox
 			v-for="promotion in promotions"
@@ -34,14 +34,5 @@ const promotions = computed(() => {
 	</div>
 </template>
 <style scoped>
-.glow {
-	border-radius: 981px;
-	/* background: url('/img/PURPLE-GLOW-TOP.png') lightgray 50% / cover no-repeat, rgba(203, 12, 251, 0.40); */
-	background: linear-gradient(rgba(203, 12, 251, 0.40), rgba(203, 12, 251, 0.40)), url('/img/PURPLE-GLOW-TOP.png') 50% / cover no-repeat;
-	background-blend-mode: luminosity, normal;
-	filter: blur(32px);
-	width: 981px;
-height: 272px;
-flex-shrink: 0;
-}
+
 </style>
