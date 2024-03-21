@@ -47,7 +47,7 @@ const openWallet = () => {};
 					:alt="user.nickname"
 					class="w-8 h-8 rounded-full"
 				/>
-				<p class="ml-3 font-medium">{{ user.nickname }}</p>
+				<p class="ml-3 font-medium hidden lg:block">{{ user.nickname }}</p>
 				<ChevronDownIcon
 					class="ml-2 h-6 w-6 transition duration-150 ease-in-out text-brand-darkerGrey"
 					aria-hidden="true"

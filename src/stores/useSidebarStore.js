@@ -7,6 +7,7 @@ export default defineStore('sidebar', () => {
 		const main = ref();
 		let tl;
 		let ctx;
+		const screenSize = ref(window.innerWidth);
 
 		const toggle = () => {
 			tl.reversed(!tl.reversed());
@@ -24,10 +25,13 @@ export default defineStore('sidebar', () => {
 				.timeline()
 				.to(menu, { y: -20, opacity: 0 })
 				.to(wrapper, { width: 70, ease: "none", delay: 0.4, duration: 0.1}, 0)
-				.to(page, {marginLeft: 70, ease: "none", delay: 0.4, duration: 0.1}, 0)
 				.to(menu, { y: 0, opacity: 1,  })
 				.reverse();
 			}, main.value); // <- Scope!
+
+			if(screenSize.value < 1280 && open.value) {
+				toggle();
+			}
 		  });
 
 		return {

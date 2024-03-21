@@ -3,11 +3,11 @@ import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 </script>
 <template>
-	<div class="text-center relative z-50 lg:ml-[50px] sm:w-[350px] xl:w-[430px]">
+	<div class="text-center relative z-50   lg:ml-[50px] sm:w-[350px] xl:w-[430px]">
 		<div
-			class="flex flex-col space-y-4 px-4 py-8 h-full hero-home-guest-bg lg:!bg-none lg:!border-none "
+			class="flex flex-col justify-center h-full w-full  px-4 py-8  hero-home-guest-bg lg:!bg-none lg:!border-none "
 		>
-			<div class="pb-2">
+			<div class="pb-4">
 				<h1 class="uppercase text-5xl font-semibold">
 					Going <span class="text-brand-green">Beyond</span> The Bet
 				</h1>
@@ -16,7 +16,7 @@ import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 			<PrimaryButton class="py-[16px] text-lg">Create an Account</PrimaryButton>
 			<div class="flex items-center justify-center">
 				<span class="bg-[#303D4B] h-[1px] w-[108px]">&nbsp;</span>
-				<p class="px-6 text-brand-grey">or</p>
+				<p class="px-6 text-brand-grey py-2">or</p>
 				<span class="bg-[#303D4B] h-[1px] w-[108px]">&nbsp;</span>
 			</div>
 			<NeutralButton class="py-[16px] px-[60px] text-lg">Sign In</NeutralButton>

@@ -17,7 +17,7 @@ const topImage = computed(() => {
 		!route.path.includes("category") &&
 		!route.path.includes("casino/games")
 	) {
-	return null;
+		return null;
 	}
 	if (route.path.startsWith("/casino")) {
 		return "/img/PURPLE-GLOW-TOP.png";
@@ -26,26 +26,21 @@ const topImage = computed(() => {
 });
 </script>
 <template>
-	<div class="font-body relative w-screen ">
-		<div class="fixed top-0 left-0 right-0 z-50">
-			<AppHeader />
-		</div>
-		<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-			<MobileMenu />
-		</div>
-		<div class="flex bg-brand-bodyBg">
-			<div
-				id="sidebar-wrapper"
-				:class="[
-					'bg-brand-sidebarBg hidden h-screen left-0 top-[70px] fixed w-[250px] overflow-y-scroll pb-[70px]',
-				]"
-			>
-				<AppSidebar />
+	<div class="font-body relative w-screen flex ">
+		<AppSidebar />
+
+		<section class="relative  flex-1 ">
+			<div class="sticky top-0 left-0 right-0 z-50">
+				<AppHeader />
 			</div>
+			<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+				<MobileMenu />
+			</div>
+
 			<div
 				id="page"
 				:class="[
-					'flex-1 pt-[70px] relative  min-h-screen flex flex-col xl:ml-[250px]',
+					'flex-1  relative  min-h-screen flex flex-col',
 				]"
 			>
 				<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
@@ -57,7 +52,12 @@ const topImage = computed(() => {
 					<!-- <AppFooter /> -->
 				</div>
 			</div>
-		</div>
+
+		</section>
+		<aside>
+			<!--  -->
+		</aside>
+
 		<!-- <PromotionModal />
     <WalletModal /> -->
 	</div>

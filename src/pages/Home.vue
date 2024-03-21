@@ -14,7 +14,7 @@ const isAuthenticated = false;
 	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-4 px-4">
 		<img
 			src="/img/GREEN-GLOW-TOP.png"
-			class="absolute -top-[50px] mx-auto left-0 right-0 opacity-60 z-10 w-[1300px]"
+			class="absolute -top-[50px]  mx-auto left-0 right-0 opacity-60 z-10 w-[1300px] lg:!-top-[160px]"
 		/>
 		<div class="hero grid lg:grid-cols-2 relative z-20 overflow-hidden h-[375px]">
 			<HomeHeroAuthenticated v-if="isAuthenticated" />
@@ -55,7 +55,7 @@ const isAuthenticated = false;
 			<img
 				src="/img/messi.png"
 				alt="hero image"
-				class="hidden  z-30 right-0 bottom-0 md:absolute"
+				class="hidden z-30 absolute right-0 bottom-0 xl:block"
 			/>
 			<img
 				src="/img/connor.png"
