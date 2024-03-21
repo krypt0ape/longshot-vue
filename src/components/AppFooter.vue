@@ -2,8 +2,8 @@
 import  AppFooterPolicyMenu from "./AppFooterPolicyMenu.vue";
 </script>
 <template>
-	<div class="bg-brand-accentBgHeader pb-[54px] mt-[50px]">
-		<div class="max-w-7xl mx-auto grid grid-cols-6 py-[50px]">
+	<div class="bg-brand-accentBgHeader pb-[54px] mt-[50px] px-4">
+		<div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 py-[50px] gap-y-4 gap-x-4">
 			<div>
 				<h3 class="text-white mb-[12px] text-lg font-semibold">
 					{{ $t("global.sports") }}
@@ -102,14 +102,14 @@ import  AppFooterPolicyMenu from "./AppFooterPolicyMenu.vue";
 			</div>
 		</div>
 		<div class="border-[#303D4B] border-t border-b py-[32px] max-w-7xl mx-auto">
-			<div class="flex justify-center mb-[25px]">
+			<div class="flex flex-wrap justify-center mb-[25px]">
 				<img src="/img/logos/litecoin.png" />
 				<img src="/img/logos/bitcoin.png" />
 				<img src="/img/logos/ethereum.png" />
 				<img src="/img/logos/tron.png" />
 				<img src="/img/logos/ripple.png" />
 			</div>
-			<div class="flex justify-center">
+			<div class="flex flex-wrap justify-center">
 				<img src="/img/logos/dogecoin.png" />
 				<img src="/img/logos/bitcoincash.png" />
 				<img src="/img/logos/tether.png" />

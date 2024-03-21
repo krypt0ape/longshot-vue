@@ -26,7 +26,7 @@ const topImage = computed(() => {
 });
 </script>
 <template>
-	<div class="font-body relative w-screen flex ">
+	<div class="font-body relative w-screen flex mb-[75px]">
 		<AppSidebar />
 
 		<section class="relative  flex-1 ">
@@ -49,7 +49,7 @@ const topImage = computed(() => {
 					</Transition>
 				</div>
 				<div class="relative z-20">
-					<!-- <AppFooter /> -->
+					<AppFooter />
 				</div>
 			</div>
 

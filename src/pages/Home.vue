@@ -61,7 +61,7 @@ const { isAuthenticated } = useAuth0();
 				class="hidden z-40 right-0 bottom-0 absolute  sm:block md:right-1 lg:right-[150px]"
 			/>
 		</div>
-		<!-- <div class="grid md:grid-cols-2 mt-12 gap-x-8">
+		<div class="grid md:grid-cols-2 mt-12 gap-x-8">
 			<div class="">
 				<p class="text-xl mb-4 text-white">
 					<i class="fa-solid fa-cards mr-2 text-brand-grey" /> Casino
@@ -95,29 +95,29 @@ const { isAuthenticated } = useAuth0();
 					>
 				</div>
 			</div>
-		</div> -->
-		<!-- <div
-			class="crypto-topup flex items-center justify-between px-[40px] py-[22px] mt-10 mb-10"
+		</div>
+		<div
+			class="crypto-topup relative flex items-center justify-between px-[20px] sm:px-[40px] py-[22px] mt-10 mb-10"
 		>
-			<div class="flex">
+			<div class=" hidden sm:flex absolute  opacity-25  lg:opacity-100">
 				<img src="/img/btc.png" class="-mr-[6px]" />
 				<img src="/img/eth.png" class="-mr-[6px]" />
 				<img src="/img/tether.png" class="-mr-[6px]" />
 				<img src="/img/doge.png" />
 			</div>
-			<div class="flex">
-				<h5 class="uppercase mr-6 text-3xl text-white font-semibold mt-1">
+			<div class="sm:flex sm:justify-center flex-1 text-center relatice z-20">
+				<h5 class="uppercase  sm:mr-6 text-3xl text-white font-semibold mt-1 mb-2 sm:mb-0">
 					top up your crypto wallet
 				</h5>
-				<PrimaryButton class="py-[15px]">Buy Crypto</PrimaryButton>
+				<PrimaryButton class="py-[15px] ">Buy Crypto</PrimaryButton>
 			</div>
-			<div class="flex space-x-4">
+			<div class="hidden sm:flex space-x-4 absolute right-[30px] opacity-25   lg:opacity-100">
 				<img src="/img/MASTERCARD.png" />
 				<img src="/img/APPLEPAY.png" />
 				<img src="/img/GOOGLEPAY.png" />
 				<img src="/img/SAMSUNGPAY.png" />
 			</div>
-		</div> -->
+		</div>
 		<!-- <SportsLiveBetTracker /> -->
 	</div>
 </template>
