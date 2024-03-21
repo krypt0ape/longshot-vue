@@ -6,7 +6,8 @@ import NeutralButton from "./Buttons/NeutralButton.vue";
 
 const route = useRoute()
 
-const { loginWithRedirect, isAuthenticated } = useAuth0();
+const { loginWithRedirect } = useAuth0();
+const isAuthenticated = false;
 
 const signup = () => {
   loginWithRedirect({
@@ -42,7 +43,7 @@ defineProps({
   <slot v-if="isAuthenticated" />
   <div v-else :class="class" class="flex items-center gap-x-4">
     <slot name="content" />
-    <template v-if="showControls">
+    <template v-if="! $slots.content">
       <NeutralButton @click="login">Sign in</NeutralButton>
       <PrimaryButton @click="signup">Register</PrimaryButton>
     </template>

@@ -5,6 +5,7 @@ import { useRoute } from "vue-router";
 import { computed } from "vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppSidebar from "./components/AppSidebar.vue";
+import MobileMenu from "./components/MobileMenu.vue";
 
 const store = useSidebarStore();
 const route = useRoute();
@@ -25,15 +26,18 @@ const topImage = computed(() => {
 });
 </script>
 <template>
-	<div class="font-body">
+	<div class="font-body relative w-screen ">
 		<div class="fixed top-0 left-0 right-0 z-50">
 			<AppHeader />
+		</div>
+		<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+			<MobileMenu />
 		</div>
 		<div class="flex bg-brand-bodyBg">
 			<div
 				id="sidebar-wrapper"
 				:class="[
-					'bg-brand-sidebarBg h-screen left-0 top-[70px] fixed w-[250px] overflow-y-scroll pb-[70px]',
+					'bg-brand-sidebarBg hidden h-screen left-0 top-[70px] fixed w-[250px] overflow-y-scroll pb-[70px]',
 				]"
 			>
 				<AppSidebar />
@@ -41,7 +45,7 @@ const topImage = computed(() => {
 			<div
 				id="page"
 				:class="[
-					'flex-1 pt-[70px] relative  min-h-screen flex flex-col ml-[250px]',
+					'flex-1 pt-[70px] relative  min-h-screen flex flex-col xl:ml-[250px]',
 				]"
 			>
 				<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
@@ -50,7 +54,7 @@ const topImage = computed(() => {
 					</Transition>
 				</div>
 				<div class="relative z-20">
-					<AppFooter />
+					<!-- <AppFooter /> -->
 				</div>
 			</div>
 		</div>

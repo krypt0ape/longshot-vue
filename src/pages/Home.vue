@@ -6,25 +6,26 @@ import SportsLiveBetTracker from "@/components/SportsLiveBetTracker.vue";
 import HomeHeroGuest from "@/components/HomeHeroGuest.vue";
 import HomeHeroAuthenticated from "@/components/HomeHeroAuthenticated.vue";
 
-import { useAuth0 } from "@auth0/auth0-vue";
-const { isAuthenticated } = useAuth0();
+// import { useAuth0 } from "@auth0/auth0-vue";
+// const { isAuthenticated } = useAuth0();
+const isAuthenticated = false;
 </script>
 <template>
-	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-12">
+	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-4 px-4">
 		<img
 			src="/img/GREEN-GLOW-TOP.png"
-			class="absolute -top-[160px] mx-auto left-0 right-0 opacity-60 z-10 w-[1300px]"
+			class="absolute -top-[50px] mx-auto left-0 right-0 opacity-60 z-10 w-[1300px]"
 		/>
-		<div class="hero grid grid-cols-2 relative z-20 overflow-hidden h-[375px]">
+		<div class="hero grid lg:grid-cols-2 relative z-20 overflow-hidden h-[375px]">
 			<HomeHeroAuthenticated v-if="isAuthenticated" />
 			<HomeHeroGuest v-else />
-			<div class="absolute top-0 right-0 z-20">
-				<img src="/img/green-glow-angle.png" />
+			<div class="hidden sm:block absolute opacity-50 top-0 right-0 z-20">
+				<img src="/img/green-glow-angle.png" class="h-[375px]" />
 			</div>
-			<div class="absolute top-0 right-0">
-				<img src="/img/stadium.png" />
+			<div class="absolute top-0 right-0 ">
+				<img src="/img/stadium.png" class="h-[375px]"/>
 			</div>
-			<div class="absolute top-0 right-0">
+			<div class="absolute top-0 right-0 opacity-50 lg:opacity-100">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="560"
@@ -54,15 +55,15 @@ const { isAuthenticated } = useAuth0();
 			<img
 				src="/img/messi.png"
 				alt="hero image"
-				class="absolute z-30 right-0 bottom-0"
+				class="hidden  z-30 right-0 bottom-0 md:absolute"
 			/>
 			<img
 				src="/img/connor.png"
 				alt="hero image"
-				class="absolute z-40 right-[150px] bottom-0"
+				class="hidden z-40 right-0 bottom-0 absolute  sm:block md:right-1 lg:right-[150px]"
 			/>
 		</div>
-		<div class="grid grid-cols-2 mt-12 gap-x-8">
+		<!-- <div class="grid md:grid-cols-2 mt-12 gap-x-8">
 			<div class="">
 				<p class="text-xl mb-4 text-white">
 					<i class="fa-solid fa-cards mr-2 text-brand-grey" /> Casino
@@ -96,8 +97,8 @@ const { isAuthenticated } = useAuth0();
 					>
 				</div>
 			</div>
-		</div>
-		<div
+		</div> -->
+		<!-- <div
 			class="crypto-topup flex items-center justify-between px-[40px] py-[22px] mt-10 mb-10"
 		>
 			<div class="flex">
@@ -118,8 +119,8 @@ const { isAuthenticated } = useAuth0();
 				<img src="/img/GOOGLEPAY.png" />
 				<img src="/img/SAMSUNGPAY.png" />
 			</div>
-		</div>
-		<SportsLiveBetTracker />
+		</div> -->
+		<!-- <SportsLiveBetTracker /> -->
 	</div>
 </template>
 <style scoped>

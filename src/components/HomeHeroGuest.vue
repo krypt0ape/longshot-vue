@@ -3,13 +3,15 @@ import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 </script>
 <template>
-	<div class="py-[60px] text-center ml-[120px]">
-		<div class="mr-[80px] flex flex-col space-y-4 max-w-[395px]">
+	<div class="text-center relative z-50 lg:ml-[50px] sm:w-[350px] xl:w-[430px]">
+		<div
+			class="flex flex-col space-y-4 px-4 py-8 h-full hero-home-guest-bg lg:!bg-none lg:!border-none "
+		>
 			<div class="pb-2">
 				<h1 class="uppercase text-5xl font-semibold">
 					Going <span class="text-brand-green">Beyond</span> The Bet
 				</h1>
-				<p class="text-brand-grey mt-1">Signup for a free account today</p>
+				<p class="text-brand-lightGrey text-lg mt-1">Signup for a free account today</p>
 			</div>
 			<PrimaryButton class="py-[16px] text-lg">Create an Account</PrimaryButton>
 			<div class="flex items-center justify-center">
@@ -21,3 +23,14 @@ import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 		</div>
 	</div>
 </template>
+<style>
+.hero-home-guest-bg {
+	border: 1px solid rgba(61, 75, 89, 0.5);
+	background: linear-gradient(
+		335deg,
+		rgba(23, 31, 43, 0.7) 24.05%,
+		rgba(44, 62, 78, 0.7) 71.46%
+	);
+
+}
+</style>

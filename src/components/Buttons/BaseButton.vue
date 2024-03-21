@@ -21,7 +21,7 @@ const size = computed(() => {
   if (props.xlarge) return "px-8 py-4 text-xl tracking-wider rounded-xl";
   if (props.small) return "px-3 py-1 text-sm rounded-2xl";
   if (props.xsmall) return "px-2.5 py-1 text-xs rounded-md";
-  return "px-[20px] py-[10px] text-md font-medium rounded-lg";
+  return "px-[16px] py-[13px] text-md font-medium rounded-lg";
 });
 
 const classString = computed(() => {
