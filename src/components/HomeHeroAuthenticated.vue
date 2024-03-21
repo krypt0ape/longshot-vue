@@ -3,8 +3,8 @@ import UserVipStatus from "@/components/UserVipStatus.vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 </script>
 <template>
-	<div class="auth-card m-[32px] ml-[30px] py-[64px] px-[64px] relative">
-		<div>
+	<div class="auth-card m-[32px] ml-[30px] px-4 py-4   relative z-50 sm:py-[30px] sm:w-[350px] xl:w-[430px]  xl:py-[50px] xl:px-[65px]">
+		<div class="relative z-20">
 			<p class="text-3xl font-semibold">Welcome back, kyle</p>
 			
 			<div class="h-[90px]">

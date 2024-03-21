@@ -5,10 +5,8 @@ import SecondaryButton from "@/components/Buttons/SecondaryButton.vue";
 import SportsLiveBetTracker from "@/components/SportsLiveBetTracker.vue";
 import HomeHeroGuest from "@/components/HomeHeroGuest.vue";
 import HomeHeroAuthenticated from "@/components/HomeHeroAuthenticated.vue";
-
-// import { useAuth0 } from "@auth0/auth0-vue";
-// const { isAuthenticated } = useAuth0();
-const isAuthenticated = false;
+import { useAuth0 } from "@auth0/auth0-vue";
+const { isAuthenticated } = useAuth0();
 </script>
 <template>
 	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-4 px-4">
