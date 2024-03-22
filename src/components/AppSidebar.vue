@@ -24,7 +24,11 @@ const sportsActive = computed(() => {
 });
 </script>
 <template>
-	<div id="sidebar-pusher" class="hidden relative overflow-hidden  md:block " :class="[store.open ? 'xl:w-[250px] w-[70px]'  : 'w-[70px]']">
+	<div
+		id="sidebar-pusher"
+		class="hidden relative overflow-hidden md:block"
+		:class="[store.open ? 'xl:w-[250px] w-[70px]' : 'w-[70px]']"
+	>
 		<div
 			id="sidebar-wrapper"
 			:class="[
@@ -32,8 +36,8 @@ const sportsActive = computed(() => {
 			]"
 		>
 			<div
-				class="fixed top-0 left-0 right-0 bg-brand-bodyBg sidebar-top h-[70px]  flex items-center z-20"
-				:class="[store.open ? 'max-w-[250px]'  : 'max-w-[70px]']"
+				class="fixed top-0 left-0 right-0 bg-brand-bodyBg sidebar-top h-[70px] flex items-center z-20"
+				:class="[store.open ? 'max-w-[250px]' : 'max-w-[70px]']"
 			>
 				<div
 					v-if="store.open"
@@ -45,37 +49,50 @@ const sportsActive = computed(() => {
 					>
 						<i class="fa-solid fa-bars text-white" />
 					</div>
-					<RouterLink to="/sports/home">
-						<PrimaryButton class="!px-[15px] py-[14px]" v-if="sportsActive"
-							>Sports</PrimaryButton
-						>
-						<NeutralButton class="!px-[15px] py-[14px]" v-else
-							>Sports</NeutralButton
-						>
-					</RouterLink>
-					<RouterLink to="/casino/home">
-						<SecondaryButton class="!px-[15px] py-[14px]" v-if="casinoActive"
-							>Casino</SecondaryButton
-						>
-						<NeutralButton class="!px-[15px] py-[14px]" v-else
-							>Casino</NeutralButton
-						>
-					</RouterLink>
+
+					<PrimaryButton
+						to="/sports/home"
+						as="RouterLink"
+						class="!px-[15px] py-[14px]"
+						v-if="sportsActive"
+						>Sports</PrimaryButton
+					>
+					<NeutralButton
+						to="/sports/home"
+						as="RouterLink"
+						class="!px-[15px] py-[14px]"
+						v-else
+						>Sports</NeutralButton
+					>
+
+					<SecondaryButton
+						to="/casino/home"
+						as="RouterLink"
+						class="!px-[15px] py-[14px]"
+						v-if="casinoActive"
+						>Casino</SecondaryButton
+					>
+					<NeutralButton
+						to="/casino/home"
+						as="RouterLink"
+						class="!px-[15px] py-[14px]"
+						v-else
+						>Casino</NeutralButton
+					>
 				</div>
 				<div
 					v-if="!store.open"
-					class="cursor-pointer  text-xl w-[70px] flex items-center justify-center transition"
+					class="cursor-pointer text-xl w-[70px] flex items-center justify-center transition"
 					@click="store.toggle"
 				>
 					<i class="fa-solid fa-bars text-white" />
 				</div>
-		
 			</div>
 			<div
 				id="sidebar"
 				:class="[store.open ? 'p-[16px]' : 'p-[10px]', 'relative  ']"
 			>
-			<div v-if="!store.open" class="text-center mt-2">
+				<div v-if="!store.open" class="text-center mt-2">
 					<RouterLink to="/sports/home">
 						<PrimaryButton
 							small

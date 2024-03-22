@@ -1,7 +1,7 @@
 export default [
   {
     path: "/casino/home",
-    component: () => import("../layouts/Casino.vue"),
+    component: () => import("../layouts/CasinoHomeLayout.vue"),
     children: [
       {
         path: "",
