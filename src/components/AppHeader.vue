@@ -1,5 +1,5 @@
 <script setup client>
-import AuthentificatorVue from "./Authentificator.vue";
+import Authentificator from "./Authentificator.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import SecondaryButton from "./Buttons/SecondaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
@@ -39,9 +39,9 @@ const logo = computed(() => {
 				<AppHeaderWallet />
 			</div>
 			<div class="w-[150px]  xl:w-[250px] flex justify-end">
-				<AuthentificatorVue>
+				<Authentificator>
 					<AppHeaderUserMenu />
-				</AuthentificatorVue>
+				</Authentificator>
 			</div>
 		</div>
 	</div>

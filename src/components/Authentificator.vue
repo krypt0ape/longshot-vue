@@ -4,6 +4,13 @@ import { useRoute } from "vue-router";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
 
+defineProps({
+	showControls: {
+		type: Boolean,
+		default: true,
+	},
+});
+
 const route = useRoute();
 
 const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -30,18 +37,11 @@ const login = () => {
 		},
 	});
 };
-
-defineProps({
-	className: "",
-	showControls: true,
-});
 </script>
 <template>
 	<slot v-if="isAuthenticated" />
-	<div v-else :class="class" class="flex items-center gap-x-4">
-		<template v-if="showControls">
-			<NeutralButton @click="login">Sign in</NeutralButton>
-			<PrimaryButton @click="signup">Register</PrimaryButton>
-		</template>
+	<div v-else-if="showControls" v-bind="$attrs" class="flex items-center gap-x-4">
+		<NeutralButton @click="login">Sign in</NeutralButton>
+		<PrimaryButton @click="signup">Register</PrimaryButton>
 	</div>
 </template>
