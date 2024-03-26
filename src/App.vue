@@ -6,9 +6,12 @@ import { computed } from "vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import MobileMenu from "./components/MobileMenu.vue";
+import {useAuth0} from "@auth0/auth0-vue";
+import FullPageLoader from "./layouts/FullPageLoader.vue";
 
 const store = useSidebarStore();
 const route = useRoute();
+const {isLoading} = useAuth0();
 
 const topImage = computed(() => {
 	// Remove the top glow effect on the blog single page
@@ -26,41 +29,40 @@ const topImage = computed(() => {
 });
 </script>
 <template>
-	<div class="font-body relative w-screen flex mb-[75px]">
-		<AppSidebar />
+	<FullPageLoader :loading="isLoading">
+		<div class="font-body relative w-screen flex mb-[75px]">
+			<AppSidebar />
 
-		<section class="relative  flex-1 ">
-			<div class="sticky top-0 left-0 right-0 z-50">
-				<AppHeader />
-			</div>
-			<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-				<MobileMenu />
-			</div>
-
-			<div
-				id="page"
-				:class="[
-					'flex-1  relative  min-h-screen flex flex-col',
-				]"
-			>
-				<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
-					<Transition name="page">
-						<RouterView></RouterView>
-					</Transition>
+			<section class="relative flex-1">
+				<div class="sticky top-0 left-0 right-0 z-50">
+					<AppHeader />
 				</div>
-				<div class="relative z-20">
-					<AppFooter />
+				<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+					<MobileMenu />
 				</div>
-			</div>
 
-		</section>
-		<aside>
-			<!--  -->
-		</aside>
+				<div
+					id="page"
+					:class="['flex-1  relative  min-h-screen flex flex-col']"
+				>
+					<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
+						<Transition name="page">
+							<RouterView></RouterView>
+						</Transition>
+					</div>
+					<div class="relative z-20">
+						<AppFooter />
+					</div>
+				</div>
+			</section>
+			<aside>
+				<!--  -->
+			</aside>
 
-		<!-- <PromotionModal />
+			<!-- <PromotionModal />
     <WalletModal /> -->
-	</div>
+		</div>
+	</FullPageLoader>
 </template>
 <style>
 .page-enter-active,

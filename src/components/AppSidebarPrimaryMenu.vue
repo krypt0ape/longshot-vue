@@ -2,13 +2,13 @@
 import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import AppSidebarMenu from "./AppSidebarMenu.vue";
-import {request} from "@/api/api";
+import { request } from "@/api/api";
 import useApi from "@/composables/useApi";
 
 const { t, locale } = useI18n();
 
-const {loading, error, data} = useApi("post", "/contentful/entry", {
-	id: "6XnHoRun8rLi8078PDlks3"
+const { loading, error, data } = useApi("post", "/contentful/entry", {
+	id: "6XnHoRun8rLi8078PDlks3",
 });
 
 const items = computed(() => {
@@ -66,7 +66,7 @@ const items = computed(() => {
 		{
 			icon: "fa-solid fa-trophy",
 			title: t("primary_sidebar.vip_club"),
-			to:"/vip-club",
+			to: "/vip-club",
 		},
 		{
 			icon: "fa-solid fa-newspaper",
@@ -75,8 +75,7 @@ const items = computed(() => {
 		},
 	];
 });
-
 </script>
 <template>
-	<AppSidebarMenu  :items="items" />
+	<AppSidebarMenu :items="items" :loading="loading" :height="220" />
 </template>

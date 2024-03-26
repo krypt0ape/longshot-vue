@@ -48,6 +48,6 @@ const items = computed(() => {
 </script>
 <template>
 	<div class="mt-4 text-white">
-		<AppSidebarMenu :items="items" />
+		<AppSidebarMenu :items="items" :loading="loading" :height="132"/>
 	</div>
 </template>

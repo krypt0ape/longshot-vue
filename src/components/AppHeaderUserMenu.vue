@@ -2,6 +2,7 @@
 import { useAuth0 } from "@auth0/auth0-vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import AppHeaderUserMenuItem from "./AppHeaderUserMenuItem.vue";
 const { user, logout } = useAuth0();
 const _logout = () => {
 	logout({ logoutParams: { returnTo: window.location.origin } });
@@ -66,7 +67,7 @@ const openWallet = () => {};
 					class="absolute right-0 z-10 mt-3 w-[200px] transform px-4 sm:px-0"
 				>
 					<div
-						class="overflow-hidden border border-[#273646] rounded-lg shadow-lg text-brand-dark font-medium py-2 bg-brand-dark-light text-brand-lightGrey"
+						class="overflow-hidden border border-[#273646] rounded-lg shadow-lg text-brand-dark font-medium py-2 bg-[#182330] text-brand-lightGrey"
 					>
 						<div class="pb-2 border-b border-[#273646]">
 							<AppHeaderUserMenuItem
