@@ -29,6 +29,9 @@ const gameTypes = computed(() => data.value?.[0] ?? []);
 </script>
 
 <template>
+  <button @click="() => refetch({ search: 'acceptance' })" class="btn text-white">
+    EMULATE SEACH BY "acceptance" STRING
+  </button>
   <VerticalScrollingList :name="name" :icon="icon">
     <CasinoGamesListItem v-for="gameType in gameTypes" :key="gameType.identifier" :gameType="gameType"
       @favourite="() => favourite(gameType.identifier)" />
