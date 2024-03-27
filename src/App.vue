@@ -6,8 +6,6 @@ import { computed } from "vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import MobileMenu from "./components/MobileMenu.vue";
-
-const store = useSidebarStore();
 const route = useRoute();
 
 const topImage = computed(() => {
@@ -26,41 +24,42 @@ const topImage = computed(() => {
 });
 </script>
 <template>
-	<div class="font-body relative w-screen flex mb-[75px]">
-		<AppSidebar />
-
-		<section class="relative  flex-1 ">
-			<div class="sticky top-0 left-0 right-0 z-50">
-				<AppHeader />
-			</div>
-			<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+	<PageInitialStateLoader>
+		<div class="font-body relative w-screen flex">
+			<div
+				class="fixed bg-red-500 z-50 h-[50px] bottom-0 left-0 right-0 z-50 md:hidden"
+			>
 				<MobileMenu />
 			</div>
+			<AppSidebar />
 
-			<div
-				id="page"
-				:class="[
-					'flex-1  relative  min-h-screen flex flex-col',
-				]"
-			>
-				<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
-					<Transition name="page">
-						<RouterView></RouterView>
-					</Transition>
+			<section class="relative flex-1">
+				<div class="sticky top-0 left-0 right-0 z-50">
+					<AppHeader />
 				</div>
-				<div class="relative z-20">
-					<AppFooter />
+
+				<div
+					id="page"
+					:class="['flex-1  relative  min-h-screen flex flex-col']"
+				>
+					<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
+						<Transition name="page">
+							<RouterView></RouterView>
+						</Transition>
+					</div>
+					<div class="relative z-20">
+						<AppFooter />
+					</div>
 				</div>
-			</div>
+			</section>
+			<aside>
+				<!--  -->
+			</aside>
 
-		</section>
-		<aside>
-			<!--  -->
-		</aside>
-
-		<!-- <PromotionModal />
+			<!-- <PromotionModal />
     <WalletModal /> -->
-	</div>
+		</div>
+	</PageInitialStateLoader>
 </template>
 <style>
 .page-enter-active,
@@ -74,3 +73,4 @@ const topImage = computed(() => {
 	filter: blur(1rem);
 }
 </style>
+@/stores/useMenuStore

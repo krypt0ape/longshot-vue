@@ -44,5 +44,6 @@ const classString = computed(() => {
   border-radius: 10px;
   line-height: 13px;
   font-weight: 700;
+  display: inline-flex;
 }
 </style>

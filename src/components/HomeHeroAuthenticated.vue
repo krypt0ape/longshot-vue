@@ -1,11 +1,14 @@
 <script setup>
 import UserVipStatus from "@/components/UserVipStatus.vue";
 import { useAuth0 } from "@auth0/auth0-vue";
+import useUserStore from "@/stores/useUserStore";
+
+const userStore = useUserStore();
 </script>
 <template>
 	<div class="auth-card m-[32px] ml-[30px] px-4 py-4   relative z-50 sm:py-[30px] sm:w-[350px] xl:w-[430px]  xl:py-[50px] xl:px-[65px]">
 		<div class="relative z-20">
-			<p class="text-3xl font-semibold">Welcome back, kyle</p>
+			<p class="text-3xl font-semibold">Welcome back, Chris</p>
 			
 			<div class="h-[90px]">
 				<UserVipStatus />

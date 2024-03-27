@@ -8,7 +8,7 @@ export default defineStore('user', () => {
 
 	const getUser = async () => {
 		const response = await request({
-			path: '/user',
+			path: '/auth/me',
 		});
 		user.value = response.user;
 		riskManagement.value = response.userRiskManagement;

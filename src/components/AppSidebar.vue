@@ -93,24 +93,24 @@ const sportsActive = computed(() => {
 				:class="[store.open ? 'p-[16px]' : 'p-[10px]', 'relative  ']"
 			>
 				<div v-if="!store.open" class="text-center mt-2">
-					<RouterLink to="/sports/home">
-						<PrimaryButton
+					<PrimaryButton
+							as="RouterLink"
+							to="/sports/home"
 							small
-							class="mb-4"
+							class="mb-3 !rounded-xl"
 							v-tippy="{ content: 'Sports', placement: 'right' }"
 						>
 							<i class="fa-solid fa-futbol text-white text-2xl py-1.5" />
 						</PrimaryButton>
-					</RouterLink>
-					<RouterLink to="/casino/home">
-						<SecondaryButton
+					<SecondaryButton
+							as="RouterLink"
+							to="/casino/home"
 							small
-							class="mb-4"
+							class="mb-3 !rounded-xl"
 							v-tippy="{ content: 'Casino', placement: 'right' }"
 						>
 							<i class="fa-solid fa-cards text-white text-xl py-1.5" />
 						</SecondaryButton>
-					</RouterLink>
 				</div>
 				<div class="">
 					<!-- <AppSidebarCasinoPrimary v-if="casinoActive" />
@@ -130,3 +130,4 @@ const sportsActive = computed(() => {
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 </style>
+@/stores/useMenuStore

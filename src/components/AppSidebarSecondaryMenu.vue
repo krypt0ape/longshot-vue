@@ -38,16 +38,16 @@ const items = computed(() => {
 			title: t("secondary_sidebar.live_support"),
 			to: "/affiliate/overview",
 		},
-		{
-			icon: "fa-solid fa-language",
-			title: t("secondary_sidebar.language") + ": (" + locale.value + ")",
-			children: [],
-		},
+		// {
+		// 	icon: "fa-solid fa-language",
+		// 	title: t("secondary_sidebar.language") + ": (" + locale.value + ")",
+		// 	children: [],
+		// },
 	];
 });
 </script>
 <template>
 	<div class="mt-4 text-white">
-		<AppSidebarMenu :items="items" />
+		<AppSidebarMenu :items="items" :loading="loading" :height="132"/>
 	</div>
 </template>
