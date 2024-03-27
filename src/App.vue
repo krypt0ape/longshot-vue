@@ -6,12 +6,7 @@ import { computed } from "vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import MobileMenu from "./components/MobileMenu.vue";
-import {useAuth0} from "@auth0/auth0-vue";
-import FullPageLoader from "./layouts/FullPageLoader.vue";
-
-const store = useSidebarStore();
 const route = useRoute();
-const {isLoading} = useAuth0();
 
 const topImage = computed(() => {
 	// Remove the top glow effect on the blog single page
@@ -29,16 +24,18 @@ const topImage = computed(() => {
 });
 </script>
 <template>
-	<FullPageLoader :loading="isLoading">
-		<div class="font-body relative w-screen flex mb-[75px]">
+	<PageInitialStateLoader>
+		<div class="font-body relative w-screen flex">
+			<div
+				class="fixed bg-red-500 z-50 h-[50px] bottom-0 left-0 right-0 z-50 md:hidden"
+			>
+				<MobileMenu />
+			</div>
 			<AppSidebar />
 
 			<section class="relative flex-1">
 				<div class="sticky top-0 left-0 right-0 z-50">
 					<AppHeader />
-				</div>
-				<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-					<MobileMenu />
 				</div>
 
 				<div
@@ -62,7 +59,7 @@ const topImage = computed(() => {
 			<!-- <PromotionModal />
     <WalletModal /> -->
 		</div>
-	</FullPageLoader>
+	</PageInitialStateLoader>
 </template>
 <style>
 .page-enter-active,
@@ -76,3 +73,4 @@ const topImage = computed(() => {
 	filter: blur(1rem);
 }
 </style>
+@/stores/useMenuStore

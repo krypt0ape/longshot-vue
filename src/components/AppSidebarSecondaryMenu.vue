@@ -38,11 +38,11 @@ const items = computed(() => {
 			title: t("secondary_sidebar.live_support"),
 			to: "/affiliate/overview",
 		},
-		{
-			icon: "fa-solid fa-language",
-			title: t("secondary_sidebar.language") + ": (" + locale.value + ")",
-			children: [],
-		},
+		// {
+		// 	icon: "fa-solid fa-language",
+		// 	title: t("secondary_sidebar.language") + ": (" + locale.value + ")",
+		// 	children: [],
+		// },
 	];
 });
 </script>

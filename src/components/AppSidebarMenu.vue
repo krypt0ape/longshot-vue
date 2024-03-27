@@ -181,3 +181,4 @@ const route = useRoute();
 	color: #07111b;
 }
 </style>
+@/stores/useMenuStore

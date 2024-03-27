@@ -2,7 +2,7 @@
 import  AppFooterPolicyMenu from "./AppFooterPolicyMenu.vue";
 </script>
 <template>
-	<div class="bg-brand-accentBgHeader pb-[54px] mt-[50px] px-4">
+	<div class="bg-brand-accentBgHeader pb-[100px] sm:pb-[54px] mt-[50px] px-4">
 		<div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 py-[50px] gap-y-4 gap-x-4">
 			<div>
 				<h3 class="text-white mb-[12px] text-lg font-semibold">

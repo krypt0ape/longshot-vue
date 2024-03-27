@@ -2,7 +2,7 @@ import { ref, onMounted } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { request } from "../api/api";
 
-export default function useApi(method, path, options) {
+export default function useApi(method, path, options, callback = null) {
 	const data = ref();
 	const loading = ref(true);
 	const error = ref(null);
@@ -27,6 +27,7 @@ export default function useApi(method, path, options) {
 		})
 			.then((response) => {
 				data.value = response;
+				callback && callback(data.value);
 			})
 			.catch((err) => {
 				console.log(err);
