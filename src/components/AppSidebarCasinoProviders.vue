@@ -10,6 +10,6 @@ const providerMenu = [
 </script>
 <template>
 	<div class="mb-4">
-		<AppSidebarMenu :items="providerMenu" />
+		<AppSidebarMenu  :items="providerMenu" />
 	</div>
 </template>

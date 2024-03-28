@@ -6,6 +6,8 @@ import { computed } from "vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import MobileMenu from "./components/MobileMenu.vue";
+import PageInitialStateLoader from "./layouts/PageInitialStateLoader.vue";
+
 const route = useRoute();
 
 const topImage = computed(() => {
