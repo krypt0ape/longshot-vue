@@ -10,7 +10,9 @@ export const useGameApi = () => {
 
   const startSession = async (identifier, currency) => {
     const token = await getAccessTokenSilently();
-    const headers = {};
+    const headers = {
+		"Country-Code": "UK",
+	};
     if (token) {
       headers.Authorization = `Bearer ${await token}`;
     }

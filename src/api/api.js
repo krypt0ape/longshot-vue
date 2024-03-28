@@ -6,7 +6,9 @@ const ls = useLocalStorage();
 const request = async ({ method = "GET", path, data, token }) => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const headers = {
-    "Country-Code": ls.get("COUNTRY_CODE"),
+    //"Country-Code": ls.get("COUNTRY_CODE"),
+	// TODO handle this, its hardcoded for now
+	"Country-Code": "UK",
   };
 
   if (!headers["Country-Code"]?.length) {

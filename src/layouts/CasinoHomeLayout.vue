@@ -10,12 +10,7 @@ const { locale, locales, t } = useI18n();
 <template>
 	<div class="max-w-7xl mx-auto pt-[30px] relative px-4">
 		<CasinoPromoBoxs />
-		<div class="py-4">
-			<CasinoSearch />
-		</div>
-		<CasinoTabs />
-		<router-view  :key="$route.fullPath" />
-		<div class="mt-24">
+		<div class="mt-6">
 			<NeutralButton
 				as="RouterLink"
 				:to="`/casino/games/softswiss:CherryFiesta`"
@@ -32,5 +27,10 @@ const { locale, locales, t } = useI18n();
 				>Test Session: acceptance:secondary_test</NeutralButton
 			>
 		</div>
+		<div class="py-4">
+			<CasinoSearch />
+		</div>
+		<CasinoTabs />
+		<router-view  :key="$route.fullPath" />
 	</div>
 </template>

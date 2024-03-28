@@ -13,7 +13,7 @@ const { isLoading } = useAuth0();
 const { loading, error, call } = useAsync(userStore.getUser);
 
 onMounted(async () => {
-  ls.set('COUNTRY_CODE', (await callIpApi()).countryCode)
+  //ls.set('COUNTRY_CODE', (await callIpApi()).countryCode)
 })
 
 const ready = computed(() => {

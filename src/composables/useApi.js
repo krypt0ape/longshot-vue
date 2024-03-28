@@ -17,7 +17,9 @@ export default function useApi(method, path, defaultOptions, callback = null) {
   const refetch = async (options = defaultOptions) => {
     try {
       token.value = await getAccessTokenSilently();
-    } catch (e) {}
+    } catch (e) {
+		console.log(e);
+	}
 
     request({
       method: method,
