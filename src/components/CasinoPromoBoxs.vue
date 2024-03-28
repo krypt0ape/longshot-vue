@@ -2,6 +2,7 @@
 import useApi from "@/composables/useApi";
 import { computed } from "vue";
 import PromoBox from "@/components/PromoBox.vue";
+import BoxLoader from "@/components/BoxLoader.vue";
 
 const { loading, error, data } = useApi("post", "/contentful/entry", {
 	id: "5vATqatwvdkTIALxajLi4U",
@@ -25,7 +26,14 @@ const promotions = computed(() => {
 		<div
 			class="absolute glow-purple -top-[170px] mx-auto left-0 right-0 opacity-75 z-10 "
 		>&nbsp;</div>
+		<BoxLoader 
+			v-if="loading"
+			v-for="i in 3"
+			:key="1"
+			:height="205"
+		/>
 		<PromoBox
+			v-else
 			v-for="promotion in promotions"
 			:key="promotion.slug"
 			:promotion="promotion"

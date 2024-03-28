@@ -31,7 +31,7 @@ const classString = computed(() => {
   } else {
     str += " cursor-pointer  hover:opacity-80";
   }
-  return str + " " + size.value;
+  return str + " justify-center items-center " + size.value;
 })
 </script>
 <template>

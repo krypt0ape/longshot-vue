@@ -8,7 +8,7 @@ import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 const { locale, locales, t } = useI18n();
 </script>
 <template>
-	<div class="max-w-7xl mx-auto pt-[30px] relative">
+	<div class="max-w-7xl mx-auto pt-[30px] relative px-4">
 		<CasinoPromoBoxs />
 		<div class="py-4">
 			<CasinoSearch />

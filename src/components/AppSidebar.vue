@@ -113,11 +113,11 @@ const sportsActive = computed(() => {
 						</SecondaryButton>
 				</div>
 				<div class="">
-					<!-- <AppSidebarCasinoPrimary v-if="casinoActive" />
+					 <AppSidebarCasinoPrimary v-if="casinoActive" />
 			<AppSidebarCasinoSecondary v-if="casinoActive" />
 			<AppSidebarCasinoProviders v-if="casinoActive" />
-			<AppSidebarSportsPrimary v-if="sportsActive" />
-			<AppSidebarSportsSecondary v-if="sportsActive" /> -->
+			<!-- <AppSidebarSportsPrimary v-if="sportsActive" />
+			<AppSidebarSportsSecondary v-if="sportsActive" />  -->
 					<AppSidebarPrimaryMenu />
 					<AppSidebarSecondaryMenu />
 				</div>
