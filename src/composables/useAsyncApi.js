@@ -8,7 +8,7 @@ export default function useAsyncApi(method, path) {
 
   const { getAccessTokenSilently } = useAuth0();
 
-  const call = async (data, uri) => {
+  const call = async (data = undefined, uri = "") => {
     const token = await getAccessTokenSilently();
 
     try {
