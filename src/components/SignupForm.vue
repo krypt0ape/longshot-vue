@@ -1,12 +1,13 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useAuth0 } from '@auth0/auth0-vue';
+import useApi from '@/composables/useApi';
 
 const {user} = useAuth0();
-const {execute, loading, error} = useApi('/signup');
-onMounted(()=>{
-	execute();
-})
+const {data, loading, error} = useApi('post', '/auth/complete-signup', {
+	affiliate_code: "",
+	signup_code: ""
+});
 </script>
 <template>
 		<p>Username</p>
