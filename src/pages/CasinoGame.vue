@@ -104,7 +104,6 @@ const onSwitch = (realPlay) => {
 }
 
 const loadGame = async (currency) => {
-  console.log(currency)
   if (currency?.ISO === selectedCurrency.value?.ISO) {
     return
   }
