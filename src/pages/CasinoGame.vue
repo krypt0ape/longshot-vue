@@ -2,13 +2,13 @@
   <div class="max-w-7xl mx-auto relative mt-8" :class="size">
     <div>
       <div class="h-[671px] relative rounded-t-xl overflow-hidden">
-        <Authentificator
+        <!-- <Authentificator
           :class="['absolute flex w-full h-full flex-col space-y-3 justify-center items-center bg-black bg-opacity-80 z-50', { fullscreen }]">
           <template #content>
             <div class="text-lg">Login to Play</div>
           </template>
           <CurrencyOverlay :fullscreen="fullscreen" @select="onConfirm" />
-        </Authentificator>
+        </Authentificator> -->
         <div :key="wrapper" class="size" :class="size" id="game_wrapper"></div>
       </div>
       <div class="flex justify-between items-center bg-brand-dark-light rounded-b-xl py-3 px-6">

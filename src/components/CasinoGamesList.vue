@@ -24,14 +24,14 @@ const favourite = async (identifier) => {
   refetch()
 }
 
-const gameTypes = computed(() => data.value?.[0] ?? []);
+const gameTypes = computed(() => data.value?.rows ?? []);
 
 </script>
 
 <template>
-  <button @click="() => refetch({ search: 'acceptance' })" class="btn text-white">
+  <!-- <button @click="() => refetch({ search: 'acceptance' })" class="btn text-white">
     EMULATE SEACH BY "acceptance" STRING
-  </button>
+  </button> -->
   <VerticalScrollingList :name="name" :icon="icon">
     <CasinoGamesListItem v-for="gameType in gameTypes" :key="gameType.identifier" :gameType="gameType"
       @favourite="() => favourite(gameType.identifier)" />
