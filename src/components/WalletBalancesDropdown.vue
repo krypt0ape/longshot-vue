@@ -1,5 +1,4 @@
 <script setup>
-import { useAuth0 } from "@auth0/auth0-vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import { computed } from "vue";

@@ -2,7 +2,7 @@
 import { computed, onMounted } from 'vue'
 import { useAuth0 } from "@auth0/auth0-vue";
 import useAsync from '@/composables/useAsync';
-import useUserStore from '@/stores/useUserStore';
+import { useUserStore } from '@/stores/useUserStore';
 import { useLocalStorage } from "@/composables/useLocalStorage";
 import useIpApi from "@/composables/useIpApi";
 const ls = useLocalStorage()

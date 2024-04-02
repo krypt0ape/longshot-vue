@@ -7,11 +7,14 @@ export const useGameApi = () => {
   const loading = ref(true);
   const error = ref(null);
   const ls = useLocalStorage();
+  const token = ref();
 
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const startSession = async (identifier, currency) => {
-    const token = await getAccessTokenSilently();
+    if (isAuthenticated.value) {
+      token.value = await getAccessTokenSilently();
+    }
 
     const headers = {
       // "Country-Code": ls.get("COUNTRY_CODE"),
@@ -23,8 +26,8 @@ export const useGameApi = () => {
       throw new Error(`Failed to get client's countryCode`);
     }
 
-    if (token) {
-      headers.Authorization = `Bearer ${await token}`;
+    if (token.value) {
+      headers.Authorization = `Bearer ${await token.value}`;
     }
 
     try {
@@ -33,7 +36,9 @@ export const useGameApi = () => {
       const baseURL = import.meta.env.VITE_API_URL;
 
       const { data } = await axios.get(
-        `/game/start-session/${identifier}/${token ? currency?.ISO || "" : ""}`, // only logged in (token) can request real session
+        `/game/start-session/${identifier}/${
+          token.value ? currency?.ISO || "" : ""
+        }`, // only logged in (token) can request real session
         {
           baseURL,
           headers,
