@@ -1,13 +1,13 @@
 <script setup>
 defineProps({
-	icon: {
-		type: String,
-		required: true,
-	},
+  icon: {
+    type: String,
+    required: true,
+  },
 })
 </script>
 <template>
-	<ClientOnly>
-		<font-awesome-icon :icon="icon" v-bind="$attrs" />
-	</ClientOnly>
+  <ClientOnly>
+    <i :class="icon" v-bind="$attrs" />
+  </ClientOnly>
 </template>

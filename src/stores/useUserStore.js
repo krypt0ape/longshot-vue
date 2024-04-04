@@ -1,22 +1,47 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { request } from "@/api/api";
 import { useAuth0 } from "@auth0/auth0-vue";
+import { wss } from "@/api/wss";
 
 export const useUserStore = defineStore("user", () => {
   const user = ref(); // undefined user means it's a guest
-  const riskManagement = ref({});
   const token = ref(null);
+  const socket = ref();
 
   const { getAccessTokenSilently, isAuthenticated, isLoading } = useAuth0();
 
   const auth0Ready = async () => {
-    setTimeout(async () => isLoading.value || (await auth0Ready()), 150);
+    if (!isLoading.value) {
+      return true;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    return await auth0Ready();
   };
+
+  onMounted(async () => {
+    await getUser();
+
+    if (!user.value) {
+      console.log("No user for socket");
+      return;
+    }
+
+    socket.value = wss(`Bearer ${await getAccessTokenSilently()}`);
+
+    socket.value.on("message", (payload) => {
+      if (payload.type === "User") {
+        user.value = payload.data;
+      }
+    });
+  });
 
   const getUser = async () => {
     await auth0Ready();
     if (!isAuthenticated.value) {
+      console.log("!isAuthenticated");
       return;
     }
 
@@ -27,7 +52,6 @@ export const useUserStore = defineStore("user", () => {
       token: token.value,
     });
     user.value = data;
-    riskManagement.value = data.userRiskManagement;
   };
 
   const completeRegistration = async ({
@@ -40,7 +64,7 @@ export const useUserStore = defineStore("user", () => {
 
     const { data } = await request({
       method: "POST",
-      path: "/auth/complete-signup",
+      path: "/auth/complete-registration",
       data: {
         nickname,
         acceptedTerms,
@@ -50,13 +74,40 @@ export const useUserStore = defineStore("user", () => {
       token: token.value,
     });
     user.value = data;
-    riskManagement.value = data.userRiskManagement;
+  };
+
+  const completeVerification = async ({
+    firstname,
+    lastname,
+    birthDate,
+    occupation,
+    country,
+    city,
+    postalCode,
+  }) => {
+    token.value = await getAccessTokenSilently();
+
+    const { data } = await request({
+      method: "POST",
+      path: "/auth/complete-verification",
+      data: {
+        firstname,
+        lastname,
+        birthDate,
+        occupation,
+        country,
+        city,
+        postalCode,
+      },
+      token: token.value,
+    });
+    user.value = data;
   };
 
   return {
     user,
-    riskManagement,
     getUser,
     completeRegistration,
+    completeVerification,
   };
 });

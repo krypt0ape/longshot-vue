@@ -4,7 +4,10 @@ import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { onMounted, ref } from "vue";
 import useAsyncApi from "@/composables/useAsyncApi";
+import { useRouter } from "vue-router";
+
 const { isAuthenticated } = useAuth0();
+const router = useRouter()
 
 const { call, loading } = useAsyncApi('get', '/currency/list')
 
@@ -20,7 +23,7 @@ onMounted(async () => {
   <div v-if="isAuthenticated" class=" h-full ">
     <div class="hidden sm:flex  items-center space-x-4">
       <WalletBalancesDropdown :currencies="currencies" :loading="loading" />
-      <PrimaryButton>
+      <PrimaryButton @click="() => router.replace({ query: { modal: 'wallet', tab: 'deposit' } })">
         Wallet
       </PrimaryButton>
     </div>

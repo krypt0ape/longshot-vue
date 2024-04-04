@@ -13,7 +13,7 @@ export default function useAsyncApi(method, path) {
   const error = ref(null);
   const token = ref();
 
-  const call = async (data = undefined, uri = "") => {
+  const call = async (data = undefined, uri = "", params = undefined) => {
     await auth0Ready();
 
     if (isAuthenticated.value) {
@@ -27,6 +27,7 @@ export default function useAsyncApi(method, path) {
         method: method,
         path: `${path}/${uri}`,
         data,
+        params,
         token: token.value ?? null,
       });
 

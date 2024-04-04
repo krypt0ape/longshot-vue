@@ -3,7 +3,7 @@ import { useLocalStorage } from "@/composables/useLocalStorage";
 
 const ls = useLocalStorage();
 
-const request = async ({ method = "GET", path, data, token }) => {
+const request = async ({ method = "GET", path, data, token, params }) => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const headers = {
     //"Country-Code": ls.get("COUNTRY_CODE"),
@@ -26,6 +26,7 @@ const request = async ({ method = "GET", path, data, token }) => {
       method,
       url: `${baseUrl}${path}`,
       data,
+      params,
       headers,
     });
   } catch (error) {

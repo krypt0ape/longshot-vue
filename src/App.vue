@@ -2,12 +2,13 @@
 import useSidebarStore from "@/stores/useSidebarStore";
 import AppHeader from "./components/AppHeader.vue";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import MobileMenu from "./components/MobileMenu.vue";
 import PageInitialStateLoader from "./layouts/PageInitialStateLoader.vue";
 import CompleteRegistrationModal from "@/components/CompleteRegistrationModal.vue";
+import WalletModal from '@/components/WalletModal.vue'
 
 const route = useRoute();
 
@@ -29,14 +30,14 @@ const topImage = computed(() => {
 <template>
   <PageInitialStateLoader>
     <div class="font-body relative w-screen flex">
-      <div class="fixed bg-red-500 z-50 h-[50px] bottom-0 left-0 right-0 z-50 md:hidden">
+      <div class="fixed bg-red-500 z-50 h-[50px] bottom-0 left-0 right-0 md:hidden">
         <MobileMenu />
       </div>
       <AppSidebar />
 
       <section class="relative flex-1">
         <div class="sticky top-0 left-0 right-0 z-50">
-          <AppHeader />
+          <AppHeader @openWalletModal="() => openWalletModal = true" />
         </div>
 
         <div id="page" :class="['flex-1  relative  min-h-screen flex flex-col']">
@@ -51,11 +52,10 @@ const topImage = computed(() => {
         </div>
       </section>
       <aside>
-        <!--  -->
       </aside>
 
-      <!-- <PromotionModal />
-    <WalletModal /> -->
+      <!-- <PromotionModal />-->
+      <WalletModal />
       <CompleteRegistrationModal />
     </div>
   </PageInitialStateLoader>

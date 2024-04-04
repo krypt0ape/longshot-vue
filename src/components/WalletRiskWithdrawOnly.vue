@@ -1,1 +1,3 @@
-<template></template>
+<template>
+  WalletRiskWithdrawOnly content
+</template>

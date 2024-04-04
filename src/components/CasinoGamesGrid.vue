@@ -20,7 +20,7 @@ const { data, refetch } = useApi("post", "/game-type/list", {
 const { call: toggleFavourite } = useAsyncApi("POST", "/game-type/favourite");
 
 const favourite = async (identifier) => {
-  await toggleFavourite(undefined, identifier);
+  await toggleFavourite(identifier);
   refetch()
 }
 

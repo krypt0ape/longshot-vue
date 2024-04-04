@@ -34,7 +34,7 @@ const onInput = ({ target }) => {
   model.value = value
 }
 
-defineExpose({ focus: () => input.value.focus() });
+defineExpose({ focus: () => input.value.focus(), input, readonly: { type: Boolean, default: false } });
 </script>
 
 <template>
@@ -43,8 +43,8 @@ defineExpose({ focus: () => input.value.focus() });
       <slot name="left"></slot>
     </div>
     <div class="flex items-center">
-      <input id="input" ref="input" :type="type" autocomplete="one-time-code" :class="[
-      'input text-brand-lightGrey ring-0 focus-visible:outline-none',
+      <input id="input" ref="input" :readonly="true" :type="type" autocomplete="one-time-code" :class="[
+      'app-input text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg border-brand-accentStroke border-solid border-2',
       disabled ? 'cursor-not-allowed  text-brand-darkerGrey opacity-80' : '',
       $slots.left ? 'pl-[90px]' : 'pl-4',
       label ? '' : 'w-full'
@@ -54,6 +54,9 @@ defineExpose({ focus: () => input.value.focus() });
     </div>
     <div class="absolute top-0 h-[51px] flex items-center right-1">
       <slot />
+    </div>
+    <div v-if="$slots.right" class="absolute right-2 top-0 flex items-center h-full">
+      <slot name="right"></slot>
     </div>
     <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
       enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
@@ -65,20 +68,14 @@ defineExpose({ focus: () => input.value.focus() });
   </div>
 </template>
 <style>
-.input {
-  /* background: linear-gradient(137.76deg, #303650 26.98%, #24293c 86.43%),
-		linear-gradient(0deg, #303750, #303750);
-	border: 1px solid #303750;
-	box-shadow: 0px 2px 3px 0px #00000040; */
-  border-radius: 5px;
-  border: 1px solid #303750;
-  background: #24293C;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
-  padding: 16px 20px 16px 20px;
-  border-radius: 5px;
+.app-input {
+  border-radius: 5px !important;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) !important;
+  padding: 16px 20px 16px 20px !important;
+  border-radius: 5px !important;
 }
 
-.input::placeholder {
-  color: #93a3af;
+.app-input::placeholder {
+  color: #93a3af !important;
 }
 </style>
