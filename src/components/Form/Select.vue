@@ -61,7 +61,6 @@ const props = defineProps({
 })
 
 watch(selected, (nVal) => {
-  console.log(nVal)
   if (!nVal) {
     model.value = null
     return

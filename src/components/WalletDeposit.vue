@@ -9,7 +9,7 @@
         Your BTC deposit address
       </p>
       <div class="mt-3">
-        <Input ref="addressInput" readonly v-model="address">
+        <Input ref="addressInput" :readonly="true" v-model="address">
         <template #right>
           <i class="mr-3 cursor-pointer fa-duotone fa-arrows-rotate" @click="refresh"></i>
           |

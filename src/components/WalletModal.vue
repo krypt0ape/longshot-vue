@@ -34,6 +34,9 @@ const components = {
 }
 
 const activeComponent = computed(() => {
+  if (!open.value) {
+    return null
+  }
   switch (store.user.riskStatus) {
     case 'OK':
       switch (activeTab.value) {

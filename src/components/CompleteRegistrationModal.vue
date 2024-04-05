@@ -11,7 +11,7 @@
           <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
-            <div class="cr-modal rounded-2xl w-1/3">
+            <div class="cr-modal rounded-2xl w-1/2">
               <DialogPanel
                 class="w-full transform overflow-hidden rounded-2xl bg-brand-bodyBg p-6 text-left align-middle shadow-xl transition-all ">
                 <DialogTitle as="h3" class="text-md font-thin text-white">
@@ -115,11 +115,13 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
+import { useRouter } from "vue-router";
 
 const store = useUserStore();
 const error = ref('')
 const step = ref(1)
 const form = ref({ acceptedTerms: false, nickname: '' })
+const router = useRouter()
 
 onMounted(async () => {
   await store.getUser()
@@ -136,6 +138,7 @@ const submit = async (s) => {
       affiliateCode: "",
       signupCode: ""
     })
+    router.go()
   }
 }
 

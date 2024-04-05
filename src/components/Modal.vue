@@ -6,14 +6,14 @@
         <div class="fixed inset-0 bg-black/25" />
       </TransitionChild>
 
-      <div class="fixed inset-0 overflow-y-auto">
+      <div class="fixed inset-0 overflow-y-">
         <div class="flex min-h-full items-center justify-center p-4 text-center">
           <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
             <div class="app-modal" :class="modalClass">
               <DialogPanel
-                class="w-full transform overflow-hidden text-brand-grey bg-brand-accentBgHeader text-left align-middle shadow-xl transition-all rounded-md"
+                class="w-full transform text-brand-grey bg-brand-accentBgHeader text-left align-middle shadow-xl transition-all rounded-md"
                 :class="{ 'shadow-xl': shadow }">
                 <DialogTitle as="h3" class="text-md font-thin ">
                   <slot name="dialog-title" />
