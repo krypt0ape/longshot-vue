@@ -13,6 +13,7 @@
     "@chenfengyuan/vue-countdown": "^2.1.2",
     "@headlessui/vue": "^1.7.19",
     "@heroicons/vue": "^2.1.1",
+    "@sumsub/websdk": "^2.2.1",
     "@vuepic/vue-datepicker": "^8.3.2",
     "axios": "^1.6.8",
     "contentful-rich-text-vue-renderer": "^3.1.0",
