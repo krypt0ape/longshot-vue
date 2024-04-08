@@ -60,6 +60,12 @@ const props = defineProps({
   }
 })
 
+watch(model, (nVal) => {
+  if (!selected.value) {
+    selected.value = props.options.find(v => v[props.valueKey] === nVal)
+  }
+}, { immediate: true })
+
 watch(selected, (nVal) => {
   if (!nVal) {
     model.value = null

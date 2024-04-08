@@ -23,7 +23,7 @@
       <Input v-model="form.postalCode" placeholder="Postal Code *" class="col-span-6" :error="errors.postalCode"
         :disabled="loading" />
     </div>
-    <div class="row-auto mt-2 pt-6 pb-10">
+    <div class="row-auto mt-2 mb-5 pt-6 pb-10">
       <p class="float-start"><i class="fa-solid fa-shield-keyhole mr-2"></i>All data is safely stored and encrypted</p>
       <PrimaryButton class="float-right" @click="submit" :loading="loading">Continue</PrimaryButton>
     </div>
@@ -71,7 +71,7 @@ const valid = () => {
     errors.value.lastname = ''
   }
 
-  if (!(form.value.birthDate instanceof Date)) {
+  if (!(form.value.birthDate instanceof Date) && Date.parse(form.value.birthDate) === NaN) {
     errors.value.birthDate = 'Date of Birth is required'
     valid = false
   } else {
