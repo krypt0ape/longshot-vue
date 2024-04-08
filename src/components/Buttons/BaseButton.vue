@@ -10,6 +10,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  loading: {
+    type: Boolean,
+    default: false
+  },
   large: { defaut: false, type: Boolean },
   xlarge: { defaut: false, type: Boolean },
   small: { defaut: false, type: Boolean },
@@ -35,7 +39,7 @@ const classString = computed(() => {
 })
 </script>
 <template>
-  <component :is="props.as" v-bind="$attrs" :class="classString" >
+  <component :is="props.as" v-bind="$attrs" :class="classString">
     <slot />
   </component>
 </template>

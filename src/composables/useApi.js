@@ -8,36 +8,32 @@ export default function useApi(method, path, defaultOptions, callback = null) {
   const error = ref(null);
   const token = ref(null);
 
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   onMounted(() => {
     refetch();
   });
 
   const refetch = async (options = defaultOptions) => {
-    try {
+    if (isAuthenticated.value) {
       token.value = await getAccessTokenSilently();
-    } catch (e) {
-		console.log(e);
-	}
+    }
 
-    request({
-      method: method,
-      path: path,
-      data: { ...defaultOptions, ...options },
-      token: token.value,
-    })
-      .then((response) => {
-        data.value = response;
-        callback && callback(data.value);
-      })
-      .catch((err) => {
-        console.log(err);
-        error.value = err;
-      })
-      .finally(() => {
-        loading.value = false;
+    try {
+      let response = await request({
+        method: method,
+        path: path,
+        data: { ...defaultOptions, ...options },
+        token: token.value,
       });
+      callback && callback(data.value);
+      data.value = response.data;
+    } catch (err) {
+      // console.error(err);
+      error.value = err;
+    } finally {
+      loading.value = false;
+    }
   };
 
   return {
