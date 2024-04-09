@@ -46,6 +46,7 @@ const props = defineProps({
   options: {
     type: Array,
     required: true,
+    default: [],
     description: '[{value: string, title: string}]'
   },
   placeholder: '',
