@@ -72,7 +72,7 @@ const { isAuthenticated } = useAuth0();
 						Baccarat, Roulette, and thousands of classic casino games right from
 						your browser.
 					</p>
-					<SecondaryButton class="w-full text-lg py-[18px]"
+					<SecondaryButton as="RouterLink" to="/casino/home" class="w-full text-lg py-[18px]"
 						>Go to Casino</SecondaryButton
 					>
 				</div>
@@ -88,7 +88,7 @@ const { isAuthenticated } = useAuth0();
 						world on our sports betting platform. Gamble on a wide range of
 						sports betting options and markets for live sports.
 					</p>
-					<PrimaryButton class="w-full text-lg py-[18px]"
+					<PrimaryButton as="RouterLink" to="/sports/home" class="w-full text-lg py-[18px]"
 						>Go to Sportsbook</PrimaryButton
 					>
 				</div>
