@@ -18,12 +18,10 @@
           </p>
           <Input class="mt-1 w-full" placeholder="Please choose a nickname *" v-model="form.nickname" :error="error" />
         </div>
-        <div class="mt-4">
-          <button type="button"
-            class="w-full inline-flex justify-center rounded-md border border-transparent bg-lime-500 px-4 py-2 text-lg font-bold text-brand-accentStroke hover:bg-green-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            @click="() => submit(1)">
+        <div class="mt-4 flex justify-end">
+          <PrimaryButton type="button" @click="() => submit(1)">
             Continue
-          </button>
+          </PrimaryButton>
         </div>
       </TransitionRoot>
       <TransitionRoot :show="step === 2" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
@@ -65,12 +63,10 @@
           <Input type="checkbox" v-model="form.acceptedTerms" :error="error"
             label="I have read and agree to the terms and conditions" />
         </p>
-        <div class="mt-4">
-          <button type="button"
-            class="w-full inline-flex justify-center rounded-md border border-transparent bg-lime-500 px-4 py-2 text-lg font-bold text-brand-accentStroke hover:bg-green-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            @click="() => submit(1)">
+        <div class="mt-4 flex justify-end">
+          <PrimaryButton type="button" @click="() => submit(1)">
             Play Now
-          </button>
+          </PrimaryButton>
         </div>
       </TransitionRoot>
       <TransitionRoot :show="step === 3" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
@@ -94,6 +90,7 @@
 <script setup>
 import Input from "@/components/Form/Input.vue";
 import Modal from "./Modal.vue";
+import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import { computed, ref, onMounted } from "vue";
 import { useUserStore } from "@/stores/useUserStore";
 import { TransitionRoot } from '@headlessui/vue'
