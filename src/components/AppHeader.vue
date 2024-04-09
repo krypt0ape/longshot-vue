@@ -1,4 +1,4 @@
-<script setup client>
+<script setup >
 import Authentificator from "./Authentificator.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import SecondaryButton from "./Buttons/SecondaryButton.vue";

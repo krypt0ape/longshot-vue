@@ -12,14 +12,16 @@ const { isAuthenticated } = useAuth0();
 <template>
 	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-4 px-4">
 		<GlowGreen />
-		<div class="hero grid lg:grid-cols-2 relative z-20 overflow-hidden h-[375px]">
+		<div
+			class="hero grid lg:grid-cols-2 relative z-20 overflow-hidden h-[375px]"
+		>
 			<HomeHeroAuthenticated v-if="isAuthenticated" />
 			<HomeHeroGuest v-else />
 			<div class="hidden sm:block absolute opacity-50 top-0 right-0 z-20">
 				<img src="/img/green-glow-angle.png" class="h-[375px]" />
 			</div>
-			<div class="absolute top-0 right-0 ">
-				<img src="/img/stadium.png" class="h-[375px]"/>
+			<div class="absolute top-0 right-0">
+				<img src="/img/stadium.png" class="h-[375px]" />
 			</div>
 			<div class="absolute top-0 right-0 opacity-50 lg:opacity-100">
 				<svg
@@ -56,39 +58,45 @@ const { isAuthenticated } = useAuth0();
 			<img
 				src="/img/connor.png"
 				alt="hero image"
-				class="hidden z-40 right-0 bottom-0 absolute  sm:block md:right-1 lg:right-[150px]"
+				class="hidden z-40 right-0 bottom-0 absolute sm:block md:right-1 lg:right-[150px]"
 			/>
 		</div>
 		<div class="grid md:grid-cols-2 mt-12 gap-x-8">
-			<div class="">
+			<div class="flex flex-col">
 				<p class="text-xl mb-4 text-white">
 					<i class="fa-solid fa-cards mr-2 text-brand-grey" /> Casino
 				</p>
 				<img src="/img/casino-home.png" alt="casino-home" class="w-full" />
-				<div class="p-[32px] text-brand-grey">
+				<div class="p-[32px] text-brand-grey flex flex-col justify-between h-full">
 					<p class="mb-[32px]">
-						Browse our giant range of casino games as Longshot offers a fair and
-						fun online gambling experience. Play Slots, Live Casino, Blackjack,
-						Baccarat, Roulette, and thousands of classic casino games right from
-						your browser.
+						Explore our extensive selection of casino games, where
+						we provide a fair and enjoyable online betting experience. Enjoy
+						Slots, Live Casino, Blackjack, Baccarat, Roulette, and a myriad of
+						traditional casino games directly through your browser.
 					</p>
-					<SecondaryButton as="RouterLink" to="/casino/home" class="w-full text-lg py-[18px]"
+					<SecondaryButton
+						as="RouterLink"
+						to="/casino/home"
+						class="w-full text-lg py-[18px]"
 						>Go to Casino</SecondaryButton
 					>
 				</div>
 			</div>
-			<div>
+			<div class="flex flex-col">
 				<p class="text-xl mb-4 text-white">
 					<i class="fa-solid fa-futbol mr-2 text-brand-grey" /> Sportsbook
 				</p>
 				<img src="/img/sports-home.png" alt="casino-home" class="w-full" />
-				<div class="p-[32px] text-brand-grey">
+				<div class="p-[32px] text-brand-grey flex flex-col justify-between h-full">
 					<p class="mb-[32px]">
-						Bet on your favourite teams, players and leagues from all around the
-						world on our sports betting platform. Gamble on a wide range of
-						sports betting options and markets for live sports.
+						Place bets on teams, players, and leagues worldwide with
+						our sports betting platform. Explore numerous betting options and
+						markets for various pre match and in play sports events, all available in one place.
 					</p>
-					<PrimaryButton as="RouterLink" to="/sports/home" class="w-full text-lg py-[18px]"
+					<PrimaryButton
+						as="RouterLink"
+						to="/sports/home"
+						class="w-full text-lg py-[18px]"
 						>Go to Sportsbook</PrimaryButton
 					>
 				</div>
@@ -97,19 +105,23 @@ const { isAuthenticated } = useAuth0();
 		<div
 			class="crypto-topup relative flex items-center justify-between px-[20px] sm:px-[40px] py-[22px] mt-10 mb-10"
 		>
-			<div class=" hidden sm:flex absolute  opacity-25  lg:opacity-100">
+			<div class="hidden sm:flex absolute opacity-25 lg:opacity-100">
 				<img src="/img/btc.png" class="-mr-[6px]" />
 				<img src="/img/eth.png" class="-mr-[6px]" />
 				<img src="/img/tether.png" class="-mr-[6px]" />
 				<img src="/img/doge.png" />
 			</div>
 			<div class="sm:flex sm:justify-center flex-1 text-center relatice z-20">
-				<h5 class="uppercase  sm:mr-6 text-3xl text-white font-semibold mt-1 mb-2 sm:mb-0">
+				<h5
+					class="uppercase sm:mr-6 text-3xl text-white font-semibold mt-1 mb-2 sm:mb-0"
+				>
 					top up your crypto wallet
 				</h5>
-				<PrimaryButton class="py-[15px] ">Buy Crypto</PrimaryButton>
+				<PrimaryButton class="py-[15px]">Buy Crypto</PrimaryButton>
 			</div>
-			<div class="hidden sm:flex space-x-4 absolute right-[30px] opacity-25   lg:opacity-100">
+			<div
+				class="hidden sm:flex space-x-4 absolute right-[30px] opacity-25 lg:opacity-100"
+			>
 				<img src="/img/MASTERCARD.png" />
 				<img src="/img/APPLEPAY.png" />
 				<img src="/img/GOOGLEPAY.png" />

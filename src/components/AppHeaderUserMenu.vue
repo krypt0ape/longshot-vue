@@ -3,10 +3,10 @@ import { useAuth0 } from "@auth0/auth0-vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import AppHeaderUserMenuItem from "./AppHeaderUserMenuItem.vue";
-const { user, logout } = useAuth0();
-const _logout = () => {
-	logout({ logoutParams: { returnTo: window.location.origin } });
-};
+import useAuthActions from "@/composables/useAuthActions";
+
+const { user } = useAuth0();
+const {logout} = useAuthActions();
 const openWallet = () => {};
 </script>
 <template>
@@ -122,7 +122,7 @@ const openWallet = () => {};
 						</div>
 						<div class="pt-2">
 							<AppHeaderUserMenuItem
-								:action="_logout"
+								:action="logout"
 								icon="fa-solid fa-sign-out-alt"
 								text="Logout"
 							/>

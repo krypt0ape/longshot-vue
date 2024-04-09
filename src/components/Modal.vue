@@ -11,7 +11,7 @@
           <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
-            <div class="app-modal" :class="modalClass">
+            <div class="app-modal max-w-4xl w-full" v-bind="$attrs">
               <DialogPanel
                 class="w-full transform text-brand-grey bg-brand-accentBgHeader text-left align-middle shadow-xl transition-all rounded-md"
                 :class="{ 'shadow-xl': shadow }">
@@ -39,6 +39,10 @@
 <script setup>
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
+defineOptions({
+  inheritAttrs: false
+})
+
 defineProps({
   open: {
     type: Boolean,
@@ -52,10 +56,6 @@ defineProps({
     type: Boolean,
     default: true
   },
-  modalClass: {
-    type: String,
-    default: 'w-2/3'
-  }
 })
 
 const emit = defineEmits(['close']);

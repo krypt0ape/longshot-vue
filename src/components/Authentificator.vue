@@ -1,8 +1,8 @@
 <script setup>
-import { useAuth0 } from "@auth0/auth0-vue";
-import { useRoute } from "vue-router";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
+import useAuthActions from "@/composables/useAuthActions";
+import { useAuth0 } from "@auth0/auth0-vue";
 
 defineProps({
 	showControls: {
@@ -11,32 +11,9 @@ defineProps({
 	},
 });
 
-const route = useRoute();
+const { isAuthenticated } = useAuth0();
 
-const { loginWithRedirect, isAuthenticated } = useAuth0();
-
-const signup = () => {
-	loginWithRedirect({
-		appState: {
-			target:
-				"/signup?offer=" +
-				route.query.offer +
-				"&referrer=" +
-				route.query.referrer,
-		},
-		authorizationParams: {
-			screen_hint: "signup",
-		},
-	});
-};
-
-const login = () => {
-	loginWithRedirect({
-		appState: {
-			target: window.location.pathname,
-		},
-	});
-};
+const  {login, signup} = useAuthActions();
 </script>
 <template>
 	<slot v-if="isAuthenticated" />
