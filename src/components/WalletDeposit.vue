@@ -6,16 +6,16 @@
     </div>
     <div v-if="currency" class="col-span-12 mt-6">
       <div class="mt-3">
-        <Input label="Your BTC deposit address" ref="addressInput" :readonly="true" v-model="address">
+        <Input label="Your BTC deposit address" ref="addressInput" :readonly="true" v-model="wallet.address">
         <template #right>
-          <i class="mr-3 cursor-pointer fa-duotone fa-arrows-rotate" @click="refresh"></i>
+          <i class="mr-3 cursor-pointer fa-duotone fa-arrows-rotate" @click="() => refresh(true)"></i>
           |
           <i class="mx-3 cursor-pointer fa-duotone fa-copy" @click="copy"></i>
         </template>
         </Input>
       </div>
-      <QRCodeVue3 :key="address" :value="address" imgclass="rounded-md mx-auto my-4" :width="200" :height="200"
-        :dotsOptions="{
+      <QRCodeVue3 :key="wallet.address" :value="wallet.address" imgclass="rounded-md mx-auto my-4" :width="200"
+        :height="200" :dotsOptions="{
         type: 'rounded',
         color: '#182330',
       }" :backgroundOptions="{ color: '#fefefe' }" :cornersSquareOptions="{ type: 'rounded', color: '#182330' }"
@@ -35,12 +35,12 @@ import Input from "./Form/Input.vue";
 import QRCodeVue3 from 'qrcode-vue3'
 
 const { call: getCurrencies, loading: loadingCurrencies } = useAsyncApi('get', '/currency/list')
-const { call: getAddress, loadingAddress } = useAsyncApi('get', '/wallet/deposit/address')
+const { call: getWallet, loadingAddress } = useAsyncApi('get', '/wallet/deposit/wallet')
 
 const currencies = ref([])
 const currency = ref()
 const addressInput = ref()
-const address = ref('test')
+const wallet = ref({})
 
 const copy = async () => {
   addressInput.value.input.select();
@@ -58,8 +58,8 @@ const copy = async () => {
   }
 }
 
-const refresh = async () => {
-  address.value = await getAddress(undefined, '', { ISO: currency.value })
+const refresh = async (force = false) => {
+  wallet.value = await getWallet(undefined, '', { ISO: currency.value, force })
 }
 
 onMounted(async () => {

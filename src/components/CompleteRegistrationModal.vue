@@ -104,6 +104,7 @@ const router = useRouter()
 
 onMounted(async () => {
   await store.getUser()
+  form.value.nickname = store.user.nickname
 })
 
 const submit = async (s) => {
