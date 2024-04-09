@@ -1,5 +1,5 @@
 <template>
-  <Modal :open="show">
+  <Modal :open="show" :cross="false">
     <template #dialog-title>
       <div class="bg-brand-dark-light flex py-6 px-10">
         <h2 class="text-2xl font-medium">

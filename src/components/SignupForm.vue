@@ -4,9 +4,10 @@ import { useAuth0 } from '@auth0/auth0-vue';
 import useApi from '@/composables/useApi';
 
 const { user } = useAuth0();
-const { data, loading, error } = useApi('post', '/auth/complete-signup', {
+const { data, loading, error } = useApi('post', '/auth/complete-registration', {
   affiliateCode: "",
-  signupCode: ""
+  signupCode: "",
+  acceptedTerms: 1
 });
 </script>
 <template>
