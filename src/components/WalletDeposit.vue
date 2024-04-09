@@ -1,15 +1,12 @@
 <template>
   <div class="grid px-10 pb-7">
     <div class="col-span-12">
-      <Select v-model="currency" class="mx-auto w-1/3" :options="currencies" :disabled="loadingCurrencies"
-        value-key="ISO" placeholder="Select Currency" title-key="ISO" />
+      <Select v-model="currency" label="Deposit currency" class="mx-auto w-1/3" :options="currencies"
+        :disabled="loadingCurrencies" value-key="ISO" placeholder="Select Currency" title-key="ISO" />
     </div>
     <div v-if="currency" class="col-span-12 mt-6">
-      <p class="text-sm font-bold leading-4">
-        Your BTC deposit address
-      </p>
       <div class="mt-3">
-        <Input ref="addressInput" :readonly="true" v-model="address">
+        <Input label="Your BTC deposit address" ref="addressInput" :readonly="true" v-model="address">
         <template #right>
           <i class="mr-3 cursor-pointer fa-duotone fa-arrows-rotate" @click="refresh"></i>
           |

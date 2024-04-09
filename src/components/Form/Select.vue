@@ -1,7 +1,10 @@
 <template>
   <Listbox as="div" v-model="selected">
+    <label v-if="label" :for="id" class="text-white cursor-pointer ms-2 text-sm font-medium dark:text-gray-300">
+      {{ label }}
+    </label>
     <div class="relative ">
-      <ListboxButton
+      <ListboxButton :id="id"
         class="app-input relative w-full rounded-xl bg-brand-darkBg border-2 border-brand-accentStroke cursor-pointer py-1.5 pl-3 pr-10 text-left text-brand-grey shadow-sm  focus:outline-none sm:text-sm sm:leading-6">
         <span class="block truncate text-brand-light ">{{ selected?.[titleKey] || placeholder }}</span>
         <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -17,8 +20,9 @@
             v-slot="{ active, selected }">
             <li
               :class="[active ? 'bg-brand-sidebarBg font-semibold' : '', 'text-brand-darkerGrey relative cursor-default select-none py-2 pl-5 pr-9']">
-              <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ option[titleKey]
-                }}</span>
+              <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">
+                {{ option[titleKey] }}
+              </span>
             </li>
           </ListboxOption>
         </ListboxOptions>
@@ -35,7 +39,7 @@
 </template>
 
 <script setup>
-import { defineModel, Transition, ref } from 'vue'
+import { defineModel, Transition, ref, getCurrentInstance } from 'vue'
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import { watch } from 'vue';
@@ -51,6 +55,7 @@ const props = defineProps({
   },
   placeholder: '',
   error: '',
+  label: String,
   valueKey: {
     type: String,
     default: 'value'
@@ -60,6 +65,10 @@ const props = defineProps({
     default: 'title'
   }
 })
+
+const instance = getCurrentInstance()
+
+const id = ref(instance.uid)
 
 watch(model, (nVal) => {
   if (!selected.value) {
