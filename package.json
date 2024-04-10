@@ -24,10 +24,10 @@
     "loadash": "^1.0.0",
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",
-    "qrcode-vue3": "^1.6.8",
     "socket.io-client": "^4.7.5",
     "vue": "^3.4.21",
     "vue-i18n": "^9.10.2",
+    "vue-qrcode": "^2.2.2",
     "vue-router": "^4.3.0",
     "vue-tippy": "^6.4.1"
   },
