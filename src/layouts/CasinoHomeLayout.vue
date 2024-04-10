@@ -31,6 +31,10 @@ const { locale, locales, t } = useI18n();
 			<CasinoSearch />
 		</div>
 		<CasinoTabs />
-		<router-view  :key="$route.fullPath" />
+		<div class="min-h-[750px]">
+			<Transition name="page">
+				<router-view  :key="$route.fullPath" ></router-view>
+			</Transition>
+		</div>
 	</div>
 </template>

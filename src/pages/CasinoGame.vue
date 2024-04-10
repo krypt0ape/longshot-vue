@@ -11,28 +11,31 @@
         </Authentificator> -->
         <div :key="wrapper" class="size" :class="size" id="game_wrapper"></div>
       </div>
-      <div class="flex justify-between items-center bg-brand-dark-light rounded-b-xl py-3 px-6">
+      <div class="flex  justify-between items-center bg-brand-accentBgHeader rounded-b-xl py-3 px-6">
         <div class="flex gap-x-8 text-xl text-brand-darkerGrey">
           <i @click="onResize('fullscreen')" class="fa-solid fa-expand" />
           <i @click="onResize('theatre')" class="fa-solid fa-rectangle-wide" />
           <i class="fa-solid fa-chart-line" />
           <CasinoGameFavouriteToggle />
         </div>
-        <div :class="disabledSwitch && 'opacity-30'">
+        <div :class="disabledSwitch && 'opacity-100'" class="flex items-center"> 
           <span class="text-white">Fun Play</span>
           <Switch :disabled="disabledSwitch" @update:modelValue="onSwitch" :value="realPlay"
-            :class="[realPlay ? 'bg-blue-600' : 'bg-gray-200']"
-            class="relative inline-flex h-6 w-11 items-center rounded-full cursor-pointer">
+            :class="[realPlay ? 'bg-brand-purple' : 'bg-brand-bodyBg']"
+            class="relative inline-flex h-6 w-11 items-center rounded-full cursor-pointer mx-4">
             <span :class="realPlay ? 'translate-x-6' : 'translate-x-1'"
               class="inline-block h-4 w-4 transform rounded-full bg-white transition" />
           </Switch>
           <span class="text-white">Real Play</span>
         </div>
         <div>
-          <img v-if="providerLogo" :src="providerLogo" />
-          <img src="/img/LOGO-faded.png" alt="" />
+			<GetCasinoProvidersLogo />
+          	<img src="/img/LOGO-faded.png" alt="" />
         </div>
       </div>
+	  <div>
+		<CasinoProviders />
+	  </div>
     </div>
   </div>
 </template>
@@ -45,6 +48,7 @@ import CurrencyOverlay from '@/components/CurrencyOverlay.vue'
 import { useRoute } from "vue-router";
 import { useLocalStorage } from "@/composables/useLocalStorage";
 import Authentificator from "@/components/Authentificator.vue";
+import CasinoProviders from '@/components/CasinoProviders.vue';
 
 const route = useRoute()
 const wrapper = ref(1)
@@ -54,10 +58,6 @@ const disabledSwitch = ref(true)
 
 const ls = useLocalStorage()
 const gameApi = useGameApi()
-
-const providerLogo = computed(() => {
-  return null;
-});
 
 const listener = (evt) => {
   if (evt.key === 'Escape') {

@@ -26,12 +26,22 @@ const logo = computed(() => {
   return "/img/ColorWhite_Full.png";
 });
 
+const logoLink = computed(() => {
+  if (casinoActive.value) {
+	return "/casino/home";
+  }
+  if (sportsActive.value) {
+	return "/sports/home";
+  }
+  return "/";
+});
+
 </script>
 <template>
   <div class="app-header bg-brand-accentBgHeader">
     <div class="flex justify-between items-center h-[70px] max-w-7xl mx-auto px-4">
       <div class="w-[150px] xl:w-[250px]">
-        <RouterLink to="/">
+        <RouterLink :to="logoLink">
           <img :src="logo" class="w-[100px] py-[10px] hidden sm:block" />
           <img src="/android-chrome-512x512.png" class="w-[50px] rounded-xl py-[10px] sm:hidden" />
         </RouterLink>

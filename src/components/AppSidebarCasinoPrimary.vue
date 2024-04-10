@@ -2,9 +2,13 @@
 import AppSidebarMenu from "@/components/AppSidebarMenu.vue";
 const primaryMenu = [
 	{
+		icon: "fa-solid fa-globe",
+		title: "Lobby",
+		to: "/casino/home",
+	},
+	{
 		icon: "fa-solid fa-bookmark",
 		title: "Favourites",
-		count: 4,
 		to: "/casino/favourites",
 	},
 	{

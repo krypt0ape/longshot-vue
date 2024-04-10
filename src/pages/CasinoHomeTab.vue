@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import CasinoGamesGrid from "@/components/CasinoGamesGrid.vue";
+import CasinoProviders from "@/components/CasinoProviders.vue";
 
 const route = useRoute();
 const pageData = computed(() => {
@@ -51,7 +52,7 @@ const pageData = computed(() => {
 			<CasinoGamesGrid
 				v-if="pageData"
 				:filters="pageData.filters"
-				:limit="100"
+				:limit="21"
 			/>
 		</div>
 		<!-- Providers -->
