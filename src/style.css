@@ -20,7 +20,9 @@ h1, h2, h3, h4, h5, h6 {
 p, body {
 	font-family: "Inter", sans-serif;
 }
-
+.no-select {
+	user-select: none;
+  }
 .purple-gradient-text {
 	background: linear-gradient(180deg, #fb80ff 0%, #9550ad 100%);
 	background-clip: text;

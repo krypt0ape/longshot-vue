@@ -4,10 +4,12 @@ import { useAuth0 } from "@auth0/auth0-vue";
 import { useUserStore } from "@/stores/useUserStore";
 
 const userStore = useUserStore();
+
+const {user} = useAuth0();
 </script>
 <template>
   <div
-    class="auth-card m-[20px] ml-[30px] px-4 py-4   relative z-50 sm:py-[30px] sm:w-[350px] xl:w-[430px]  xl:py-[50px] xl:px-[65px]">
+    class="auth-card m-[32px] ml-[30px] px-4 py-4   relative z-50 sm:py-[30px] sm:w-[350px] xl:w-[430px]  xl:py-[40px] xl:px-[45px]">
     <div class="relative z-20">
       <p class="text-3xl font-semibold">Welcome back, Chris</p>
 

@@ -14,12 +14,12 @@
         </template>
         </Input>
       </div>
-      <QRCodeVue3 :key="wallet.address" :value="wallet.address" imgclass="rounded-md mx-auto my-4" :width="200"
+      <!-- <QRCodeVue3 :key="wallet.address" :value="wallet.address" imgclass="rounded-md mx-auto my-4" :width="200"
         :height="200" :dotsOptions="{
         type: 'rounded',
         color: '#182330',
       }" :backgroundOptions="{ color: '#fefefe' }" :cornersSquareOptions="{ type: 'rounded', color: '#182330' }"
-        :cornersDotOptions="{ type: undefined, color: '#182330' }" />
+        :cornersDotOptions="{ type: undefined, color: '#182330' }" /> -->
       <p class="text-xs font-bold">
         Only send BTC to this address, 1 confirmation required
       </p>
@@ -32,7 +32,7 @@ import { onMounted, ref, watch } from "vue";
 import useAsyncApi from "@/composables/useAsyncApi";
 import Select from "./Form/Select.vue";
 import Input from "./Form/Input.vue";
-import QRCodeVue3 from 'qrcode-vue3'
+//import QRCodeVue3 from 'qrcode-vue3'
 
 const { call: getCurrencies, loading: loadingCurrencies } = useAsyncApi('get', '/currency/list')
 const { call: getWallet, loadingAddress } = useAsyncApi('get', '/wallet/deposit/wallet')

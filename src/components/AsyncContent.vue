@@ -41,6 +41,7 @@ const errorMessage = computed(() => {
 			<p class="text-lg">{{ errorMessage }}</p>
 			<p class="text-brand-lightGrey">Please refresh the page, if the error persits please contact support.</p>
 		</div>
+		<!-- <template #loader /> will prevent any loader being used -->
 		<slot v-else-if="loading && $slots.loader" name="loader" />
 		<div v-else-if="loading">
 			<LoaderBar v-if="type === 'bar'" />

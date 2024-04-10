@@ -19,11 +19,11 @@ const emit = defineEmits({
 
 </script>
 <template>
-  <div ref="element" class=" relative  w-[150px]">
+  <div ref="element" class=" relative  w-[155px]">
     <i :class="icon" @click="emit('favourite')"
       class="relative top-12 left-2 text-xl bg-purple-600 text-white rounded-md p-1 z-50 cursor-pointer"></i>
     <img :src="image"
-      class="w-full h-[201px] rounded-xl transition shadow-lg ease-in-out duration-300 hover:-translate-y-3 cursor-pointer" />
+      class="w-full h-[207px] rounded-xl transition shadow-lg ease-in-out duration-300 hover:-translate-y-3 cursor-pointer" />
     <p class="w-[150px] flex items-center mt-2 justify-center text-sm">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
         <circle cx="6" cy="6.5" r="5" fill="url(#paint0_linear_619_2322)" stroke="#142C13" stroke-width="2" />

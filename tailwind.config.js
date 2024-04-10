@@ -18,6 +18,7 @@ export default {
 				lightGrey: "#D9DFE8",
 				darkerGrey: "#D9DFE8",
 				green: "#3AAA35",
+				purple: "#C53FC8"
 			}
 		}
 	},

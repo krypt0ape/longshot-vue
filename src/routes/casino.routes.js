@@ -9,7 +9,7 @@ export default [
       },
       {
         path: ":tab",
-        component: () => import("../pages/CasinoHomeTab.vue"),
+        component: () => import("../pages/CasinoHomeTab.vue"), 
       },
     ],
   },
