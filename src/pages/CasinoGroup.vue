@@ -33,13 +33,15 @@ const filters = computed(()=>{
 const sort = computed(()=>{
 	switch(sortBy.value){
 		case 'az':
-			return { createdAt: "DESC" }
+			return { title: "DESC" }
 		case 'za':
-			return { createdAt: "ASC" }
+			return { title: "ASC" }
 		case 'popular':
 			return { popularity: "DESC" }
 		case 'featured':
 			return { featured: "DESC" }
+		case 'newest':
+			return { createdAt: "DESC" }
 	}
 })
 
