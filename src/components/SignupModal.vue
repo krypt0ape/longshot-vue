@@ -11,7 +11,7 @@ import UserPasswordInput from "./UserPasswordInput.vue";
 import UserUsernameInput from "./UserUsernameInput.vue";
 import UserDobInput from "./UserDobInput.vue";
 import UserOfferCodeInput from "./UserOfferCodeInput.vue";
-import useAuthActions from "@/composables/useAuthActions";
+import useAuthModals from "@/composables/useAuthModals";
 
 const form = ref({
 	email: "",
@@ -26,7 +26,7 @@ const errors = ref({ username: "", signupCode: "", affiliateCode: "", email: "" 
 
 const store = useUserStore();
 
-const {signupModalOpen, toggleSignupModal} = useAuthActions();
+const {signupModalOpen, toggleSignupModal} = useAuthModals();
 
 const { loading, error, call } = useAsync(async () => {
 	if (!form.value.nickname) {
@@ -89,6 +89,9 @@ const { loading, error, call } = useAsync(async () => {
 					</PrimaryButton>
 				</div>
 			</div>
+
+
 		</div>
 	</AuthModal>
 </template>
+@/composables/useAuthModals

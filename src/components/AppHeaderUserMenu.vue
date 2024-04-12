@@ -3,10 +3,10 @@ import { useAuth0 } from "@auth0/auth0-vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import AppHeaderUserMenuItem from "./AppHeaderUserMenuItem.vue";
-import useAuthActions from "@/composables/useAuthActions";
+import useAuthModals from "@/composables/useAuthModals";
 
 const { user } = useAuth0();
-const {logout} = useAuthActions();
+const {toggleLogoutModal} = useAuthModals();
 const openWallet = () => {};
 </script>
 <template>
@@ -133,3 +133,4 @@ const openWallet = () => {};
 		</Popover>
 	</div>
 </template>
+@/composables/useAuthModals
