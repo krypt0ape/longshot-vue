@@ -1,41 +1,34 @@
-import { useAuth0 } from "@auth0/auth0-vue";
 import { useRoute } from "vue-router";
+import { ref } from "vue";
+
+const signupModalOpen = ref(false);
 
 export default function useAuthActions() {
 	const route = useRoute();
 
-	const { loginWithRedirect, logout: logoutWithRedirect } = useAuth0();
+	
 
 	const signup = () => {
-		loginWithRedirect({
-			appState: {
-				target:
-					"/signup?offer=" +
-					route.query.offer +
-					"&referrer=" +
-					route.query.referrer,
-			},
-			authorizationParams: {
-				screen_hint: "signup",
-			},
-		});
+		signupModalOpen.value = true;
 	};
 
 	const login = () => {
-		loginWithRedirect({
-			appState: {
-				target: window.location.pathname,
-			},
-		});
+		
 	};
 
 	const logout = () => {
-		logoutWithRedirect({ logoutParams: { returnTo: window.location.origin } });
+		
 	};
+
+	const toggleSignupModal = () => {
+		signupModalOpen.value = !signupModalOpen.value;
+	}
 
 	return {
 		login,
 		logout,
 		signup,
+		signupModalOpen,
+		toggleSignupModal
 	};
 }

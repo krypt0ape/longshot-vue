@@ -11,10 +11,7 @@
         :disabled="loading" />
       <Input v-model="form.lastname" placeholder="Last Name *" class="col-span-6" :error="errors.lastname"
         :disabled="loading" />
-      <DatePicker v-model="form.birthDate" placeholder="Date of Birth (dd/mm/yy) *" class="col-span-6"
-        :max-date="maxDate" :min-date="minDate" :error="errors.birthDate"
-        input-class-name="date-input app-input text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg border-brand-accentStroke border-solid border-2 text-white"
-        hide-input-icon :disabled="loading" />
+     
       <Input v-model="form.occupation" placeholder="Occupaion *" class="col-span-6" :error="errors.occupation"
         :disabled="loading" />
       <Select v-model="form.country" placeholder="Country *" class="col-span-12" :error="errors.country"
@@ -33,7 +30,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Input from './Form/Input.vue';
-import DatePicker from './Form/DatePicker.vue';
+
 import Select from './Form/Select.vue';
 import PrimaryButton from './Buttons/PrimaryButton.vue';
 import { useUserStore } from '@/stores/useUserStore';
@@ -42,8 +39,7 @@ import { onMounted } from 'vue';
 const store = useUserStore()
 const loading = ref(false)
 
-const maxDate = (new Date()).setFullYear((new Date()).getFullYear() - 18)
-const minDate = (new Date()).setFullYear((new Date()).getFullYear() - 100)
+
 const countries = computed(() => ([
   { value: 'UK', title: 'United Kingdom' },
   { value: 'ES', title: 'Spain' },

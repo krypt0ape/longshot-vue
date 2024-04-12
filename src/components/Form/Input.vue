@@ -20,6 +20,8 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits(["blur"]);
+
 const input = ref(null);
 
 onMounted(() => {
@@ -44,6 +46,9 @@ const instance = getCurrentInstance()
 
 const id = ref(instance.uid)
 
+const handleBlur = () => {
+ 	emit('blur', model.value)
+}
 </script>
 
 <template>
@@ -62,7 +67,7 @@ const id = ref(instance.uid)
 	  error ? 'border-red-500' : 'border-brand-accentStroke',
       $slots.left ? 'pl-[90px]' : 'pl-4',
       label && type === 'checkbox' ? '' : 'w-full'
-    ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" :bind="$attrs" />
+    ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" :bind="$attrs" @blur="handleBlur"/>
         <label v-if="label && type === 'checkbox'" :for="id"
           class="text-white cursor-pointer ms-2 text-sm font-medium dark:text-gray-300">{{
       label }}</label>
@@ -87,7 +92,7 @@ const id = ref(instance.uid)
 .app-input {
   border-radius: 5px !important;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) !important;
-  padding: 16px 20px 16px 20px !important;
+  padding: 8px 12px !important;
   border-radius: 5px !important;
 }
 
