@@ -9,6 +9,7 @@ import MobileMenu from "./components/MobileMenu.vue";
 import PageInitialStateLoader from "./layouts/PageInitialStateLoader.vue";
 import SignupModal from "@/components/SignupModal.vue";
 import WalletModal from '@/components/WalletModal.vue'
+import AcceptTermsModal from "@/components/AcceptTermsModal.vue";
 
 const route = useRoute();
 
@@ -57,6 +58,7 @@ const topImage = computed(() => {
       <!-- <PromotionModal />-->
       <WalletModal />
       <SignupModal />
+	  <AcceptTermsModal />
     </div>
   </PageInitialStateLoader>
 </template>

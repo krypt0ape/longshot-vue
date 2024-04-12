@@ -1,25 +1,13 @@
 import { defineStore } from "pinia";
 import { onMounted, ref } from "vue";
 import { request } from "@/api/api";
-import { useAuth0 } from "@auth0/auth0-vue";
 import { wss } from "@/api/wss";
 
 export const useUserStore = defineStore("user", () => {
   const user = ref(); // undefined user means it's a guest
   const token = ref(null);
   const socket = ref();
-
-  const { getAccessTokenSilently, isAuthenticated, isLoading } = useAuth0();
-
-  const auth0Ready = async () => {
-    if (!isLoading.value) {
-      return true;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    return await auth0Ready();
-  };
+ const isAuthenticated = ref(false);
 
   onMounted(async () => {
     await getUser();
@@ -29,7 +17,7 @@ export const useUserStore = defineStore("user", () => {
       return;
     }
 
-    socket.value = wss(`Bearer ${await getAccessTokenSilently()}`);
+    socket.value = wss(`Bearer `);
 
     socket.value.on("message", (payload) => {
       if (payload.type === "User") {
@@ -38,8 +26,7 @@ export const useUserStore = defineStore("user", () => {
     });
   });
 
-  const getUser = async () => {
-    await auth0Ready();
+  const getUser = async () => { 
     if (!isAuthenticated.value) {
       console.log("!isAuthenticated");
       return;

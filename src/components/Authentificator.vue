@@ -2,7 +2,6 @@
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
 import useAuthModals from "@/composables/useAuthModals";
-import { useAuth0 } from "@auth0/auth0-vue";
 
 defineProps({
 	showControls: {
@@ -11,7 +10,6 @@ defineProps({
 	},
 });
 
-const { isAuthenticated } = useAuth0();
 
 const  {toggleLoginModal, toggleSignupModal} = useAuthModals();
 </script>

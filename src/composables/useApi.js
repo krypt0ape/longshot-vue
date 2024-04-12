@@ -1,5 +1,4 @@
 import { ref, onMounted } from "vue";
-import { useAuth0 } from "@auth0/auth0-vue";
 import { request } from "../api/api";
 
 export default function useApi(method, path, defaultOptions, callback = null) {
@@ -8,17 +7,13 @@ export default function useApi(method, path, defaultOptions, callback = null) {
   const error = ref(null);
   const token = ref(null);
 
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  
 
   onMounted(() => {
     refetch();
   });
 
   const refetch = async (options = defaultOptions) => {
-    if (isAuthenticated.value) {
-      token.value = await getAccessTokenSilently();
-    }
-
     try {
       let response = await request({
         method: method,
