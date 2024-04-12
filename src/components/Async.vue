@@ -7,7 +7,7 @@ const props = defineProps({
 		default: false,
 	},
 	errorType: {
-		default: null,
+		default: "message",
 		validator(value) {
 			// The value must match one of these strings
 			return ["notification", "message", null].includes(value);

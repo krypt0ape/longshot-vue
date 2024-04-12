@@ -1,51 +1,26 @@
 <script setup>
+import Async from "./Async.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import Input from "@/components/Form/Input.vue";
 import { ref } from "vue";
+import useAsync from "@/composables/useAsync";
+import { useUserStore } from "@/stores/useUserStore";
 
-const form = ref({ acceptedTerms: false, nickname: "" });
-	//form.value.nickname = store.user.nickname;
-const submit = async (s) => {
-	if (valid(s)) {
-		step.value += s;
+const form = ref({ nickname: "", signupCode: "", affiliateCode: "" });
+const errors = ref({ nickname: "", signupCode: "", affiliateCode: "" });
+const store = useUserStore();
+
+const { loading, error, call } = useAsync(async () => {
+	if (!form.value.nickname) {
+		errors.value.nickname = "* Required";
+		return;
 	}
 
-	if (step.value === 3) {
-		await store.completeRegistration({
-			...form.value,
-			affiliateCode: "",
-			signupCode: "",
-		});
-		router.go();
-	}
-};
+	errors.value = { nickname: "", signupCode: "", affiliateCode: "" };
 
-const valid = (s) => {
-	error.value = "";
-
-	if (s < 0) {
-		return true;
-	}
-
-	switch (step.value + s) {
-		case 2:
-			error.value =
-				form.value.nickname.length > 3 && form.value.nickname.length <= 200
-					? ""
-					: "Nickname is required";
-			break;
-		case 3:
-			error.value = form.value.acceptedTerms
-				? ""
-				: "Please read terms and conditions in full and accept to proceed";
-			break;
-		default:
-			throw new Error(step.value + s);
-	}
-
-	return !Boolean(error.value.length);
-};
+	await store.completeRegistration(form.value);
+});
 </script>
 <template>
 	<div>
@@ -57,21 +32,23 @@ const valid = (s) => {
 			information provided is private & secure.
 		</p>
 		<div class="mt-6">
-			<p class="text-brand-lightGrey">Username</p>
+			<p class="text-brand-lightGrey">
+				Username <span class="text-red-600">*</span>
+			</p>
 			<Input
 				class="mt-1 w-full"
-				placeholder="Please choose a username *"
+				placeholder=""
 				v-model="form.nickname"
-				:error="error"
+				:error="errors.nickname"
 			/>
 		</div>
 		<div class="mt-6">
 			<p class="text-brand-lightGrey">Signup Code</p>
 			<Input
 				class="mt-1 w-full"
-				placeholder="Enter Signup Code"
+				placeholder=""
 				v-model="form.signupCode"
-				:error="error"
+				:error="errors.signupCode"
 			>
 				<template #right>
 					<NeutralButton class="mr-2">Check Code</NeutralButton>
@@ -79,8 +56,12 @@ const valid = (s) => {
 			</Input>
 		</div>
 		<div class="mt-10 mb-4 flex justify-end">
-			<PrimaryButton type="button" @click="() => submit(1)" class="!w-full !py-4">
-				Get Started
+			<PrimaryButton
+				type="button"
+				@click="call"
+				class="!w-full !py-4"
+			>
+				<Async :loading="loading" :error="error"> Get Started </Async>
 			</PrimaryButton>
 		</div>
 	</div>

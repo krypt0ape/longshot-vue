@@ -45,10 +45,11 @@ const step = computed(()=>{
 	if(store?.user?.registration === "COMPLETE" &&  ! store?.sure?.acceptedTerms){
 		return 2
 	}
-	return 2;
+	return 1;
 });
 
 const show = computed(() => {
+	return false;
 	if (!store?.user) {
 		return false;
 	}
