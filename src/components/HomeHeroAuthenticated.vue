@@ -1,11 +1,9 @@
 <script setup>
 import UserVipStatus from "@/components/UserVipStatus.vue";
-import { useAuth0 } from "@auth0/auth0-vue";
-import { useUserStore } from "@/stores/useUserStore";
+import  useUserStore  from "@/stores/useUserStore";
 
 const userStore = useUserStore();
 
-const {user} = useAuth0();
 </script>
 <template>
   <div

@@ -7,15 +7,15 @@
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-">
-        <div class="flex min-h-full items-center justify-center p-4 text-center">
+        <div class="flex h-screen items-center justify-center p-4 text-center">
           <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
-            <div class="app-modal max-w-4xl w-full" v-bind="$attrs">
+            <div class="app-modal max-w-4xl w-full   rounded-lg" v-bind="$attrs">
               <DialogPanel
-                class="w-full transform text-brand-grey bg-brand-accentBgHeader text-left align-middle shadow-xl transition-all rounded-md"
+                class="w-full transform text-brand-grey bg-brand-accentBgHeader text-left align-middle shadow-xl transition-all rounded-lg  overflow-hidden"
                 :class="{ 'shadow-xl': shadow }">
-                <DialogTitle as="h3" class="text-md font-thin ">
+                <DialogTitle v-if="$slots['dialog-title']" as="h3" class="text-md font-thin">
                   <slot name="dialog-title" />
                 </DialogTitle>
                 <div v-if="cross" class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
@@ -25,7 +25,10 @@
                     <i class="fa-solid fa-times text-2xl" />
                   </button>
                 </div>
-                <slot />
+				<div class="max-h-[80vh] overflow-auto">
+					<slot />
+				</div>
+              
               </DialogPanel>
             </div>
           </TransitionChild>

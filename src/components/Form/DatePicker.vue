@@ -36,15 +36,18 @@ defineProps({
 <style>
 .date-input {
   background-color: #0E1725;
-  border: 2px solid #273646;
+  border: 1px solid #273646;
   font-family: sans-serif;
   font-weight: 400;
   color: #d9dfe8;
+  padding: 8px 12px !important;
+  border-radius: 5px !important;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) !important;
 }
 
 .app-calendar {
   background-color: #0E1725;
-  border: 2px solid #273646;
+  border: 1px solid #273646;
   font-family: sans-serif;
   font-weight: 400;
   color: #d9dfe8;

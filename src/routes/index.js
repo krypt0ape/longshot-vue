@@ -11,8 +11,7 @@ const routes = [
 	// 	path: "/polcies/:slug",
 	// 	component: () => import("../pages/PolicySingle.vue"),
 	// },
-    { path: "/complete-signup", component: () => import("../pages/CompleteSignup.vue") },
-].concat(blogRoutes, casinoRoutes, sportsBookRoutes, affiliateRoutes);
+].concat(blogRoutes, casinoRoutes, sportsBookRoutes, affiliateRoutes, promotionRoutes);
 
 const router = createRouter({
 	history: createWebHistory(),

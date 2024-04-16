@@ -5,9 +5,8 @@ import SecondaryButton from "@/components/Buttons/SecondaryButton.vue";
 import SportsLiveBetTracker from "@/components/SportsLiveBetTracker.vue";
 import HomeHeroGuest from "@/components/HomeHeroGuest.vue";
 import HomeHeroAuthenticated from "@/components/HomeHeroAuthenticated.vue";
-import { useAuth0 } from "@auth0/auth0-vue";
 import GlowGreen from "@/components/GlowGreen.vue";
-const { isAuthenticated } = useAuth0();
+
 </script>
 <template>
 	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-4 px-4">
@@ -61,13 +60,13 @@ const { isAuthenticated } = useAuth0();
 				class="hidden z-40 right-0 bottom-0 absolute sm:block md:right-1 lg:right-[150px]"
 			/>
 		</div>
-		<div class="grid md:grid-cols-2 mt-12 gap-x-8">
+		<div class="grid md:grid-cols-2 mt-12 gap-x-16">
 			<div class="flex flex-col">
 				<p class="text-xl mb-4 text-white">
 					<i class="fa-solid fa-cards mr-2 text-brand-grey" /> Casino
 				</p>
 				<img src="/img/casino-home.png" alt="casino-home" class="w-full" />
-				<div class="p-[32px] text-brand-grey flex flex-col justify-between h-full">
+				<div class="py-[32px] text-brand-grey flex flex-col justify-between h-full">
 					<p class="mb-[32px]">
 						Explore our extensive selection of casino games, where
 						we provide a fair and enjoyable online betting experience. Enjoy
@@ -87,7 +86,7 @@ const { isAuthenticated } = useAuth0();
 					<i class="fa-solid fa-futbol mr-2 text-brand-grey" /> Sportsbook
 				</p>
 				<img src="/img/sports-home.png" alt="casino-home" class="w-full" />
-				<div class="p-[32px] text-brand-grey flex flex-col justify-between h-full">
+				<div class="py-[32px] text-brand-grey flex flex-col justify-between h-full">
 					<p class="mb-[32px]">
 						Place bets on teams, players, and leagues worldwide with
 						our sports betting platform. Explore numerous betting options and

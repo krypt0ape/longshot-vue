@@ -1,12 +1,11 @@
 <script setup>
 import WalletBalancesDropdown from "./WalletBalancesDropdown.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
-import { useAuth0 } from "@auth0/auth0-vue";
 import { onMounted, ref } from "vue";
 import useAsyncApi from "@/composables/useAsyncApi";
 import { useRouter } from "vue-router";
 
-const { isAuthenticated } = useAuth0();
+
 const router = useRouter()
 
 const { call, loading } = useAsyncApi('get', '/currency/list')

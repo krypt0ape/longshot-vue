@@ -1,5 +1,5 @@
 <script setup>
-import { useUserStore } from "@/stores/useUserStore";
+import  useUserStore from "@/stores/useUserStore";
 import Modal from '@/components/Modal.vue'
 import WalletRiskKycCheck from '@/components/WalletRiskKycCheck.vue'
 import WalletRiskKycPending from '@/components/WalletRiskKycPending.vue'
