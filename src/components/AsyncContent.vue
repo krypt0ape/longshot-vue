@@ -2,6 +2,14 @@
 import LoaderBar from "./LoaderBar.vue";
 import { computed } from "vue";
 
+// @dev
+// This component is used to display a loading bar or spinner the attrs are bound to the
+// loading wrapper div so you can use the class attribute to style the loader NOT the parent 
+// content wrapper
+defineOptions({
+  inheritAttrs: false
+})
+
 const props = defineProps({
 	loading: Boolean,
 	error: String,
@@ -43,7 +51,7 @@ const errorMessage = computed(() => {
 		</div>
 		<!-- <template #loader /> will prevent any loader being used -->
 		<slot v-else-if="loading && $slots.loader" name="loader" />
-		<div v-else-if="loading">
+		<div v-else-if="loading" v-bind="$attrs">
 			<LoaderBar v-if="type === 'bar'" />
 		</div>
 

@@ -1,5 +1,6 @@
 import { ref, onMounted } from "vue";
 import { request } from "../api/api";
+import { delay } from "lodash";
 
 export default function useApi(method, path, defaultOptions, callback = null) {
   const data = ref();
@@ -21,10 +22,12 @@ export default function useApi(method, path, defaultOptions, callback = null) {
         data: { ...defaultOptions, ...options },
         token: token.value,
       });
+
+	  await new Promise(resolve => setTimeout(resolve, 1000));  // Forcing a delay make the UI less jarring
       callback && callback(data.value);
       data.value = response.data;
     } catch (err) {
-      // console.error(err);
+       console.error(err);
       error.value = err;
     } finally {
       loading.value = false;

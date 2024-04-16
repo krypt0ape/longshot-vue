@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { request } from "../api/api";
+import { delay } from "lodash";
 
 export default function useAsyncApi(method, path) {
 
@@ -23,6 +24,8 @@ export default function useAsyncApi(method, path) {
         data,
         params,
       });
+
+	  await new Promise(resolve => setTimeout(resolve, 1000)); // Forcing a delay make the UI less jarring
 
       loading.value = false;
 

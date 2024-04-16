@@ -4,13 +4,9 @@ export default [
 		component: () => import("../layouts/PromotionListLayout.vue"),
 		children: [
 			{
-				path: "all",
-				component: () => import("../pages/PromotionListAll.vue"),
+				path: ":category",
+				component: () => import("../pages/PromotionListCategory.vue"),
 			},
-			// {
-			// 	path: ":category",
-			// 	component: () => import("../pages/PromotionListCategory.vue"),
-			// },
 		],
 	},
 	{
