@@ -1,5 +1,6 @@
 <script setup>
 import PromotionCategoryTabs from "@/components/PromotionCategoryTabs.vue";
+
 </script>
 <template>
 	<div class="relative">
@@ -9,7 +10,7 @@ import PromotionCategoryTabs from "@/components/PromotionCategoryTabs.vue";
 		/>
 		<div class="relative z-20">	
 			<PromotionCategoryTabs />
-			<router-view  :key="$route.fullPath"></router-view>
+			<router-view  :key="$route.path"></router-view>
 		</div>
 	</div>
 </template>

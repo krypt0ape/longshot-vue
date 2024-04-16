@@ -1,6 +1,8 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 import VueCountdown from "@chenfengyuan/vue-countdown";
+import { useRoute, useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 // import { VMarkdownView } from "vue3-markdown";
 
 const route = useRoute();

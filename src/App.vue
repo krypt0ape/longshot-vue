@@ -12,6 +12,7 @@ import WalletModal from '@/components/WalletModal.vue'
 import AcceptTermsModal from "@/components/AcceptTermsModal.vue";
 import SigninModal from "@/components/SigninModal.vue";
 import ForgotPasswordModal from "@/components/ForgotPasswordModal.vue";
+import PromotionModal from "@/components/PromotionModal.vue";
 
 const route = useRoute();
 
@@ -57,7 +58,7 @@ const topImage = computed(() => {
       <aside>
       </aside>
 
-      <!-- <PromotionModal />-->
+      <PromotionModal />
       <WalletModal />
       <SigninModal />
 	  <SignupModal />

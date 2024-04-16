@@ -33,7 +33,7 @@ const { locale, locales, t } = useI18n();
 		<CasinoTabs />
 		<div class="min-h-[750px]">
 			<Transition name="page">
-				<router-view  :key="$route.fullPath" ></router-view>
+				<router-view  :key="$route.path" ></router-view>
 			</Transition>
 		</div>
 	</div>
