@@ -19,17 +19,17 @@ export default function useAuthModals() {
 		}
 	};
 
-	const loginModalOpen = computed(()=>{
-		return route.query.modal === "login";
+	const signinModalOpen = computed(()=>{
+		return route.query.modal === "signin";
 	})
 
-	const toggleLoginModal = () => {
-		if(loginModalOpen.value){
+	const toggleSigninModal = () => {
+		if(signinModalOpen.value){
 			// close modal
 			router.replace({ query: { } })
 		}else {
 			// open modal
-			router.replace({ query: { modal: 'login' } })
+			router.replace({ query: { modal: 'signin' } })
 		}
 	};
 
@@ -47,12 +47,28 @@ export default function useAuthModals() {
 		}
 	};
 
+	const forgotPasswordModalOpen = computed(()=>{
+		return route.query.modal === "forgot-password";
+	})
+
+	const toggleForgotPasswordModal = () => {
+		if(forgotPasswordModalOpen.value){
+			// close modal
+			router.replace({ query: { } })
+		}else {
+			// open modal
+			router.replace({ query: { modal: 'forgot-password' } })
+		}
+	}
+
 	return {
-		loginModalOpen,
-		toggleLoginModal,
+		signinModalOpen,
+		toggleSigninModal,
 		signupModalOpen,
 		toggleSignupModal,
 		logoutModalOpen,
-		toggleLogoutModal
+		toggleLogoutModal,
+		forgotPasswordModalOpen,
+		toggleForgotPasswordModal
 	};
 }

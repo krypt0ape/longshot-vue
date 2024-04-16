@@ -33,7 +33,7 @@ import Input from './Form/Input.vue';
 
 import Select from './Form/Select.vue';
 import PrimaryButton from './Buttons/PrimaryButton.vue';
-import { useUserStore } from '@/stores/useUserStore';
+import  useUserStore  from '@/stores/useUserStore';
 import { onMounted } from 'vue';
 
 const store = useUserStore()

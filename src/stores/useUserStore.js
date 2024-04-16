@@ -3,7 +3,7 @@ import { onMounted, ref } from "vue";
 import { request } from "@/api/api";
 import { wss } from "@/api/wss";
 
-export const useUserStore = defineStore("user", () => {
+export default defineStore("user", () => {
   const user = ref(); // undefined user means it's a guest
   const token = ref(null);
   const socket = ref();

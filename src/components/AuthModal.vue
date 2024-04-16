@@ -1,5 +1,5 @@
 <template>
-	<Modal :cross="false" :open="props.show"  @close="handleClose" class="max-w-2xl">
+	<Modal :cross="props.cross" :open="props.show"  @close="handleClose" class="max-w-xl">
 		<template #dialog-title>
 			<div
 				class="px-6 py-4 bg-brand-accentBgHeader flex justify-between items-center"
@@ -19,7 +19,11 @@
 import Modal from "./Modal.vue";
 
 const props = defineProps({
-	show: Boolean
+	show: Boolean,
+	cross: {
+		type: Boolean,
+		default: false,
+	}
 })
 
 const emits = defineEmits(["close"]);

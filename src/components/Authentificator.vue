@@ -11,12 +11,12 @@ defineProps({
 });
 
 
-const  {toggleLoginModal, toggleSignupModal} = useAuthModals();
+const  {toggleSigninModal, toggleSignupModal} = useAuthModals();
 </script>
 <template>
 	<slot v-if="isAuthenticated" />
 	<div v-else-if="showControls" v-bind="$attrs" class="flex items-center gap-x-4">
-		<NeutralButton @click="toggleLoginModal">Sign in</NeutralButton>
+		<NeutralButton @click="toggleSigninModal">Sign in</NeutralButton>
 		<PrimaryButton @click="toggleSignupModal">Register</PrimaryButton>
 	</div>
 </template>

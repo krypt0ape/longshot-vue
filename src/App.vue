@@ -10,6 +10,8 @@ import PageInitialStateLoader from "./layouts/PageInitialStateLoader.vue";
 import SignupModal from "@/components/SignupModal.vue";
 import WalletModal from '@/components/WalletModal.vue'
 import AcceptTermsModal from "@/components/AcceptTermsModal.vue";
+import SigninModal from "@/components/SigninModal.vue";
+import ForgotPasswordModal from "@/components/ForgotPasswordModal.vue";
 
 const route = useRoute();
 
@@ -57,8 +59,10 @@ const topImage = computed(() => {
 
       <!-- <PromotionModal />-->
       <WalletModal />
-      <SignupModal />
+      <SigninModal />
+	  <SignupModal />
 	  <AcceptTermsModal />
+	  <ForgotPasswordModal />
     </div>
   </PageInitialStateLoader>
 </template>

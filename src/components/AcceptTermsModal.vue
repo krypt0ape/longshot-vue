@@ -6,8 +6,11 @@ import { useI18n } from "vue-i18n";
 import useApi from "@/composables/useApi";
 import RichTextRenderer from "contentful-rich-text-vue-renderer";
 import AuthModal from "./AuthModal.vue";
+import useUserStore from "@/stores/useUserStore";
 
 const { locale, locales, t } = useI18n();
+
+const store = useUserStore();
 
 const { loading, error, data } = useApi("post", "/contentful/entries", {
 	content_type: "policy",
