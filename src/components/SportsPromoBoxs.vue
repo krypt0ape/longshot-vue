@@ -7,7 +7,7 @@ import {useI18n} from "vue-i18n";
 const { t, locale} = useI18n()
 
 const {loading, error, data} = useApi("post", "/contentful/entry", {
-	id: "3ZYogQ4KKNTZukE7fAgBrR"
+	data: { id: "3ZYogQ4KKNTZukE7fAgBrR" }
 });
 
 const promotions = computed(() => {

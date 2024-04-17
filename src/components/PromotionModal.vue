@@ -11,6 +11,18 @@ const open = computed(() => {
 	return route.query.modal === "promotions";
 });
 const { locale, locales, t } = useI18n();
+
+// const { loading, error, data } = useAsyncApi("post", "/contentful/entries", {
+// 	content_type: "promotion",
+// 	"fields.slug": route.params.slug,
+// 	locale: locale.value !== "en" ? locale.value : "en-US",
+// });
+
+
+
+
+
+
 const countdown = computed(() => {
 	if (!promotion.value) return 0;
 	return (

@@ -11,9 +11,11 @@ const { locale, locales, t } = useI18n();
 const route = useRoute();
 
 const { loading, error, data } = useApi("post", "/contentful/entries", {
-	content_type: "promotion",
-	"fields.slug": route.params.slug,
-	locale: locale.value !== "en" ? locale.value : "en-US",
+	data: {
+		content_type: "promotion",
+		"fields.slug": route.params.slug,
+		locale: locale.value !== "en" ? locale.value : "en-US",
+	},
 });
 
 const promotion = computed(() => {
@@ -22,8 +24,10 @@ const promotion = computed(() => {
 });
 
 const countdown = computed(() => {
-	if(! promotion) return false;
-	return new Date(promotion.value.fields.endTime).getTime() - new Date().getTime();
+	if (!promotion) return false;
+	return (
+		new Date(promotion.value.fields.endTime).getTime() - new Date().getTime()
+	);
 });
 </script>
 <template>

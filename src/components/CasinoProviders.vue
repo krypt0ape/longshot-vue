@@ -8,7 +8,7 @@ import CasinoProvidersLogo from "@/components/CasinoProvidersLogo.vue";
 import AsyncContent from "@/components/AsyncContent.vue";
 
 const { data, loading, error } = useApi("get", "/provider/list", {
-	limit: 12,
+	data: { limit: 12 },
 });
 </script>
 <template>

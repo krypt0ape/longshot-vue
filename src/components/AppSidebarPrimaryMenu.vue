@@ -8,7 +8,7 @@ import useApi from "@/composables/useApi";
 const { t, locale } = useI18n();
 
 const { loading, error, data } = useApi("post", "/contentful/entry", {
-	id: "6XnHoRun8rLi8078PDlks3",
+	data: { id: "6XnHoRun8rLi8078PDlks3" }
 });
 
 const items = computed(() => {

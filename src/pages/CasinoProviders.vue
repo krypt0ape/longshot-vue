@@ -6,7 +6,7 @@ import useApi from "@/composables/useApi";
 import PageHeader from "@/components/PageHeader.vue";
 
 const { data, loading, error } = useApi("get", "/provider/list", {
-	limit: 12,
+	data: { limit: 12, }
 });
 </script>
 <template>

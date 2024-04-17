@@ -20,7 +20,7 @@ const { toggleSigninModal, toggleSignupModal } = useAuthModals();
 			<p class="px-6 text-brand-grey py-2">OR</p>
 			<span class="bg-[#303D4B] h-[1px] w-[108px]">&nbsp;</span>
 		</div>
-		<div class="flex justify-center mt-2 space-x-4">
+		<div class="flex justify-center mt-2 space-x-2">
 			<a class="auth-login-button" v-tippy="{ content: 'Login With Gmail', placement: 'top' }">
 				<i class="fa-brands fa-google "></i>
 			</a>

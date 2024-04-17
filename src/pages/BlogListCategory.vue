@@ -48,8 +48,10 @@ onMounted(async () => {
 		// add it to the query before we can call fetch on the
 		// useContentfulPaginatedQuery
 		const response = await getCategory({
-			content_type: "blotPostType",
-			"fields.slug": route.params.category,
+			data: {
+				content_type: "blotPostType",
+				"fields.slug": route.params.category,
+			},
 		});
 		if (!response) return;
 		const newQuery = {
@@ -64,7 +66,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-		<div class="max-w-7xl mx-auto text-white pb-[50px]">
+	<div class="max-w-7xl mx-auto text-white pb-[50px]">
 		<AsyncContent
 			:loading="loading"
 			:error="error"
@@ -77,13 +79,13 @@ onMounted(async () => {
 				</p>
 			</div>
 		</AsyncContent>
-		<Paginator 
-				v-if="data?.items?.length"
-				:currentPage="currentPage"
-				:totalPages="totalPages"
-				@next="next"
-				@prev="prev"
-				@skipTo="skipToPage"
-			/>
+		<Paginator
+			v-if="data?.items?.length"
+			:currentPage="currentPage"
+			:totalPages="totalPages"
+			@next="next"
+			@prev="prev"
+			@skipTo="skipToPage"
+		/>
 	</div>
 </template>

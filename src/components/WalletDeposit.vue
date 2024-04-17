@@ -54,7 +54,9 @@ const copy = async () => {
 }
 
 const refresh = async (force = false) => {
-  wallet.value = await getWallet(undefined, '', { ISO: currency.value, force })
+  wallet.value = await getWallet({
+	params: { ISO: currency.value, force }
+  })
 }
 
 onMounted(async () => {

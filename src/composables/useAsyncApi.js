@@ -2,43 +2,48 @@ import { ref } from "vue";
 import { request } from "../api/api";
 import { delay } from "lodash";
 
+/**
+ * useAsyncApi - returns a call function to call
+ * the api when required, it holds the response in 
+ * local state and returns from the call function so
+ * it can be handled by the component as required.
+ */
 export default function useAsyncApi(method, path) {
+	const data = ref();
+	const loading = ref(true);
+	const error = ref(null);
+	const token = ref();
 
-  const loading = ref(true);
-  const error = ref(null);
-  const token = ref();
+	const call = async (options = {}) => {
+		try {
+			loading.value = true;
 
-  const call = async (data = undefined, uri = "", params = undefined) => {
-    
+			const baseOptions = {
+				method: method,
+				path: path,
+				token: token.value,
+			};
 
-    // if (isAuthenticated.value) {
-    //   token.value = await getAccessTokenSilently();
-    // }
+			let response = await request({
+				...baseOptions, ...options
+			  });
 
-    try {
-      loading.value = true;
+			await new Promise((resolve) => setTimeout(resolve, 1000)); // Forcing a delay make the UI less jarring
 
-      const r = await request({
-        method: method,
-        path: `${path}/${uri}`,
-        data,
-        params,
-      });
+			loading.value = false;
 
-	  await new Promise(resolve => setTimeout(resolve, 1000)); // Forcing a delay make the UI less jarring
+			data.value = response.data;
+			return response.data;
+		} catch (err) {
+			error.value = err;
+		} finally {
+			loading.value = false;
+		}
+	};
 
-      loading.value = false;
-
-      return r.data;
-    } catch (err) {
-      loading.value = false;
-      error.value = err;
-    }
-  };
-
-  return {
-    loading,
-    error,
-    call,
-  };
+	return {
+		loading,
+		error,
+		call,
+	};
 }

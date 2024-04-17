@@ -13,9 +13,11 @@ const { locale, locales, t } = useI18n();
 const store = useUserStore();
 
 const { loading, error, data } = useApi("post", "/contentful/entries", {
-	content_type: "policy",
-	"fields.slug": "terms-and-conditions",
-	locale: locale.value !== "en" ? locale.value : "en-US",
+	data: {
+		content_type: "policy",
+		"fields.slug": "terms-and-conditions",
+		locale: locale.value !== "en" ? locale.value : "en-US",
+	},
 });
 
 onMounted(async () => {});

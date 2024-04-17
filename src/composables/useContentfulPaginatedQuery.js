@@ -31,7 +31,7 @@ console.log('query.value', query.value);
 		if(! query.value.skip) query.value.skip = 0;
 
 		try {
-			const response = await getEntries(query.value);
+			const response = await getEntries({data: query.value});
 			totalItems.value = response.total;
 			totalPages.value = Math.ceil(totalItems.value / itemsPerPage.value);
 			currentPage.value = Math.ceil(query.value.skip / itemsPerPage.value) + 1;

@@ -5,14 +5,16 @@ import { useI18n } from "vue-i18n";
 
 const { locale, locales, t } = useI18n();
 
-const {loading, error, data} = useApi("post", "/contentful/entries", {
-    content_type: "policy",
-    select: "fields.heading,fields.slug",
-    locale: locale.value !== "en" ? locale.value : "en-US",
-  });
+const { loading, error, data } = useApi("post", "/contentful/entries", {
+	data: {
+		content_type: "policy",
+		select: "fields.heading,fields.slug",
+		locale: locale.value !== "en" ? locale.value : "en-US",
+	},
+});
 
 const policies = computed(() => {
-	if (! data.value) return [];
+	if (!data.value) return [];
 	return data.value.items.map((policy) => {
 		return {
 			title: policy.fields.heading,
@@ -38,7 +40,9 @@ const policies = computed(() => {
 				href="https://www.begambleaware.org/"
 				target="_blank"
 				class="flex items-center hover:text-white transition"
-				>{{ $t("footer.gamble_aware") }}<i class="fa-solid fa-arrow-up-right-from-square ml-2" /></a>
+				>{{ $t("footer.gamble_aware")
+				}}<i class="fa-solid fa-arrow-up-right-from-square ml-2"
+			/></a>
 		</li>
 	</ul>
 </template>

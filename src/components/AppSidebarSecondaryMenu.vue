@@ -7,9 +7,11 @@ import AppSidebarMenu from "./AppSidebarMenu.vue";
 const { locale, locales, t } = useI18n();
 
 const { loading, error, data } = useApi("post", "/contentful/entries", {
-  content_type: "policy",
-  select: "fields.heading,fields.slug",
-  locale: locale.value !== "en" ? locale.value : "en-US",
+  data: {
+	content_type: "policy",
+	select: "fields.heading,fields.slug",
+	locale: locale.value !== "en" ? locale.value : "en-US",
+  },
 });
 
 const items = computed(() => {

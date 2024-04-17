@@ -22,7 +22,9 @@ const options = computed(() => ({
   sort: props.sort ? props.sort : { createdAt: "DESC" },
 }))
 
-const { data, refetch } = useApi("post", "/game-type/list", options.value);
+const { data, refetch } = useApi("post", "/game-type/list", {
+	data: options.value
+};
 
 const { call: toggleFavourite } = useAsyncApi("POST", "/game-type/favourite");
 

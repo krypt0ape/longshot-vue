@@ -13,25 +13,27 @@ const { locale, locales, t } = useI18n();
 const route = useRoute();
 
 const { loading, error, data } = useApi("post", "/contentful/entries", {
-    content_type: "blogPost",
-    "fields.slug": route.params.slug,
-    locale: locale.value !== "en" ? locale.value : "en-US",
-  });
+	data: {
+		content_type: "blogPost",
+		"fields.slug": route.params.slug,
+		locale: locale.value !== "en" ? locale.value : "en-US",
+	},
+});
 
 const headerStyle = computed(() => {
-	if (! blog) return {};
+	if (!blog) return {};
 	return {
 		background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 37.71%, #0E1725 50.85%), url(${blog.value.fields.image.fields.file.url}), lightgray 50% / cover no-repeat`,
 	};
 });
 
-const blog = computed(()=>{
-	if(! data.value) return null;
+const blog = computed(() => {
+	if (!data.value) return null;
 	return data.value.items[0];
 });
 
 const formattedDate = computed(() => {
-	if (! blog) return "";
+	if (!blog) return "";
 	return format(new Date(blog.value.sys.createdAt), "MMMM d, yyyy");
 });
 
@@ -58,7 +60,11 @@ const renderNodes = () => {
 				&nbsp;
 			</div>
 			<div class="max-w-7xl mx-auto pt-12 relative z-20">
-				<NeutralButton to="/blog/category/all" class="font-light" as="RouterLink">
+				<NeutralButton
+					to="/blog/category/all"
+					class="font-light"
+					as="RouterLink"
+				>
 					<i class="fa-solid fa-chevron-left mr-4" />Go Back
 				</NeutralButton>
 				<div class="max-w-5xl mx-auto mt-8">
@@ -76,10 +82,7 @@ const renderNodes = () => {
 					:to="'/blog/category/' + blog.fields.postCategory.fields.slug"
 					class="flex space-x-4 cursor-pointer text-[#FFC700] hover:text-white transition"
 				>
-					<i
-						:class="blog.fields.postCategory.fields.icon"
-						class="text-2xl"
-					/>
+					<i :class="blog.fields.postCategory.fields.icon" class="text-2xl" />
 					<p class="font-light text-xl">
 						{{ blog.fields.postCategory.fields.name }}
 					</p>

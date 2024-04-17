@@ -5,7 +5,7 @@ import PromoBox from "@/components/PromoBox.vue";
 import BoxLoader from "@/components/BoxLoader.vue";
 
 const { loading, error, data } = useApi("post", "/contentful/entry", {
-	id: "5vATqatwvdkTIALxajLi4U",
+	data: { id: "5vATqatwvdkTIALxajLi4U" }
 });
 
 const promotions = computed(() => {

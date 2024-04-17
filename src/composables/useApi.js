@@ -1,31 +1,43 @@
 import { ref, onMounted } from "vue";
 import { request } from "../api/api";
-import { delay } from "lodash";
 
-export default function useApi(method, path, defaultOptions, callback = null) {
+/**
+ * useApi calls the api on component mount and holds 
+ * the response data in local state and returns the response data
+ * when using refetch so it can be handled by the component as required.
+ */
+export default function useApi(method, path, defaultOptions = {}, callback = null) {
   const data = ref();
   const loading = ref(true);
   const error = ref(null);
   const token = ref(null);
 
-  
-
   onMounted(() => {
     refetch();
   });
 
-  const refetch = async (options = defaultOptions) => {
+  const refetch = async (newOptions = null) => {
+
+	const baseOptions = {
+		method: method,
+        path: path,
+		token: token.value,
+	};
+	const options = newOptions || defaultOptions;
+
     try {
       let response = await request({
-        method: method,
-        path: path,
-        data: { ...defaultOptions, ...options },
-        token: token.value,
-      });
+		...baseOptions, ...options
+	  });
 
-	  await new Promise(resolve => setTimeout(resolve, 1000));  // Forcing a delay make the UI less jarring
+	  // Forcing a delay make the UI less jarring
+	  await new Promise(resolve => setTimeout(resolve, 1000));  
+
       callback && callback(data.value);
       data.value = response.data;
+
+	  return response.data;
+
     } catch (err) {
        console.error(err);
       error.value = err;
