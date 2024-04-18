@@ -17,9 +17,12 @@ const emit = defineEmits({
   favourite: []
 })
 
+const goToGame = () => {
+	window.location.href = `/casino/game/${props.gameType.identifier}`;
+}
 </script>
 <template>
-  <div ref="element" class=" relative  w-[150px]">
+  <div @click="goToGame" ref="element" class=" relative  w-[150px]">
     <i :class="icon" @click="emit('favourite')"
       class="relative top-12 left-2 text-xl bg-purple-600 text-white rounded-md p-1 z-50 cursor-pointer"></i>
     <img :src="image"
