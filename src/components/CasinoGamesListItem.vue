@@ -18,7 +18,7 @@ const emit = defineEmits({
 })
 
 const goToGame = () => {
-	window.location.href = `/casino/game/${props.gameType.identifier}`;
+	window.location.href = `/casino/games/${props.gameType.identifier}`;
 }
 </script>
 <template>
