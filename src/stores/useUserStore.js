@@ -4,7 +4,7 @@ import { request } from "@/api/api";
 import { wss } from "@/api/wss";
 
 export default defineStore("user", () => {
-  const user = ref(); // undefined user means it's a guest
+  const user = ref(null); // undefined user means it's a guest
   const token = ref(null);
   const socket = ref();
  const isAuthenticated = ref(false);
