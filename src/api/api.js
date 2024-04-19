@@ -28,6 +28,7 @@ const request = async ({ method = "GET", path, data, params }) => {
       data,
       params,
       headers,
+	  withCredentials: true
     });
   } catch (error) {
     const json = error.toJSON();

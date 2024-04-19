@@ -5,41 +5,52 @@ import { wss } from "@/api/wss";
 
 export default defineStore("user", () => {
   const user = ref(null); // undefined user means it's a guest
-  const token = ref(null);
   const socket = ref();
- const isAuthenticated = ref(false);
 
-  onMounted(async () => {
-    await getUser();
+//   onMounted(async () => {
+	// User if got from PageInitialStateLoader  not needed here
+//     await getUser();
 
-    if (!user.value) {
-      console.log("No user for socket");
-      return;
-    }
+//     if (!user.value) {
+//       console.log("No user for socket");
+//       return;
+//     }
 
-    socket.value = wss(`Bearer `);
+//     socket.value = wss(`Bearer `);
 
-    socket.value.on("message", (payload) => {
-      if (payload.type === "User") {
-        user.value = payload.data;
-      }
-    });
-  });
+//     socket.value.on("message", (payload) => {
+//       if (payload.type === "User") {
+//         user.value = payload.data;
+//       }
+//     });
+//   });
 
   const getUser = async () => { 
-    if (!isAuthenticated.value) {
-      console.log("!isAuthenticated");
-      return;
-    }
-
-    token.value = await getAccessTokenSilently();
-
-    const { data } = await request({
-      path: "/auth/me",
-      token: token.value,
-    });
-    user.value = data;
+	try {
+		const { data } = await request({
+			path: "/auth/me",
+		  });
+		  user.value = data;
+	}catch(err){
+		if(err.request?.status === 401){
+			user.value = null;
+		}else{
+			throw err;
+		}
+	}
   };
+
+  const signin = async ({ identifier, password }) => { 
+	const { data } = await request({
+	  method: "POST",
+	  path: "/auth/signin",
+	  data: {
+		identifier,
+		password,
+	  },
+	});
+	user.value = data;
+  }
 
   const completeRegistration = async ({
     nickname,
@@ -96,5 +107,6 @@ export default defineStore("user", () => {
     getUser,
     completeRegistration,
     completeVerification,
+	signin,
   };
 });

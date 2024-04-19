@@ -33,7 +33,7 @@ const gameTypes = computed(() => data.value?.rows ?? []);
 	<!-- <button @click="() => refetch({ search: 'acceptance' })" class="btn text-white">
     EMULATE SEACH BY "acceptance" STRING
   </button> -->
-	<VerticalScrollingList :name="name" :icon="icon">
+	<VerticalScrollingList :name="name" :icon="icon" :loading="true" :loading-items="6" >
 		<CasinoGamesListItem
 			v-for="gameType in gameTypes"
 			:key="gameType.identifier"

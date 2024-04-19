@@ -7,6 +7,7 @@ import useApi from "@/composables/useApi";
 import RichTextRenderer from "contentful-rich-text-vue-renderer";
 import AuthModal from "./AuthModal.vue";
 import useUserStore from "@/stores/useUserStore";
+import AsyncContent from "./AsyncContent.vue";
 
 const { locale, locales, t } = useI18n();
 
@@ -62,39 +63,41 @@ const show = computed(() => {
 			<p class="font-semibold">Step 2/2</p>
 			<p class="font-medium text-sm">Accept Terms & Conditions</p>
 		</template>
-		<div class="">
-			<h2 class="text-3xl text-brand-lightGrey font-medium tracking-wide">
-				Terms And Conditions
-			</h2>
-			<p>Read and accept the terms and conditions to start playing.</p>
-			<div class="mt-2" v-if="terms">
-				<RichTextRenderer
-					v-for="(document, index) in terms.fields.content.content"
-					:key="index"
-					:document="document"
-				/>
-			</div>
-			<div
-				class="mt-4 absolute bottom-0 left-0 right-0 px-8 pb-6 pt-4 bg-brand-accentBgHeader"
-			>
-				<div
-					class="flex cursor-pointer no-select items-center mb-4"
-					@click="toggleAccept"
-				>
-					<i
-						v-if="accept"
-						class="fa-solid fa-square-check text-brand-lightGrey text-2xl"
-					></i>
-					<i v-else class="far fa-square text-brand-lightGrey text-2xl"></i>
-
-					<p class="ml-4 text-brand-lightGrey">
-						I Have Read And Agree To The Terms And Conditions
-					</p>
+		<AsyncContent :loading="loading" :error="error"	class="w-full min-h-[500px] flex items-center justify-center">
+			<div class="">
+				<h2 class="text-3xl text-brand-lightGrey font-medium tracking-wide">
+					Terms And Conditions
+				</h2>
+				<p>Read and accept the terms and conditions to start playing.</p>
+				<div class="mt-2" v-if="terms">
+					<RichTextRenderer
+						v-for="(document, index) in terms.fields.content.content"
+						:key="index"
+						:document="document"
+					/>
 				</div>
-				<PrimaryButton type="button" class="!w-full !py-4">
-					Accept Terms
-				</PrimaryButton>
+				<div
+					class="mt-4 absolute bottom-0 left-0 right-0 px-8 pb-6 pt-4 bg-brand-accentBgHeader"
+				>
+					<div
+						class="flex cursor-pointer no-select items-center mb-4"
+						@click="toggleAccept"
+					>
+						<i
+							v-if="accept"
+							class="fa-solid fa-square-check text-brand-lightGrey text-2xl"
+						></i>
+						<i v-else class="far fa-square text-brand-lightGrey text-2xl"></i>
+
+						<p class="ml-4 text-brand-lightGrey">
+							I Have Read And Agree To The Terms And Conditions
+						</p>
+					</div>
+					<PrimaryButton type="button" class="!w-full !py-4">
+						Accept Terms
+					</PrimaryButton>
+				</div>
 			</div>
-		</div>
+		</AsyncContent>
 	</AuthModal>
 </template>

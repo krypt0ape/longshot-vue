@@ -41,14 +41,14 @@ const callback = (response) => {
       <img src="/img/ColorWhite_Full.png" class="animate-pulse w-[150px]" />
     </div>
 
-	<div v-else class="text-white">ready
+	<!-- <div v-else class="text-white">ready
 		<GoogleLogin :callback="callback">
 			<a class="auth-login-button" v-tippy="{ content: 'Login With Gmail', placement: 'top' }">
 				<i class="fa-brands fa-google "></i>
 			</a>
 		</GoogleLogin>
 
-	</div>
+	</div> -->
     <slot v-else />
   </div>
 </template>

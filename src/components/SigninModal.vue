@@ -6,15 +6,39 @@ import Input from "./Form/Input.vue";
 import UserPasswordInput from "./UserPasswordInput.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import AlternateAuthentication from "./AlternateAuthentication.vue";
+import useUserStore from "@/stores/useUserStore";
+import Async from "./Async.vue";
 
 const form = ref({
-	username_email: "",
+	identifier: "",
 	password: "",
 });
 
+const userStore = useUserStore();
+
 const error = ref("");
+const loading = ref(false);
 
 const { signinModalOpen, toggleSigninModal, toggleForgotPasswordModal } = useAuthModals();
+
+const signin = async () => {
+	error.value = "";
+	
+	if (!form.value.identifier || !form.value.password) {
+		error.value = "Please fill in all the required fields.";
+		return;
+	}
+	
+	try {
+		loading.value = true;
+		await userStore.signin(form.value);
+		toggleSigninModal();
+	} catch (e) {
+		error.value = e.response.data.message;
+	}finally {
+		loading.value = false;
+	}
+};
 </script>
 <template>
 	<AuthModal :show="signinModalOpen" @close="toggleSigninModal" :cross="true" class="max-w-lg">
@@ -29,14 +53,14 @@ const { signinModalOpen, toggleSigninModal, toggleForgotPasswordModal } = useAut
 				<p class="text-brand-lightGrey">
 					Email or Username <span class="text-red-600">*</span>
 				</p>
-				<Input class="mt-1 w-full" v-model="form.username_email" />
+				<Input class="mt-1 w-full" v-model="form.identifier" />
 			</div>
 			<UserPasswordInput v-model="form.password" />
 			<div class="mt-2"> 
 				<a @click="toggleForgotPasswordModal" class="hover:text-brand-lightGrey transition cursor-pointer">Forgot Password?</a>
 			</div>
 			<div class="mt-6 mb-4">
-				<PrimaryButton type="button" @click="call" class="!w-full !py-4">
+				<PrimaryButton type="button" @click="signin" class="!w-full !py-4">
 					<Async :loading="loading" :error="error">
 						Sign In
 					</Async>
