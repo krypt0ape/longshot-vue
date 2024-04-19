@@ -1,5 +1,5 @@
 import { ref, onMounted } from "vue";
-import { request } from "../api/api";
+import useApiRequest from "./useApiRequest";
 
 /**
  * useApi calls the api on component mount and holds 
@@ -10,7 +10,8 @@ export default function useApi(method, path, defaultOptions = {}, callback = nul
   const data = ref();
   const loading = ref(true);
   const error = ref(null);
-  const token = ref(null);
+
+  const request = useApiRequest();
 
   onMounted(() => {
     refetch();
@@ -39,7 +40,6 @@ export default function useApi(method, path, defaultOptions = {}, callback = nul
 	  return response.data;
 
     } catch (err) {
-       console.error(err);
       error.value = err;
     } finally {
       loading.value = false;

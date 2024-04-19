@@ -26,19 +26,18 @@ export default defineStore("user", () => {
 //   });
 
   const getUser = async () => { 
-	try {
-		const { data } = await request({
-			path: "/auth/me",
-		  });
-		  user.value = data;
-	}catch(err){
-		if(err.request?.status === 401){
-			user.value = null;
-		}else{
-			throw err;
-		}
-	}
+	const { data } = await request({
+		path: "/auth/me",
+	  });
+	  user.value = data;
   };
+  
+  const setUser = async (updateData) => {
+	const { data } = await request({
+		path: "/auth/me",
+	  });
+	  user.value = data;
+  }
 
   const signin = async ({ identifier, password }) => { 
 	const { data } = await request({

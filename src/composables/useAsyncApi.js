@@ -1,6 +1,5 @@
 import { ref } from "vue";
-import { request } from "../api/api";
-import { delay } from "lodash";
+import useApiRequest from "./useApiRequest";
 
 /**
  * useAsyncApi - returns a call function to call
@@ -10,9 +9,10 @@ import { delay } from "lodash";
  */
 export default function useAsyncApi(method, path) {
 	const data = ref();
-	const loading = ref(true);
+	const loading = ref(false);
 	const error = ref(null);
-	const token = ref();
+
+	const request = useApiRequest();
 
 	const call = async (options = {}) => {
 		try {
