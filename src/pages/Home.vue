@@ -6,15 +6,17 @@ import SportsLiveBetTracker from "@/components/SportsLiveBetTracker.vue";
 import HomeHeroGuest from "@/components/HomeHeroGuest.vue";
 import HomeHeroAuthenticated from "@/components/HomeHeroAuthenticated.vue";
 import GlowGreen from "@/components/GlowGreen.vue";
+import useUserStore from "@/stores/useUserStore";
 
+const userStore = useUserStore();
 </script>
 <template>
-	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-4 px-4">
+	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-8 px-4">
 		<GlowGreen />
 		<div
 			class="hero grid lg:grid-cols-2 relative z-20 overflow-hidden h-[375px]"
 		>
-			<HomeHeroAuthenticated v-if="isAuthenticated" />
+			<HomeHeroAuthenticated v-if="userStore.user" />
 			<HomeHeroGuest v-else />
 			<div class="hidden sm:block absolute opacity-50 top-0 right-0 z-20">
 				<img src="/img/green-glow-angle.png" class="h-[375px]" />

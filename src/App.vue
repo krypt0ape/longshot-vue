@@ -58,12 +58,12 @@ const topImage = computed(() => {
       <aside>
       </aside>
 
-      <PromotionModal />
+      <!-- <PromotionModal />
       <WalletModal />
       <SigninModal />
 	  <SignupModal />
 	  <AcceptTermsModal />
-	  <ForgotPasswordModal />
+	  <ForgotPasswordModal /> -->
     </div>
   </PageInitialStateLoader>
 </template>

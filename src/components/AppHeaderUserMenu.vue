@@ -1,12 +1,16 @@
 <script setup>
-
+import { computed } from "vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import AppHeaderUserMenuItem from "./AppHeaderUserMenuItem.vue";
 import useAuthModals from "@/composables/useAuthModals";
+import useUserStore from "@/stores/useUserStore";
 
+const userStore = useUserStore();
 const {toggleLogoutModal} = useAuthModals();
 const openWallet = () => {};
+
+const user = computed(()=>(userStore.user));
 </script>
 <template>
 	<div class="flex items-center ">
@@ -44,10 +48,10 @@ const openWallet = () => {};
 			>
 				<img
 					:src="user.picture"
-					:alt="user.nickname"
+					:alt="user.username"
 					class="w-8 h-8 rounded-full"
 				/>
-				<p class="ml-3 font-medium hidden lg:block">{{ user.nickname }}</p>
+				<p class="ml-3 font-medium hidden lg:block">{{ user.username }}</p>
 				<ChevronDownIcon
 					class="ml-2 h-6 w-6 transition duration-150 ease-in-out text-brand-darkerGrey"
 					aria-hidden="true"
@@ -132,4 +136,3 @@ const openWallet = () => {};
 		</Popover>
 	</div>
 </template>
-@/composables/useAuthModals
