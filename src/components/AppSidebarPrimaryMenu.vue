@@ -2,7 +2,6 @@
 import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import AppSidebarMenu from "./AppSidebarMenu.vue";
-import { request } from "@/api/api";
 import useApi from "@/composables/useApi";
 import useUserStore from "@/stores/useUserStore";
 

@@ -7,6 +7,8 @@ import useUserStore from "@/stores/useUserStore";
  * @returns {request} - a function that makes a request to the API
  */
 export default function useApiRequest() {
+	const userStore = useUserStore();
+
 	const request = async ({
 		method = "GET",
 		path,
@@ -15,19 +17,19 @@ export default function useApiRequest() {
 		headers = {},
 	}) => {
 		const baseUrl = import.meta.env.VITE_API_URL;
-
-		const userStore = useUserStore();
+console.log(baseUrl);
+		
 
 		// TODO handle this, its hardcoded for now
 		//"Country-Code": ls.get("COUNTRY_CODE"),
-		headers["Country-Code"] = "US";
+		headers["Country-Code"] = "UK";
 
 		if (!headers["Country-Code"]?.length) {
 			throw new Error(`Failed to get client's countryCode`);
 		}
 
 		try {
-			const req =  await axios({
+			return await axios({
 				method,
 				url: `${baseUrl}${path}`,
 				data,
@@ -35,15 +37,14 @@ export default function useApiRequest() {
 				headers,
 				withCredentials: true,
 			});
-			return req.data;
 
 		} catch (error) {
-			const json = error.toJSON();
-			console.error(json)
-			if(json.status === 401){
-				userStore.logout();
+			if(error.response?.status === 401){
+				userStore.signout();
+				return { data: null } 
 			}else {
-				throw new Error(json.message);
+				console.error(error)
+				throw error;
 			}
 		}
 	};

@@ -8,7 +8,7 @@ import useApiRequest from "./useApiRequest";
  * it can be handled by the component as required.
  */
 export default function useAsyncApi(method, path) {
-	const data = ref();
+	const data = ref(null);
 	const loading = ref(false);
 	const error = ref(null);
 
@@ -21,7 +21,6 @@ export default function useAsyncApi(method, path) {
 			const baseOptions = {
 				method: method,
 				path: path,
-				token: token.value,
 			};
 
 			let response = await request({
@@ -35,6 +34,7 @@ export default function useAsyncApi(method, path) {
 			data.value = response.data;
 			return response.data;
 		} catch (err) {
+			console.error(err);
 			error.value = err;
 		} finally {
 			loading.value = false;
@@ -45,5 +45,6 @@ export default function useAsyncApi(method, path) {
 		loading,
 		error,
 		call,
+		data
 	};
 }

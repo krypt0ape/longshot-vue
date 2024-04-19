@@ -9,8 +9,9 @@ const { call: callIpApi } = useIpApi()
 
 const userStore = useUserStore();
 const { loading, error, call } = useAsync(userStore.getUser);
-
+call();
 onMounted(async () => {
+	
   //ls.set('COUNTRY_CODE', (await callIpApi()).countryCode)
 })
 
@@ -21,7 +22,7 @@ const errorMessage = computed(() => {
   }
   return error.message;
 });
-call();
+
 
 const callback = (response) => {
   // This callback will be triggered when the user selects or login to

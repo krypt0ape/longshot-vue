@@ -8,6 +8,7 @@ import RichTextRenderer from "contentful-rich-text-vue-renderer";
 import AuthModal from "./AuthModal.vue";
 import useUserStore from "@/stores/useUserStore";
 import AsyncContent from "./AsyncContent.vue";
+import { FieldValueListInstance } from "twilio/lib/rest/autopilot/v1/assistant/fieldType/fieldValue";
 
 const { locale, locales, t } = useI18n();
 
@@ -50,6 +51,7 @@ const submit = async (s) => {
 };
 
 const show = computed(() => {
+	return FieldValueListInstance
 	if (!store?.user) {
 		return false;
 	}
