@@ -8,11 +8,12 @@ import RichTextRenderer from "contentful-rich-text-vue-renderer";
 import AuthModal from "./AuthModal.vue";
 import useUserStore from "@/stores/useUserStore";
 import AsyncContent from "./AsyncContent.vue";
-import { FieldValueListInstance } from "twilio/lib/rest/autopilot/v1/assistant/fieldType/fieldValue";
+import useAsync from "@/composables/useAsync";
+import Async from "./Async.vue";
 
 const { locale, locales, t } = useI18n();
 
-const store = useUserStore();
+const userStore = useUserStore();
 
 const { loading, error, data } = useApi("post", "/contentful/entries", {
 	data: {
@@ -30,33 +31,32 @@ const terms = computed(() => {
 });
 
 const accept = ref(false);
+const formError = ref(false);
 
 const toggleAccept = () => {
 	accept.value = !accept.value;
 };
 
-const submit = async (s) => {
-	if (valid(s)) {
-		step.value += s;
+const {
+	loading: submitting,
+	error: submitError,
+	call: submit,
+} = useAsync(async () => {
+	if (!accept.value) {
+		formError.value = true;
+		return;
 	}
-
-	if (step.value === 3) {
-		await store.completeRegistration({
-			...form.value,
-			affiliateCode: "",
-			signupCode: "",
-		});
-		router.go();
-	}
-};
+	await userStore.updateUser({
+		acceptedTerms: 1,
+	});
+});
 
 const show = computed(() => {
-	return FieldValueListInstance
-	if (!store?.user) {
+	if (!userStore?.user) {
 		return false;
 	}
 
-	return store?.user?.acceptedTerms !== 1;
+	return userStore?.user?.acceptedTerms !== 1;
 });
 </script>
 <template>
@@ -65,7 +65,11 @@ const show = computed(() => {
 			<p class="font-semibold">Step 2/2</p>
 			<p class="font-medium text-sm">Accept Terms & Conditions</p>
 		</template>
-		<AsyncContent :loading="loading" :error="error"	class="w-full min-h-[500px] flex items-center justify-center">
+		<AsyncContent
+			:loading="loading"
+			:error="error"
+			class="w-full min-h-[500px] flex items-center justify-center"
+		>
 			<div class="">
 				<h2 class="text-3xl text-brand-lightGrey font-medium tracking-wide">
 					Terms And Conditions
@@ -91,13 +95,18 @@ const show = computed(() => {
 						></i>
 						<i v-else class="far fa-square text-brand-lightGrey text-2xl"></i>
 
-						<p class="ml-4 text-brand-lightGrey">
+						<p
+							class="ml-4"
+							:class="[formError ? 'text-red-500' : 'text-brand-lightGrey']"
+						>
 							I Have Read And Agree To The Terms And Conditions
 						</p>
 					</div>
-					<PrimaryButton type="button" class="!w-full !py-4">
-						Accept Terms
-					</PrimaryButton>
+					<Async :loading="submitting" :error="submitError">
+						<PrimaryButton @click="submit" type="button" class="!w-full !py-4">
+							Accept Terms
+						</PrimaryButton>
+					</Async>
 				</div>
 			</div>
 		</AsyncContent>

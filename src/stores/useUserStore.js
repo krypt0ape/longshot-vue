@@ -47,28 +47,6 @@ export default defineStore("user", () => {
 		user.value = null;
 	}
 
-	// const completeRegistration = async ({
-	// 	nickname,
-	// 	acceptedTerms,
-	// 	affiliateCode,
-	// 	signupCode,
-	// }) => {
-	// 	token.value = await getAccessTokenSilently();
-
-	// 	const { data } = await request({
-	// 		method: "POST",
-	// 		path: "/auth/complete-registration",
-	// 		data: {
-	// 			nickname,
-	// 			acceptedTerms,
-	// 			affiliateCode,
-	// 			signupCode,
-	// 		},
-	// 		token: token.value,
-	// 	});
-	// 	user.value = data;
-	// };
-
 	// const completeVerification = async ({
 	// 	firstname,
 	// 	lastname,

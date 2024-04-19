@@ -11,7 +11,7 @@ import useUserStore from "@/stores/useUserStore";
 const userStore = useUserStore();
 </script>
 <template>
-	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-8 px-4">
+	<div class="mx-auto max-w-7xl text-brand-lightGrey mt-10 px-4">
 		<GlowGreen />
 		<div
 			class="hero grid lg:grid-cols-2 relative z-20 overflow-hidden h-[375px]"
