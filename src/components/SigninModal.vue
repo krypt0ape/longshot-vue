@@ -54,7 +54,7 @@ const {
 				</p>
 				<Input name="username"  class="mt-1 w-full" v-model="form.identifier"  autocomplete="username"/>
 			</div>
-			<UserPasswordInput v-model="form.password"   />
+			<UserPasswordInput v-model="form.password" />
 			<div class="mt-2">
 				<a
 					@click="toggleForgotPasswordModal"
