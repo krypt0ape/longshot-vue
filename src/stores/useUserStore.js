@@ -38,13 +38,13 @@ export default defineStore("user", () => {
 	}
 
 	const updateUser = async (updateData) => {
-		const {data}  = await request(UPDATE_USER(updateData));
-		setUser(data);
+		const req  = await request(UPDATE_USER(updateData));
+		setUser(req.data);
 	};
 
 	const signin = async ({ identifier, password }) => {
-		const { data } = await request(SIGNIN({ identifier, password }));
-		user.value = data;
+		const req = await request(SIGNIN({ identifier, password }));
+		user.value = req.data;
 	};
 
 	const signout = async () => { 

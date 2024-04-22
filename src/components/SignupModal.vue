@@ -13,6 +13,7 @@ import UserDobInput from "./UserDobInput.vue";
 import UserOfferCodeInput from "./UserOfferCodeInput.vue";
 import useAuthModals from "@/composables/useAuthModals";
 import AlternateAuthentication from "./AlternateAuthentication.vue";
+import Checkbox from "./Form/Checkbox.vue";
 
 const form = ref({
 	email: "",
@@ -21,7 +22,7 @@ const form = ref({
 	username: "",
 	signupCode: "",
 	affiliateCode: "",
-	acceptMarketingEmails: false
+	acceptMarketingEmails: false,
 });
 
 const errors = ref({
@@ -66,22 +67,12 @@ const { loading, error, call } = useAsync(async () => {
 					v-model="form.signupCode"
 					:error="errors.signupCode"
 				/>
-				<div
-					class="flex cursor-pointer justify-center h-full no-select items-end pb-1"
-					@click="form.acceptMarketingEmails = ! form.acceptMarketingEmails"
-				>
-					<i
-						v-if="form.acceptMarketingEmails"
-						class="fa-solid fa-square-check text-brand-lightGrey text-2xl"
-					></i>
-					<i v-else class="far fa-square text-brand-lightGrey text-2xl"></i>
-
-					<p class="ml-2 text-brand-grey text-sm mb-1">
-						Receive Offers & Promotions
-					</p>
-				</div>
 			</div>
-
+			<Checkbox v-model="form.acceptMarketingEmails">
+				<p class="ml-2 text-brand-grey text-sm mb-1">
+					Receive Offers & Promotions
+				</p>
+			</Checkbox>
 			<div class="mt-10 mb-4">
 				<PrimaryButton type="button" @click="call" class="!w-full !py-4">
 					<Async :loading="loading" :error="error">

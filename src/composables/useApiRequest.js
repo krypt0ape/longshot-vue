@@ -29,7 +29,7 @@ console.log(baseUrl);
 		}
 
 		try {
-			return await axios({
+			const req =  await axios({
 				method,
 				url: `${baseUrl}${path}`,
 				data,
@@ -37,6 +37,10 @@ console.log(baseUrl);
 				headers,
 				withCredentials: true,
 			});
+			if(! req.data.success){
+				throw new Error(req.data.message);	
+			}
+			return req.data;
 
 		} catch (error) {
 			if(error.response?.status === 401){

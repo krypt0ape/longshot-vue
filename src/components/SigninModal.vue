@@ -9,12 +9,14 @@ import AlternateAuthentication from "./AlternateAuthentication.vue";
 import useUserStore from "@/stores/useUserStore";
 import Async from "./Async.vue";
 import useAsync from "@/composables/useAsync";
+import Checkbox from "./Form/Checkbox.vue";
 
 const form = ref({
 	identifier: "",
 	password: "",
 });
 const formErrors = ref(null);
+const signinFail = ref(false);
 
 const userStore = useUserStore();
 
@@ -26,12 +28,17 @@ const {
 	error,
 	call: signin,
 } = useAsync(async () => {
+	signinFail.value = false;
 	if (!form.value.identifier || !form.value.password) {
 		formErrors.value = "Please fill in all the required fields.";
 		return;
 	}
-	await userStore.signin(form.value);
-	toggleSigninModal();
+	try {
+		await userStore.signin(form.value);
+		toggleSigninModal();
+	}catch(err){
+		signinFail.value = err.message;
+	}
 });
 </script>
 <template>
@@ -55,12 +62,15 @@ const {
 				<Input name="username"  class="mt-1 w-full" v-model="form.identifier"  autocomplete="username"/>
 			</div>
 			<UserPasswordInput v-model="form.password" @keyup.enter="signin" />
-			<div class="mt-2">
+			<div class="mt-2 justify-between flex items-center">
 				<a
 					@click="toggleForgotPasswordModal"
 					class="hover:text-brand-lightGrey transition cursor-pointer"
 					>Forgot Password?</a
 				>
+			</div>
+			<div v-if="signinFail" class="mt-2">
+				<p class="text-red-600">{{signinFail}}</p>
 			</div>
 			<div class="mt-6 mb-4">
 				<PrimaryButton type="button" @click="signin" class="!w-full !py-4">
