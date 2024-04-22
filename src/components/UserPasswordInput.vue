@@ -1,22 +1,18 @@
 <script setup>
 import Input from "@/components/Form/Input.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 defineProps({
 	error: String,
 });
 
 const model = defineModel();
+const visible = ref(false);
+const type = computed(()=>{
+	return visible.value ? 'text' : 'password';
+})
 
-const checked = ref(null);
-
-const check = () => {
-	if (model.value === "") {
-		checked.value = false;
-		return;
-	}
-	checked.value = true;
-};
+const checkPassword = () => {}
 </script>
 <template>
 	<div>
@@ -26,10 +22,16 @@ const check = () => {
 		<Input
 			name="password"
 			class="mt-1 w-full"
+			:type="type"
 			v-model="model"
 			:error="error"
 			autocomplete="current-password"
-			@blur="check"
-		/>
+			@blur="checkPassword"
+		>
+			<div class="pr-3">
+				<a class="cursor-pointer" v-if="visible" @click="visible = ! visible"><i class="fa-solid fa-eye-slash" /></a>
+				<a class="cursor-pointer" v-else  @click="visible = ! visible"><i class="fa-solid fa-eye" /></a>
+			</div>
+		</Input>
 	</div>
 </template>
