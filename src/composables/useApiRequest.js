@@ -37,6 +37,8 @@ console.log(baseUrl);
 				headers,
 				withCredentials: true,
 			});
+			// Add 1 sec delay to make the UI less jarring
+			await new Promise((resolve) => setTimeout(resolve, 1000));
 			if(! req.data.success){
 				throw new Error(req.data.message);	
 			}

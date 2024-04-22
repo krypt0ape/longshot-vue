@@ -22,3 +22,17 @@ export const SIGNOUT = () => ({
 	path: "/auth/signout",
 	method: "POST",
 })
+
+export const SIGNUP = ({ email, password, dob, username, signupCode, affiliateCode, acceptMarketingEmails }) => ({
+	path: "/auth/signup",
+	method: "POST",
+	data: {
+		email,
+		password,
+		dob,
+		username,
+		signupCode,
+		affiliateCode,
+		acceptMarketingEmails,
+	},
+});

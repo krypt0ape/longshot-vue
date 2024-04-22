@@ -9,7 +9,7 @@ const userStore = useUserStore();
   <div
     class="auth-card m-[32px] ml-[30px] px-4 py-4   relative z-50 sm:py-[30px] sm:w-[350px] xl:w-[430px]  xl:py-[40px] xl:px-[45px]">
     <div class="relative z-20">
-      <p class="text-3xl font-semibold">Welcome back, Chris</p>
+      <p class="text-3xl font-semibold">Welcome back, {{userStore.user.username}}</p>
 
       <div class="h-[90px]">
         <UserVipStatus />

@@ -32,20 +32,50 @@ const errors = ref({
 	email: "",
 });
 
+const signupFail = ref(false);
+
 const store = useUserStore();
 
 const { signupModalOpen, toggleSignupModal } = useAuthModals();
 
 const { loading, error, call } = useAsync(async () => {
-	if (!form.value.nickname) {
-		errors.value.nickname = "* Required";
-		return;
+	const check = validate();
+	if (!check) return;
+	signupFail.value = false;
+
+	try {
+		await store.signup(form.value);
+		toggleSignupModal();
+	}catch(err){
+		signupFail.value = err.message;
 	}
-
-	errors.value = { nickname: "", signupCode: "", affiliateCode: "" };
-
-	await store.completeRegistration(form.value);
 });
+
+const validate = () => {
+	if (!form.value.email) {
+		errors.value.email = "* required";
+		return false;
+	}
+	if (!form.value.password) {
+		errors.value.password = "* required";
+		return false;
+	}
+	if (!form.value.username) {
+		errors.value.username = "* required";
+		return false;
+	}
+	if (!form.value.dob) {
+		errors.value.dob = "* required";
+		return false;
+	}
+	errors.value = {
+		username: "",
+		signupCode: "",
+		affiliateCode: "",
+		email: "",
+	};
+	return true;
+};
 </script>
 <template>
 	<AuthModal :show="signupModalOpen" @close="toggleSignupModal">
@@ -58,7 +88,7 @@ const { loading, error, call } = useAsync(async () => {
 				Create an Account
 			</h2>
 			<p>Please fill in the details below to create your account.</p>
-			<div class="grid grid-cols-2 gap-6 mt-4">
+			<div class="grid grid-cols-2 gap-6 mt-4 items-center">
 				<UserEmailInput v-model="form.email" :error="errors.email" />
 				<UserPasswordInput v-model="form.password" :error="errors.password" />
 				<UserUsernameInput v-model="form.username" :error="errors.username" />
@@ -67,12 +97,17 @@ const { loading, error, call } = useAsync(async () => {
 					v-model="form.signupCode"
 					:error="errors.signupCode"
 				/>
+				<div class="mt-[35px] flex items-center">
+					<Checkbox v-model="form.acceptMarketingEmails">
+						<p class="ml-2 text-brand-grey text-sm">
+							Receive Offers & Promotions
+						</p>
+					</Checkbox>
+				</div>
 			</div>
-			<Checkbox v-model="form.acceptMarketingEmails">
-				<p class="ml-2 text-brand-grey text-sm mb-1">
-					Receive Offers & Promotions
-				</p>
-			</Checkbox>
+			<div v-if="signupFail" class="mt-2">
+				<p class="text-red-600">{{signupFail}}</p>
+			</div>
 			<div class="mt-10 mb-4">
 				<PrimaryButton type="button" @click="call" class="!w-full !py-4">
 					<Async :loading="loading" :error="error">

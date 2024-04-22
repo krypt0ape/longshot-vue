@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import AppHeaderUserMenuItem from "./AppHeaderUserMenuItem.vue";
 import useAuthModals from "@/composables/useAuthModals";
 import useUserStore from "@/stores/useUserStore";
+import Avatar from "vue-boring-avatars";
 
 const userStore = useUserStore();
 const {toggleSignoutModal} = useAuthModals();
@@ -46,11 +47,14 @@ const user = computed(()=>(userStore.user));
 				:class="open ? 'text-white' : 'text-white/90'"
 				class="group inline-flex items-center rounded-md focus:ring-0 focus:ring-offset-0 px-3 py-2 text-base font-medium hover:text-white bg-[#071420] border border-[#273646] focus:outline-none focus-visible:ring-0"
 			>
-				<img
+			<!--  TODO user avatars -->
+				<!-- <img
 					:src="user.picture"
 					:alt="user.username"
 					class="w-8 h-8 rounded-full"
-				/>
+				/> -->
+				<Avatar :size="30" variant="beam" :name="user.username"  :colors="['#3AAA35', '#A4ADBD'] " />
+				
 				<p class="ml-3 font-medium hidden lg:block">{{ user.username }}</p>
 				<ChevronDownIcon
 					class="ml-2 h-6 w-6 transition duration-150 ease-in-out text-brand-darkerGrey"

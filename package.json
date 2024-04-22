@@ -26,6 +26,7 @@
     "pinia": "^2.1.7",
     "socket.io-client": "^4.7.5",
     "vue": "^3.4.21",
+    "vue-boring-avatars": "^1.4.0",
     "vue-google-oauth2": "^1.5.10",
     "vue-i18n": "^9.10.2",
     "vue-qrcode": "^2.2.2",

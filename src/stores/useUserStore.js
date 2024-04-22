@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { onMounted, ref } from "vue";
 import useApiRequest from "@/composables/useApiRequest";
 import { wss } from "@/api/wss";
-import { GET_USER, SIGNIN, UPDATE_USER, SIGNOUT } from "@/api/user";
+import { GET_USER, SIGNIN, UPDATE_USER, SIGNOUT, SIGNUP } from "@/api/user";
 
 export default defineStore("user", () => {
 	const user = ref(null); // undefined user means it's a guest
@@ -52,6 +52,11 @@ export default defineStore("user", () => {
 		 user.value = null;
 	}
 
+	const signup = async (form) => {
+		const req = await request(SIGNUP(form));
+		user.value = req.data;
+	};
+
 	// const completeVerification = async ({
 	// 	firstname,
 	// 	lastname,
@@ -86,6 +91,7 @@ export default defineStore("user", () => {
 		setUser,
 		updateUser,
 		signin,
-		signout
+		signout,
+		signup	
 	};
 });
