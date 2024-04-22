@@ -11,6 +11,7 @@ import SignupModal from "@/components/SignupModal.vue";
 import WalletModal from '@/components/WalletModal.vue'
 import AcceptTermsModal from "@/components/AcceptTermsModal.vue";
 import SigninModal from "@/components/SigninModal.vue";
+import SignoutModal from "@/components/SignoutModal.vue";
 import ForgotPasswordModal from "@/components/ForgotPasswordModal.vue";
 import PromotionModal from "@/components/PromotionModal.vue";
 
@@ -58,12 +59,13 @@ const topImage = computed(() => {
       <aside>
       </aside>
 
-      <!-- <PromotionModal />
+      <PromotionModal />
       <WalletModal />
       <SigninModal />
 	  <SignupModal />
 	  <AcceptTermsModal />
-	  <ForgotPasswordModal /> -->
+	  <ForgotPasswordModal />
+	  <SignoutModal />
     </div>
   </PageInitialStateLoader>
 </template>

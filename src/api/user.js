@@ -17,3 +17,8 @@ export const SIGNIN = ({ identifier, password }) => ({
 		password,
 	},
 });
+
+export const SIGNOUT = () => ({ 
+	path: "/auth/signout",
+	method: "POST",
+})

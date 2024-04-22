@@ -7,7 +7,7 @@ import useAuthModals from "@/composables/useAuthModals";
 import useUserStore from "@/stores/useUserStore";
 
 const userStore = useUserStore();
-const {toggleLogoutModal} = useAuthModals();
+const {toggleSignoutModal} = useAuthModals();
 const openWallet = () => {};
 
 const user = computed(()=>(userStore.user));
@@ -125,9 +125,9 @@ const user = computed(()=>(userStore.user));
 						</div>
 						<div class="pt-2">
 							<AppHeaderUserMenuItem
-								:action="logout"
+								:action="toggleSignoutModal"
 								icon="fa-solid fa-sign-out-alt"
-								text="Logout"
+								text="Signout"
 							/>
 						</div>
 					</div>

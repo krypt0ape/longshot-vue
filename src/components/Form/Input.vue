@@ -61,13 +61,13 @@ const handleBlur = () => {
         <slot name="left"></slot>
       </div>
       <div class="flex items-center">
-        <input :id="id" ref="input" :readonly="readonly" :type="type" autocomplete="one-time-code" :class="[
+        <input :id="id" ref="input" :readonly="readonly" :type="type"  :class="[
       'app-input text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg  border-solid border',
       disabled ? 'cursor-not-allowed  text-brand-darkerGrey opacity-80' : '',
 	  error ? 'border-red-500' : 'border-brand-accentStroke',
       $slots.left ? 'pl-[90px]' : 'pl-4',
       label && type === 'checkbox' ? '' : 'w-full'
-    ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" :bind="$attrs" @blur="handleBlur"/>
+    ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" v-bind="$attrs" @blur="handleBlur"/>
         <label v-if="label && type === 'checkbox'" :for="id"
           class="text-white cursor-pointer ms-2 text-sm font-medium dark:text-gray-300">{{
       label }}</label>

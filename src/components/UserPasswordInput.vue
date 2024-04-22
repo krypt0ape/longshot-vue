@@ -24,9 +24,11 @@ const check = () => {
 			Password <span class="text-red-600">*</span>
 		</p>
 		<Input
+			name="password"
 			class="mt-1 w-full"
 			v-model="model"
 			:error="error"
+			autocomplete="current-password"
 			@blur="check"
 		/>
 	</div>

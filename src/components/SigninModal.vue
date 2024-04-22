@@ -8,40 +8,39 @@ import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import AlternateAuthentication from "./AlternateAuthentication.vue";
 import useUserStore from "@/stores/useUserStore";
 import Async from "./Async.vue";
+import useAsync from "@/composables/useAsync";
 
 const form = ref({
 	identifier: "",
 	password: "",
 });
+const formErrors = ref(null);
 
 const userStore = useUserStore();
 
-const error = ref("");
-const loading = ref(false);
+const { signinModalOpen, toggleSigninModal, toggleForgotPasswordModal } =
+	useAuthModals();
 
-const { signinModalOpen, toggleSigninModal, toggleForgotPasswordModal } = useAuthModals();
-
-const signin = async () => {
-	error.value = "";
-	
+const {
+	loading,
+	error,
+	call: signin,
+} = useAsync(async () => {
 	if (!form.value.identifier || !form.value.password) {
-		error.value = "Please fill in all the required fields.";
+		formErrors.value = "Please fill in all the required fields.";
 		return;
 	}
-	
-	try {
-		loading.value = true;
-		await userStore.signin(form.value);
-		toggleSigninModal();
-	} catch (e) {
-		error.value = e.response.data.message;
-	}finally {
-		loading.value = false;
-	}
-};
+	await userStore.signin(form.value);
+	toggleSigninModal();
+});
 </script>
 <template>
-	<AuthModal :show="signinModalOpen" @close="toggleSigninModal" :cross="true" class="max-w-lg">
+	<AuthModal
+		:show="signinModalOpen"
+		@close="toggleSigninModal"
+		:cross="true"
+		class="max-w-lg"
+	>
 		<div class="mb-4">
 			<div>
 				<h2 class="text-3xl text-brand-lightGrey font-medium tracking-wide">
@@ -53,17 +52,19 @@ const signin = async () => {
 				<p class="text-brand-lightGrey">
 					Email or Username <span class="text-red-600">*</span>
 				</p>
-				<Input class="mt-1 w-full" v-model="form.identifier" />
+				<Input name="username"  class="mt-1 w-full" v-model="form.identifier"  autocomplete="username"/>
 			</div>
-			<UserPasswordInput v-model="form.password" />
-			<div class="mt-2"> 
-				<a @click="toggleForgotPasswordModal" class="hover:text-brand-lightGrey transition cursor-pointer">Forgot Password?</a>
+			<UserPasswordInput v-model="form.password"   />
+			<div class="mt-2">
+				<a
+					@click="toggleForgotPasswordModal"
+					class="hover:text-brand-lightGrey transition cursor-pointer"
+					>Forgot Password?</a
+				>
 			</div>
 			<div class="mt-6 mb-4">
 				<PrimaryButton type="button" @click="signin" class="!w-full !py-4">
-					<Async :loading="loading" :error="error">
-						Sign In
-					</Async>
+					<Async :loading="loading" :error="error"> Sign In </Async>
 				</PrimaryButton>
 			</div>
 			<AlternateAuthentication context="signin" />

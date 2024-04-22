@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { onMounted, ref } from "vue";
 import useApiRequest from "@/composables/useApiRequest";
 import { wss } from "@/api/wss";
-import { GET_USER, SIGNIN, UPDATE_USER } from "@/api/user";
+import { GET_USER, SIGNIN, UPDATE_USER, SIGNOUT } from "@/api/user";
 
 export default defineStore("user", () => {
 	const user = ref(null); // undefined user means it's a guest
@@ -30,12 +30,16 @@ export default defineStore("user", () => {
 
 	const getUser = async () => {
 		const {data} = await request(GET_USER());
-		user.value = data;
+		setUser(data);
 	};
 
-	const updateUser = async (updateData) => {
-		const req = await request(UPDATE_USER(updateData));
+	const setUser = (data) => {
 		user.value = data;
+	}
+
+	const updateUser = async (updateData) => {
+		const {data}  = await request(UPDATE_USER(updateData));
+		setUser(data);
 	};
 
 	const signin = async ({ identifier, password }) => {
@@ -44,30 +48,9 @@ export default defineStore("user", () => {
 	};
 
 	const signout = async () => { 
-		user.value = null;
+		 await request(SIGNOUT());
+		 user.value = null;
 	}
-
-	// const completeRegistration = async ({
-	// 	nickname,
-	// 	acceptedTerms,
-	// 	affiliateCode,
-	// 	signupCode,
-	// }) => {
-	// 	token.value = await getAccessTokenSilently();
-
-	// 	const { data } = await request({
-	// 		method: "POST",
-	// 		path: "/auth/complete-registration",
-	// 		data: {
-	// 			nickname,
-	// 			acceptedTerms,
-	// 			affiliateCode,
-	// 			signupCode,
-	// 		},
-	// 		token: token.value,
-	// 	});
-	// 	user.value = data;
-	// };
 
 	// const completeVerification = async ({
 	// 	firstname,
@@ -100,6 +83,7 @@ export default defineStore("user", () => {
 	return {
 		user,
 		getUser,
+		setUser,
 		updateUser,
 		signin,
 		signout

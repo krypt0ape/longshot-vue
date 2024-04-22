@@ -40,7 +40,7 @@ console.log(baseUrl);
 
 		} catch (error) {
 			if(error.response?.status === 401){
-				userStore.signout();
+				userStore.setUser(null)
 				return { data: null } 
 			}else {
 				console.error(error)
