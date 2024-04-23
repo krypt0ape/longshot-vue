@@ -5,7 +5,6 @@ import SportsEventSearch from "@/components/SportsEventSearch.vue";
 import SportsLobbyNav from "@/components/SportsLobbyNav.vue";
 import SportsLiveEvents from "@/components/SportsLiveEvents.vue";
 import SportsPopularEvents from "@/components/SportsPopularEvents.vue";
-import SportsLiveBetTracker from "@/components/SportsLiveBetTracker.vue";
 import SportsBettingInfo from "@/components/SportsBettingInfo.vue";
 import SportsBettingInfoEn from "@/components/SportsBettingInfoEn.vue";
 
@@ -19,7 +18,7 @@ const { locale, locales, t } = useI18n();
 	<SportsLobbyNav />
 	  <SportsLiveEvents :limt="3" />
 	  <SportsPopularEvents />
-	  <SportsLiveBetTracker />
+	  
 	  <SportsBettingInfo>
 		<SportsBettingInfoEn v-if="locale === 'en'" />
 	  </SportsBettingInfo>

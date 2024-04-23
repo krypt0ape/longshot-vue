@@ -13,8 +13,8 @@ const { call, loading } = useAsyncApi('get', '/currency/list')
 const currencies = ref([])
 
 onMounted(async () => {
-  const data = await call()
-  currencies.value = data
+  //const data = await call()
+  //currencies.value = data
 })
 
 </script>

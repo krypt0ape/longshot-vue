@@ -49,7 +49,7 @@ console.log(baseUrl);
 				userStore.setUser(null)
 				return { data: null } 
 			}else {
-				console.error(error)
+				//console.error(error)
 				throw error;
 			}
 		}

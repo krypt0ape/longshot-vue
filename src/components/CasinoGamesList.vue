@@ -12,7 +12,7 @@ const props = defineProps({
 	limit: { type: Number, default: 20 },
 });
 
-const { data, refetch } = useApi("post", "/game-type/list", {
+const { data, refetch, loading } = useApi("post", "/game-type/list", {
 	data: {
 		filters: props.filters,
 		limit: props.limit,
@@ -33,7 +33,7 @@ const gameTypes = computed(() => data.value?.rows ?? []);
 	<!-- <button @click="() => refetch({ search: 'acceptance' })" class="btn text-white">
     EMULATE SEACH BY "acceptance" STRING
   </button> -->
-	<VerticalScrollingList :name="name" :icon="icon" :loading="true" :loading-items="6" >
+	<VerticalScrollingList :name="name" :icon="icon" :loading="loading" :loading-items="8" >
 		<CasinoGamesListItem
 			v-for="gameType in gameTypes"
 			:key="gameType.identifier"

@@ -11,6 +11,8 @@ const canScrollRight = ref(true);
 defineProps({
 	name: String,
 	icon: String,
+	loading: Boolean,
+	loadingItems: Number,
 });
 
 const scrollLeft = () => {
@@ -88,7 +90,10 @@ const checkScrollPosition = () => {
 			ref="track"
 			class="flex space-x-4 max-w-7xl overflow-x-scroll py-4 mb-8"
 		>
-			<slot />
+			<div v-if="loading" class="flex space-x-4 ">
+				<div v-for="i in loadingItems" :key="i" class=" w-[147px] h-[207px] rounded-xl animate-pulse bg-[#273646]">&nbsp;</div>
+			</div>
+			<slot v-else />
 		</div>
 	</div>
 </template>
