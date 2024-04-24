@@ -34,6 +34,16 @@
         </div>
       </div>
 	  <div>
+		<CasinoGameTabs :=""/>
+	  </div>
+	  <div class="mt-[50px]">
+		<CasinoGamesList
+			name="Reccomended"
+			icon="fa-solid fa-rocket"
+			:filters="['popular']"
+		/>
+	  </div>
+	  <div>
 		<CasinoProviders />
 	  </div>
     </div>
@@ -49,6 +59,9 @@ import { useRoute } from "vue-router";
 import { useLocalStorage } from "@/composables/useLocalStorage";
 import Authentificator from "@/components/Authentificator.vue";
 import CasinoProviders from '@/components/CasinoProviders.vue';
+import CasinoGameFavouriteToggle from '@/components/CasinoGameFavouriteToggle.vue';
+import CasinoGamesList from '@/components/CasinoGamesList.vue';
+import CasinoGameTabs from '@/components/CasinoGameTabs.vue';
 
 const route = useRoute()
 const wrapper = ref(1)

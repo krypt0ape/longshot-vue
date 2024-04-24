@@ -9,6 +9,10 @@ const image = computed(() => {
 	return `https://cdn.softswiss.net/i/s4/${props.gameType.providerIdentifier}/${props.gameType.identifier2}.png`;
 });
 
+const url = computed(() => {
+	return `/casino/games/${props.gameType.identifier}`;
+});
+
 const element = ref(null);
 
 const emit = defineEmits({
@@ -16,7 +20,7 @@ const emit = defineEmits({
 });
 </script>
 <template>
-	<div ref="element" class="relative w-[155px]">
+	<RouterLink :to="url" ref="element" class="relative w-[155px]">
 		<i
 			v-if="props.gameType.favoured"
 			class="fa-solid fa-star absolute top-1 left-1 text-xl text-yellow-600 text-white rounded-md p-1 z-50 cursor-pointer"
@@ -58,7 +62,7 @@ const emit = defineEmits({
 			<span class="mx-2 font-semibold text-brand-lightGrey">2,542</span
 			><span class="text-brand-light text-brand-darkerGrey">Playing</span>
 		</p>
-	</div>
+	</RouterLink>
 </template>
 <style scoped>
 .fade-enter-active,

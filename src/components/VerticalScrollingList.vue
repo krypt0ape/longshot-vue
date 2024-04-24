@@ -60,9 +60,9 @@ const checkScrollPosition = () => {
 	<div class="flex justify-between items-center mb-1">
 		<div class="flex items-center">
 			<i :class="icon" class="text-brand-darkerGrey text-2xl" />
-			<h3 class="text-white font-semibold text-2xl tracking-widest px-4 pt-1">
+			<p class="text-brand-lightGrey font-semibold text-lg  px-4 pt-1">
 				{{ name }}
-			</h3>
+			</p>
 		</div>
 		<div class="flex space-x-2">
 			<NeutralButton @click="scrollLeft">

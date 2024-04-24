@@ -24,7 +24,7 @@ const options = computed(() => ({
 
 const { data, refetch } = useApi("post", "/game-type/list", {
 	data: options.value
-};
+});
 
 const { call: toggleFavourite } = useAsyncApi("POST", "/game-type/favourite");
 

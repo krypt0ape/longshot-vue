@@ -36,18 +36,23 @@ const classString = computed(() => {
     str += " cursor-pointer  hover:opacity-80";
   }
   return str + " justify-center items-center " + size.value;
+
 })
 </script>
 <template>
-  <component :is="props.as" v-bind="$attrs" :class="classString">
+  <component :is="props.as" v-bind="$attrs" :class="classString" class="focus:ring-0 focus:ring-offset-0">
     <slot />
   </component>
 </template>
 <style>
 .base-btn {
   border-radius: 10px;
-  line-height: 13px;
+  line-height: 13px;		
   font-weight: 600;
   display: inline-flex;
+}
+.base-btn:focus-visible  {
+	outline: 2px solid #A4ADBD;
+  	outline-offset: 2px;
 }
 </style>

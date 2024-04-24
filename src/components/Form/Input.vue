@@ -3,6 +3,10 @@ import { Transition, onMounted, ref, getCurrentInstance } from "vue";
 
 const model = defineModel()
 
+defineOptions({
+	inheritAttrs: false
+})
+
 const props = defineProps({
   type: {
     default: "text",
@@ -62,10 +66,10 @@ const handleBlur = () => {
       </div>
       <div class="flex items-center">
         <input :id="id" ref="input" :readonly="readonly" :type="type"  :class="[
-      'app-input text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg  border-solid border',
+      'app-input py-[8px] px-[12px] text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg  border-solid border',
       disabled ? 'cursor-not-allowed  text-brand-darkerGrey opacity-80' : '',
 	  error ? 'border-red-500' : 'border-brand-accentStroke',
-      $slots.left ? 'pl-[90px]' : 'pl-4',
+      $slots.left ? 'pl-[40px]' : 'pl-4',
       label && type === 'checkbox' ? '' : 'w-full'
     ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" v-bind="$attrs" @blur="handleBlur"/>
         <label v-if="label && type === 'checkbox'" :for="id"
@@ -90,10 +94,7 @@ const handleBlur = () => {
 </template>
 <style>
 .app-input {
-  border-radius: 5px !important;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) !important;
-  padding: 8px 12px !important;
-  border-radius: 5px !important;
 }
 
 .app-input::placeholder {
