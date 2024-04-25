@@ -7,7 +7,7 @@ export default function useRecentlyPlayed(){
 	const list = ref(storage.get([]));
 
 	const update = (game) => {
-		const index = list.value.findIndex((g) => g.id === game.id);
+		const index = list.value.findIndex((g) => g === game);
 
 		if(index !== -1){
 			list.value.splice(index, 1);

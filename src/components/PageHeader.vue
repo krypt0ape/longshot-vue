@@ -2,7 +2,7 @@
 			<div class="header-row py-4 relative z-20 overflow-hidden">
 			<div class="mx-auto max-w-7xl flex items-center relative">
 				<h2
-					class="text-4xl font-semibold text-white mt-2 uppercase tracking-widest"
+					class="text-4xl font-semibold text-brand-lightGrey mt-2 uppercase "
 				>
 					<slot />
 				</h2>

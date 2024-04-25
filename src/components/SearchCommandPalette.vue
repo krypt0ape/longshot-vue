@@ -108,6 +108,7 @@ const open = ref(false);
 const searchHistory = ref([]);
 
 const addSearchHistory = (term) => {
+	if(! term) return;
 	if(searchHistory.value.includes(term)) return;
 
 	const newHistory = [term].concat(searchHistory.value);
