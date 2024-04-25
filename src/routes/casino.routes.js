@@ -26,6 +26,10 @@ export default [
     component: () => import("../pages/CasinoFavourites.vue"),
   },
   {
+    path: "/casino/recent",
+    component: () => import("../pages/CasinoRecent.vue"),
+  },
+  {
     path: "/casino/group/:type",
     component: () => import("../pages/CasinoGroup.vue"),
   },

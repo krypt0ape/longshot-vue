@@ -6,7 +6,7 @@ import HomeHeroGuest from "@/components/HomeHeroGuest.vue";
 import HomeHeroAuthenticated from "@/components/HomeHeroAuthenticated.vue";
 import GlowGreen from "@/components/GlowGreen.vue";
 import useUserStore from "@/stores/useUserStore";
-import BetFeedHomePage from "@/components/BetFeedHomePage.vue";
+import BetFeedHome from "@/components/BetFeedHome.vue";
 
 const userStore = useUserStore();
 </script>
@@ -129,7 +129,7 @@ const userStore = useUserStore();
 				<img src="/img/SAMSUNGPAY.png" />
 			</div>
 		</div>
-		<BetFeedHomePage />
+		<BetFeedHome />
 	</div>
 </template>
 <style scoped>

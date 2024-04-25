@@ -1,6 +1,7 @@
 <script setup>
 import CasinoGamesList from "@/components/CasinoGamesList.vue";
 import CasinoProviders from "@/components/CasinoProviders.vue";
+import BetFeedCasino from "@/components/BetFeedCasino.vue";
 </script>
 
 <template>
@@ -33,5 +34,6 @@ import CasinoProviders from "@/components/CasinoProviders.vue";
 		/>
 		<!-- New Releases -->
 		<CasinoGamesList name="New Releases" icon="fa-solid fa-rocket-launch" :filters="['new-releases']" />
+		<BetFeedCasino />
 	</div>
 </template>

@@ -1,9 +1,9 @@
 <script setup>
 import PrimaryTab from "@/components/Tabs/PrimaryTab.vue";
 import { ref, computed } from "vue";
-import BetFeedCasino from "@/components/BetFeedCasino.vue";
-import BetFeedSports from "@/components/BetFeedSports.vue";
-import BetFeedLeaderboard from "@/components/BetFeedLeaderboard.vue";
+import BetFeedTableCasino from "@/components/BetFeedTableCasino.vue";
+import BetFeedTableSports from "@/components/BetFeedTableSports.vue";
+import BetFeedTableLeaderboard from "@/components/BetFeedTableLeaderboard.vue";
 import GhostModeToggle from "@/components/GhostModeToggle.vue";
 import useUserStore from "@/stores/useUserStore";
 
@@ -46,9 +46,9 @@ const tabs = computed(() => {
 			</div>
 		</div>
 		<div>
-			<BetFeedCasino v-if="active === 'casino'" />
-			<BetFeedSports v-else-if="active === 'sports'" />
-			<BetFeedLeaderboard v-else-if="active === 'leaderboard'" />
+			<BetFeedTableCasino v-if="active === 'casino'" />
+			<BetFeedTableSports v-else-if="active === 'sports'" />
+			<BetFeedTableLeaderboard v-else-if="active === 'leaderboard'" />
 		</div>
 	</div>
 </template>

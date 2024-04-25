@@ -34,7 +34,7 @@
         </div>
       </div>
 	  <div>
-		<CasinoGameTabs :=""/>
+		<!-- <CasinoGameTabs /> -->
 	  </div>
 	  <div class="mt-[50px]">
 		<CasinoGamesList
@@ -62,6 +62,7 @@ import CasinoProviders from '@/components/CasinoProviders.vue';
 import CasinoGameFavouriteToggle from '@/components/CasinoGameFavouriteToggle.vue';
 import CasinoGamesList from '@/components/CasinoGamesList.vue';
 import CasinoGameTabs from '@/components/CasinoGameTabs.vue';
+import useRecentlyPlayed from '@/composables/useRecentlyPlayed';
 
 const route = useRoute()
 const wrapper = ref(1)
@@ -69,7 +70,7 @@ const selectedCurrency = ref()
 const size = ref()
 const disabledSwitch = ref(true)
 
-const ls = useLocalStorage()
+const {update} = useRecentlyPlayed();
 const gameApi = useGameApi()
 
 const listener = (evt) => {
@@ -82,19 +83,12 @@ const realPlay = computed(() => Boolean(selectedCurrency.value))
 const fullscreen = computed(() => size.value === 'fullscreen')
 
 onMounted(async () => {
-  writeHistory()
+	update(route.params.game);
   document.removeEventListener('keyup', listener)
   document.addEventListener('keyup', listener);
 
-  await loadGame(ls.get('DEFAULT_CURRENCY', { ISO: 'USD', name: 'US Dollar' }));
+  //await loadGame(ls.get('DEFAULT_CURRENCY', { ISO: 'USD', name: 'US Dollar' }));
 })
-
-const writeHistory = () => {
-  const games = ls.get('LAST_GAMES', [])
-  games.unshift(route.params.game)
-  const set = Array.from(new Set(games))
-  ls.set('LAST_GAMES', set)
-}
 
 const onResize = (v) => {
   const element = document.getElementById('main-layout')

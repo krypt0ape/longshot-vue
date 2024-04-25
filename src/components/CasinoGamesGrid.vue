@@ -54,10 +54,13 @@ defineExpose({ refetch: () => refetch(options.value) })
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-6">
-    <CasinoGamesListItem v-for="gameType in data?.rows" :key="gameType.identifier" :game-type="gameType"
-      @favourite="() => favourite(gameType.identifier)" />
-    <div class="mx-auto">
+  <div >
+	<div class="flex flex-wrap gap-6">
+		<CasinoGamesListItem v-for="gameType in data?.rows" :key="gameType.identifier" :game-type="gameType"
+      	@favourite="() => favourite(gameType.identifier)" />
+	</div>
+    
+    <div class="mx-auto max-w-[250px] pt-6 text-center">
       <div v-if="data" class="mx-auto mt-8 text-brand-grey">
         <div class="pb-2">
           <ProgressBar :fill-percent="fillPercent" />

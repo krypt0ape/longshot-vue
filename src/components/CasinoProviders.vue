@@ -13,17 +13,15 @@ const { data, loading, error } = useApi("get", "/provider/list", {
 </script>
 <template>
 	<div class="pt-8 pb-2">
-		<AsyncContent :loading="loading" :error="error">
-			<VerticalScrollingList name="Providers" icon="fa-solid fa-joystick">
-				<CasinoProvidersLogo
-					v-for="provider in data?.rows"
-					:key="provider.identifier"
-					:provider="provider"
-				>
-					<!-- Hack to force the correct height & width with the vertical scrolling and flexbox -->
-					<div class="w-[150px] -mt-[25px]">&nbsp;</div>
-				</CasinoProvidersLogo>
-			</VerticalScrollingList>
-		</AsyncContent>
+		<VerticalScrollingList name="Providers" icon="fa-solid fa-joystick" :loading="loading" :loading-items="7" :loader-style="{height: '95px', width: '182px'}">
+			<CasinoProvidersLogo
+				v-for="provider in data?.rows"
+				:key="provider.identifier"
+				:provider="provider"
+			>
+				<!-- Hack to force the correct height & width with the vertical scrolling and flexbox -->
+				<div class="w-[150px] -mt-[25px]">&nbsp;</div>
+			</CasinoProvidersLogo>
+		</VerticalScrollingList>
 	</div>
 </template>

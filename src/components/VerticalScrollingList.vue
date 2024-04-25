@@ -13,6 +13,10 @@ defineProps({
 	icon: String,
 	loading: Boolean,
 	loadingItems: Number,
+	loaderStyle: {
+		type: Object,
+		default:  () => ({ height: '207px', width: '147px' }),
+	},
 });
 
 const scrollLeft = () => {
@@ -91,7 +95,7 @@ const checkScrollPosition = () => {
 			class="flex space-x-4 max-w-7xl overflow-x-scroll py-4 mb-8"
 		>
 			<div v-if="loading" class="flex space-x-4 ">
-				<div v-for="i in loadingItems" :key="i" class=" w-[147px] h-[207px] rounded-xl animate-pulse bg-[#273646]">&nbsp;</div>
+				<div v-for="i in loadingItems" :key="i" class="  rounded-xl animate-pulse bg-[#273646]" :style="loaderStyle">&nbsp;</div>
 			</div>
 			<slot v-else />
 		</div>
