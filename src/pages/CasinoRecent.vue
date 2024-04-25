@@ -9,6 +9,7 @@ import useRecentyPlayed from "@/composables/useRecentlyPlayed";
 import useApi from "@/composables/useApi";
 import CasinoGamesListItem from "@/components/CasinoGamesListItem.vue";
 import AsyncContent from "@/components/AsyncContent.vue";
+import CasinoProviders from "@/components/CasinoProviders.vue";
 
 const { list } = useRecentyPlayed();
 
@@ -70,6 +71,9 @@ const sortedGames = computed(() => {
 						<em>No games have been played yet.</em>
 					</p>
 				</div>
+			</div>
+			<div>
+				<CasinoProviders />
 			</div>
 			<div class="">
 				<BetFeedCasino />
