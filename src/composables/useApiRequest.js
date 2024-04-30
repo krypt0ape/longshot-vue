@@ -19,6 +19,7 @@ export default function useApiRequest() {
 		params,
 		headers = {},
 	}) => {
+		console.log(params);
 		const baseUrl = import.meta.env.VITE_API_URL;
 
 		if(! ip.value){
