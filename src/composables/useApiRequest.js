@@ -1,11 +1,14 @@
 import axios from "axios";
 import useUserStore from "@/stores/useUserStore";
+import {ref} from "vue";
 
 /**
  * An axios wrapper that handles the country code restrictions on
  * requests and handles the errors from server
  * @returns {request} - a function that makes a request to the API
  */
+const ip = ref(null);
+
 export default function useApiRequest() {
 	const userStore = useUserStore();
 
@@ -17,16 +20,15 @@ export default function useApiRequest() {
 		headers = {},
 	}) => {
 		const baseUrl = import.meta.env.VITE_API_URL;
-console.log(baseUrl);
-		
 
-		// TODO handle this, its hardcoded for now
-		//"Country-Code": ls.get("COUNTRY_CODE"),
-		headers["Country-Code"] = "UK";
-
-		if (!headers["Country-Code"]?.length) {
-			throw new Error(`Failed to get client's countryCode`);
+		if(! ip.value){
+			const { data } = await axios.get("https://api.ipify.org?format=json");
+			ip.value = data.ip;
 		}
+		
+		// Attached to all requets, the node server will do a location check based 
+		// off this ip address and set location cookies
+		headers["Client-Ip"] = ip.value;
 
 		try {
 			const req =  await axios({

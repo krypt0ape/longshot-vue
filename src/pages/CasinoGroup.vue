@@ -7,6 +7,7 @@ import { useRoute } from "vue-router";
 import CasinoGamesGrid from "@/components/CasinoGamesGrid.vue";
 import CasinoGameProvidersSelect from "@/components/CasinoGameProvidersSelect.vue";
 import CasinoGameSortBySelect from "@/components/CasinoGameSortBySelect.vue";
+import BetFeedCasino from '@/components/BetFeedCasino.vue';
 
 const route = useRoute();
 const heading = computed(() => {
@@ -18,7 +19,7 @@ const heading = computed(() => {
 const providers = ref([]);
 const sortBy = ref('az');
 const search = ref('')
-const limit = ref(20)
+const limit = ref(21)
 const grid = ref()
 
 
@@ -28,7 +29,7 @@ const refetch = () => {
 
 const filters = computed(() => {
   return {
-    categories: [route.params.type],
+    category: [route.params.type],
     providers: providers.value.length ? providers.value : null,
     search: search.value
   }
@@ -72,7 +73,7 @@ const updateProvders = (identifier) => {
       <div class="py-2">
         <CasinoSearch v-model="search" />
       </div>
-      <div class="flex justify-between mt-6">
+      <div class="flex justify-between mt-8 mb-10">
         <div class="flex items-center">
           <p class="text-brand-grey text-lg font-medium mr-4"><i class="fa-solid fa-filter-list mr-2"></i>Filter By</p>
           <CasinoGameProvidersSelect :selected="providers" @update="updateProvders" @close="refetch" />
@@ -83,8 +84,7 @@ const updateProvders = (identifier) => {
           <CasinoGameSortBySelect :selected="sortBy" @update:selected="val => sortBy = val" @close="refetch" />
         </div>
       </div>
-      <!-- Games Filters -->
-      <!-- Games Sort -->
+	  
       <!-- Games List  -->
       <CasinoGamesGrid :key="route.params.type" ref="grid" :filters="filters" :limit="limit" :sort="sort"
         @update:limit="(v) => limit = v" />
@@ -94,6 +94,9 @@ const updateProvders = (identifier) => {
         <CasinoProviders />
       </div>
       <!-- Bet Feed -->
+	  <div class="">
+		<BetFeedCasino />
+	  </div>
     </div>
   </div>
 </template>

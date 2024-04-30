@@ -6,10 +6,13 @@ import AppHeaderUserMenuItem from "./AppHeaderUserMenuItem.vue";
 import useAuthModals from "@/composables/useAuthModals";
 import useUserStore from "@/stores/useUserStore";
 import Avatar from "vue-boring-avatars";
+import useRiskManagementStore from "@/stores/useRiskManagementStore";
 
 const userStore = useUserStore();
 const {toggleSignoutModal} = useAuthModals();
 const openWallet = () => {};
+
+const riskManagementStore = useRiskManagementStore();
 
 const user = computed(()=>(userStore.user));
 </script>
@@ -78,7 +81,7 @@ const user = computed(()=>(userStore.user));
 					>
 						<div class="pb-2 border-b border-[#273646]">
 							<AppHeaderUserMenuItem
-								@click="openWallet"
+								@click="riskManagementStore.toggleWalletModal"
 								icon="fa-solid fa-wallet"
 								text="Wallet"
 							/>

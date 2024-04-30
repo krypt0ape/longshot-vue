@@ -19,7 +19,10 @@ const route = useRoute()
 const router = useRouter()
 
 const store = useUserStore();
-const activeTab = computed(() => route.query.modal === 'wallet' ? route.query.tab : null)
+const activeTab = computed(() => {
+	if(!route.query.modal === 'wallet') return null; 
+	return route.query.tab || 'deposit' 
+})
 
 const components = {
   WalletRiskKycCheck,

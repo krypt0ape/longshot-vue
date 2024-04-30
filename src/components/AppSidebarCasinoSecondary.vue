@@ -24,8 +24,8 @@ const items = [
 
 	{
 		icon: "fa-solid fa-diamond-half-stroke",
-		title: "Routellete",
-		to: "/casino/group/routellete",
+		title: "Roulette",
+		to: "/casino/group/roulette",
 	},
 	{
 		icon: "fa-solid fa-cards",

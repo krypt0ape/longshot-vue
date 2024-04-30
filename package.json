@@ -32,7 +32,8 @@
     "vue-qrcode": "^2.2.2",
     "vue-router": "^4.3.0",
     "vue-tippy": "^6.4.1",
-    "vue3-google-login": "^2.0.26"
+    "vue3-google-login": "^2.0.26",
+    "vue3-markdown": "^1.1.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

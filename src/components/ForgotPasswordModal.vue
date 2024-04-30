@@ -5,6 +5,7 @@ import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
 import Input from "./Form/Input.vue";
 import { ref } from "vue";
+import Async from "./Async.vue";
 
 const { forgotPasswordModalOpen, toggleForgotPasswordModal, toggleSigninModal } = useAuthModals();
 

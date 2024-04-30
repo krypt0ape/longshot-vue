@@ -1,5 +1,5 @@
 <script setup>
-import useSidebarStore from "@/stores/useSidebarStore";
+import useSidebar from "@/composables/useSidebar";
 import { useRoute } from "vue-router";
 import AppSidebarPrimaryMenu from "./AppSidebarPrimaryMenu.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
@@ -13,7 +13,7 @@ import AppSidebarCasinoProviders from "./AppSidebarCasinoProviders.vue";
 import AppSidebarSportsPrimary from "./AppSidebarSportsPrimary.vue";
 import AppSidebarSportsSecondary from "./AppSidebarSportsSecondary.vue";
 
-const store = useSidebarStore();
+const store = useSidebar();
 const route = useRoute();
 
 const casinoActive = computed(() => {
@@ -131,3 +131,4 @@ const sportsActive = computed(() => {
 }
 </style>
 @/stores/useMenuStore
+@/composables/useSidebarStore

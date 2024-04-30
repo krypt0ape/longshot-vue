@@ -9,25 +9,33 @@ const pageData = computed(() => {
 	switch (route.params.tab) {
 		case "casino":
 			return {
-				filters: ["roulette", "card", "craps"],
+				filters: {
+					category: ["roulette", "card", "craps"],
+				},
 				name: "Casino",
 				icon: "fa-solid fa-cards",
 			};
 		case "slots":
 			return {
-				filters: ["slots"],
+				filters: {
+					category: ["slots"],
+				},
 				name: "Slots",
 				icon: "fa-solid fa-slot-machine",
 			};
 		case "games":
 			return {
-				filters: ["casual", "crash", "mines"],
+				filters: {
+					category: ["casual", "crash", "mines"],
+				},
 				name: "Games",
 				icon: "fa-solid fa-gamepad",
 			};
 		case "lottery":
 			return {
-				filters: ["lottery"],
+				filters: {
+					category: ["lottery"],
+				},
 				name: "Lottery",
 				icon: "fa-solid fa-gift",
 			};

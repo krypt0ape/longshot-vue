@@ -22,7 +22,7 @@ const { data, loading, error } = useApi("get", "/provider/list", {
 				<CasinoSearch />
 			</div>
 			<div v-if="loading" class="grid grid-cols-6 gap-6 mt-10">
-					<div v-for="i in 36" :key="i" class=" rounded-xl animate-pulse bg-[#273646] h-[95px] w-[182px]">&nbsp;</div>
+					<div v-for="i in 36" :key="i" class=" rounded-xl animate-pulse bg-[#273646] h-[105px] w-[182px]">&nbsp;</div>
 			</div>
 			<div v-else class="grid grid-cols-6 gap-6 mt-8">
 				<div

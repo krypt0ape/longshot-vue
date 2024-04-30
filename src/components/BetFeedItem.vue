@@ -1,4 +1,5 @@
 <script setup>
+import CryptoCurrencyIcon from "@/components/CryptoCurrencyIcon.vue";
 const props = defineProps({
 	bet: Object,
 	alignment: Array,

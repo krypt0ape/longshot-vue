@@ -7,7 +7,5 @@ defineProps({
 })
 </script>
 <template>
-  <ClientOnly>
-    <i :class="icon" v-bind="$attrs" />
-  </ClientOnly>
+  <i :class="icon" v-bind="$attrs" />
 </template>

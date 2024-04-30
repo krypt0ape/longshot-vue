@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="col-span-1 flex items-center">
-				<NuxtLinkLocale>+28</NuxtLinkLocale>
+				<RouterLink>+28</RouterLink>
 			</div>
 		</div>
 	</div>

@@ -3,7 +3,7 @@ import Authentificator from "./Authentificator.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import SecondaryButton from "./Buttons/SecondaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
-import useSidebarStore from "@/stores/useSidebarStore";
+import useSidebar from "@/composables/useSidebar";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import AppHeaderWallet from "./AppHeaderWallet.vue";
@@ -11,7 +11,7 @@ import AppHeaderUserMenu from "./AppHeaderUserMenu.vue";
 
 const route = useRoute();
 
-const store = useSidebarStore();
+const store = useSidebar();
 const casinoActive = computed(() => {
   return route.path.startsWith("/casino");
 });
@@ -62,4 +62,3 @@ const logoLink = computed(() => {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 </style>
-@/stores/useMenuStore

@@ -1,9 +1,9 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import useSidebarStore from "@/stores/useSidebarStore";
+import useSidebar from "@/composables/useSidebar";
 import { useRoute } from "vue-router";
 
-const store = useSidebarStore();
+const store = useSidebar();
 
 const props = defineProps({
 	items: {
@@ -181,4 +181,3 @@ const route = useRoute();
 	color: #07111b;
 }
 </style>
-@/stores/useMenuStore

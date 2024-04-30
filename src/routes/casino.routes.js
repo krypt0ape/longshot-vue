@@ -33,4 +33,8 @@ export default [
     path: "/casino/group/:type",
     component: () => import("../pages/CasinoGroup.vue"),
   },
+  {
+    path: "/casino/providers/:provider",
+    component: () => import("../pages/CasinoProvider.vue"),
+  },
 ];

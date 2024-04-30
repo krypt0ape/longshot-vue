@@ -16,7 +16,7 @@ import ProgressBar from "@/components/ProgressBar.vue";
 				</div>
 			</div>
 			<div class="pt-4">
-				<ProgressBar fillPercent="30" />
+				<ProgressBar :fillPercent="30" />
 			</div>
 			<div class="flex justify-between mt-5">
 				<div>

@@ -1,4 +1,6 @@
 <script setup>
+import CryptoCurrencyIconsUsdt from "@/components/CryptoCurrencyIcons/Usdt.vue";
+
 defineProps({
 	symbol: "",
 });
