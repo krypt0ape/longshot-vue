@@ -66,7 +66,7 @@ const handleBlur = () => {
       </div>
       <div class="flex items-center">
         <input :id="id" ref="input" :readonly="readonly" :type="type"  :class="[
-      'app-input py-[8px] px-[12px] text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg  border-solid border',
+      'app-input py-[10px] px-[12px] text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg  border-solid border-2 rounded-lg',
       disabled ? 'cursor-not-allowed  text-brand-darkerGrey opacity-80' : '',
 	  error ? 'border-red-500' : 'border-brand-accentStroke',
       $slots.left ? 'pl-[40px]' : 'pl-4',

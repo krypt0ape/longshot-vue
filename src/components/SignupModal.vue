@@ -22,7 +22,7 @@ const form = ref({
 	username: "",
 	signupCode: "",
 	affiliateCode: "",
-	acceptMarketingEmails: false,
+	acceptMarketingEmails: true,
 });
 
 const errors = ref({
@@ -84,26 +84,19 @@ const validate = () => {
 			<p class="font-medium text-sm">Fill out your details</p>
 		</template>
 		<div class="mb-4">
-			<h2 class="text-3xl text-brand-lightGrey font-medium tracking-wide">
+			<h2 class="text-3xl text-brand-lightGrey font-medium tracking-wide text-center">
 				Create an Account
 			</h2>
-			<p>Please fill in the details below to create your account.</p>
-			<div class="grid grid-cols-2 gap-6 mt-4 items-center">
+			<!-- <p>Please fill in the details below to create your account.</p> -->
+			<div class="grid  gap-4 mt-2 items-center">
 				<UserEmailInput v-model="form.email" :error="errors.email" />
-				<UserPasswordInput v-model="form.password" :error="errors.password" />
 				<UserUsernameInput v-model="form.username" :error="errors.username" />
+				<UserPasswordInput v-model="form.password" :error="errors.password" />
 				<UserDobInput v-model="form.dob" :error="errors.dob" />
 				<UserOfferCodeInput
 					v-model="form.signupCode"
 					:error="errors.signupCode"
 				/>
-				<div class="mt-[35px] flex items-center">
-					<Checkbox v-model="form.acceptMarketingEmails">
-						<p class="ml-2 text-brand-grey text-sm">
-							Receive Offers & Promotions
-						</p>
-					</Checkbox>
-				</div>
 			</div>
 			<div v-if="signupFail" class="mt-2">
 				<p class="text-red-600">{{signupFail}}</p>

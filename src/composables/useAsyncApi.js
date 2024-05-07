@@ -3,7 +3,7 @@ import useApiRequest from "./useApiRequest";
 
 /**
  * useAsyncApi - returns a call function to call
- * the api when required, it holds the response in 
+ * the api when required, it holds the response in
  * local state and returns from the call function so
  * it can be handled by the component as required.
  */
@@ -23,11 +23,12 @@ export default function useAsyncApi(method, path) {
 				path: path,
 			};
 
-			let response = await request({
-				...baseOptions, ...options
-			  });
+			const requestOptions = {
+				...baseOptions,
+				...options,
+			};
 
-			await new Promise((resolve) => setTimeout(resolve, 1000)); // Forcing a delay make the UI less jarring
+			let response = await request(requestOptions);
 
 			loading.value = false;
 
@@ -45,6 +46,6 @@ export default function useAsyncApi(method, path) {
 		loading,
 		error,
 		call,
-		data
+		data,
 	};
 }

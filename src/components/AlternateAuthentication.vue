@@ -1,5 +1,6 @@
 <script setup>
 import useAuthModals from '@/composables/useAuthModals';
+import GoogleOAuth from './GoogleOAuth.vue'
 
 const props = defineProps({
 	context: {
@@ -21,9 +22,7 @@ const { toggleSigninModal, toggleSignupModal } = useAuthModals();
 			<span class="bg-[#303D4B] h-[1px] w-[108px]">&nbsp;</span>
 		</div>
 		<div class="flex justify-center mt-2 space-x-2">
-			<a class="auth-login-button" v-tippy="{ content: 'Login With Gmail', placement: 'top' }">
-				<i class="fa-brands fa-google "></i>
-			</a>
+			<GoogleOAuth class="auth-login-button"/>
 			<a class="auth-login-button" v-tippy="{ content: 'Login With Facebook', placement: 'top' }">
 				<i class="fa-brands fa-facebook-f "></i>
 			</a>

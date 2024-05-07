@@ -23,9 +23,9 @@ createApp(App)
 			}, // => Global default options * see all props
 		}
 	) 
-	// .use(vue3GoogleLogin, {
-	// 	clientId: "YOUR_GOOGLE_CLIENT_ID",
-	// })
+	.use(vue3GoogleLogin, {
+		clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+	})
 	.use(pinia)
 	.use(i18n)
 	.use(router)

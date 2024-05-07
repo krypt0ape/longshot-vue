@@ -7,10 +7,10 @@
 				<img src="/img/ColorWhite_Full.png" class="w-[100px]" />
 				<div class="text-brand-grey text-right">
 					<slot name="header" />
-				</div>
+			</div>
 			</div>
 		</template>
-		<div class="px-6 py-4 bg-brand-darkBg">
+		<div class="px-6 pb-4 bg-brand-accentBgHeader">
 			<slot />
 		</div>
 	</Modal>
