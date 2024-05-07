@@ -22,7 +22,7 @@ const form = ref({
 	username: "",
 	signupCode: "",
 	affiliateCode: "",
-	acceptMarketingEmails: false,
+	acceptMarketingEmails: true,
 });
 
 const errors = ref({

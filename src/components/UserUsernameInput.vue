@@ -8,6 +8,7 @@ const props = defineProps({
 	error: String
 });
 
+
 const model = defineModel();
 
 const {data, call, loading} = useAsyncApi("GET", "/auth/check-username");
