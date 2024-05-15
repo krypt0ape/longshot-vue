@@ -1,9 +1,12 @@
 <script setup>
-import { computed } from 'vue';
+import { onMounted } from 'vue'
+import useApi from "@/composables/useApi";
 import SportsLiveEventsTypeSelect from "@/components/SportsLiveEventsTypeSelect.vue";
 import SportsIconTabs from "@/components/SportsIconTabs.vue";
 import SportsTournamentCard from "@/components/SportsTournamentCard.vue";
 import SportsEventCard from "@/components/SportsEventCard.vue";
+
+const { data, refetch, loading } = useApi("get", "/sportsbook/list");
 
 defineProps({
   limit: {
@@ -11,7 +14,19 @@ defineProps({
     default: 5,
   },
 });
+
+const icon = (event) => {
+  console.log(event)
+  switch (event) {
+    default:
+      return 'fa-solid fa-futbol'
+  }
+}
+
+onMounted(() => refetch())
+
 </script>
+
 <template>
   <div class="max-w-7xl mx-auto">
     <div class="flex items-center ">
@@ -23,15 +38,10 @@ defineProps({
       <SportsIconTabs />
     </div>
     <div>
-      <SportsTournamentCard icon="fa-solid fa-futbol" title="International / WAFF Championship, Women">
-        <SportsEventCard />
+      <SportsTournamentCard v-for="(index, data) in data" :icon="icon(event)" :title="title(event)">
+        <!-- <SportsEventCard /> -->
       </SportsTournamentCard>
-      <SportsTournamentCard icon="fa-solid fa-futbol" title="International / WAFF Championship, Women">
-        <SportsEventCard />
-      </SportsTournamentCard>
-      <SportsTournamentCard icon="fa-solid fa-futbol" title="International / WAFF Championship, Women">
-        <SportsEventCard />
-      </SportsTournamentCard>
+
       <div class="text-brand-light flex ml-[30px] space-x-4 items-center">
         <span class="bg-brand-dark-light flex items-center justify-center rounded-full h-[25px] w-[25px]">
           <i class="fa-solid fa-chevron-right text-xs" />

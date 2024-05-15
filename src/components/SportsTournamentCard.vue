@@ -26,9 +26,9 @@ defineProps({
         <DisclosurePanel>
           <slot />
           <div v-if="loadmore" class="pl-12 mt-4 py-6 border-t border-[#426575]">
-            <RouterLink :to="loadmore" class="text-brand-darkerGrey font-semibold">
+            <!-- <RouterLink :to="loadmore" class="text-brand-darkerGrey font-semibold">
               <i class="fa-solid fa-angle-right mr-4" />Load More
-            </RouterLink>
+            </RouterLink> -->
           </div>
         </DisclosurePanel>
       </transition>
