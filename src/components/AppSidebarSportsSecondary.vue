@@ -1,4 +1,6 @@
 <script setup>
+import AppSidebarMenu from "@/components/AppSidebarMenu.vue";
+
 const items = [
 	{
 		icon: "fa-solid fa-futbol",
@@ -49,9 +51,7 @@ const items = [
 </script>
 <template>
 	<div class="mb-4">
-		<AppSidebarMenu :items="items">
-			<h3 class="px-4 font-medium  pt-[10px] text-brand-lightGrey text- mb-1">Top Sports</h3>
-		</AppSidebarMenu>
+		<AppSidebarMenu :items="items" heading="Top Sports" />
 	</div>
 </template>
 <style></style>

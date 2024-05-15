@@ -1,4 +1,5 @@
 <script setup>
+import AppSidebarMenu from "@/components/AppSidebarMenu.vue";
 const items = [
 	{
 		icon: "fa-solid fa-circle-play",
