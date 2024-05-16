@@ -17,6 +17,10 @@ defineProps({
 		type: Object,
 		default:  () => ({ height: '207px', width: '147px' }),
 	},
+	controls: {
+		type: Boolean,
+		default: true,
+	},
 });
 
 const scrollLeft = () => {
@@ -68,7 +72,7 @@ const checkScrollPosition = () => {
 				{{ name }}
 			</p>
 		</div>
-		<div class="flex space-x-2">
+		<div v-if="controls" class="flex space-x-2">
 			<NeutralButton @click="scrollLeft">
 				<i class="fa-solid fa-chevron-left text-sm" />
 			</NeutralButton>
@@ -80,15 +84,19 @@ const checkScrollPosition = () => {
 	<div class="relative">
 		<div
 			v-if="canScrollLeft"
-			class="absolute top-0 left-0 bg-red-500 z-20 bottom-0 w-[50px] scroller-fadeout-left"
+			@click="scrollLeft"
+			class="absolute top-0 left-0 bg-red-500 z-50 bottom-0 w-[50px]  cursor-pointer scroller-fadeout-left flex items-center justify-start"
 		>
 			&nbsp;
+			<i v-if="! controls" class="fa-solid fa-chevron-left text-lg text-brand-grey ml-1" />
 		</div>
 		<div
 			v-if="canScrollRight"
-			class="absolute top-0 right-0 bg-red-500 z-20 bottom-0 w-[50px] scroller-fadeout-right"
+			@click="scrollRight"
+			class="absolute top-0 right-0 bg-red-500 z-50 bottom-0 w-[50px]  cursor-pointer scroller-fadeout-right flex items-center justify-end"
 		>
 			&nbsp;
+			<i v-if="! controls" class="fa-solid fa-chevron-right text-lg text-brand-grey mr-1 z-50 relative" 	 />
 		</div>
 		<div
 			ref="track"
