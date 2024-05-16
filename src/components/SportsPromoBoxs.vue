@@ -34,7 +34,7 @@ const promotions = computed(() => {
 		<VerticalScrollingList
 			:loading="loading"
 			:loading-items="7"
-			:loader-style="{ height: '95px', width: '182px' }"
+			:loader-style="{ height: '205px', width: '395px' }"
 			:controls="false"
 		>
 			<PromoBox
