@@ -1,19 +1,20 @@
 {
-	"global": {
-		"view_all" : "Ver Todo"
-	},
-	"primary_sidebar" : {
-		"promotions" : "Promociones",
-		"affiliate" : "Afiliado",
-		"vip_club" : "VIP Club",
-		"blog" : "Blog"
-	},
-	"secondary_sidebar" : {
-		"policies" : "Políticas",
-		"live_support" : "Soporte en Vivo",
-		"language" : "Idioma"
-	},
-	"footer" : {
-		"all_rights_reserved" : "Todos los derechos reservados"
-	}
+  "global": {
+    "selecated-language": "Español",
+    "view_all": "Ver Todo"
+  },
+  "primary_sidebar": {
+    "promotions": "Promociones",
+    "affiliate": "Afiliado",
+    "vip_club": "VIP Club",
+    "blog": "Blog"
+  },
+  "secondary_sidebar": {
+    "policies": "Políticas",
+    "live_support": "Soporte en Vivo",
+    "language": "Idioma"
+  },
+  "footer": {
+    "all_rights_reserved": "Todos los derechos reservados"
+  }
 }

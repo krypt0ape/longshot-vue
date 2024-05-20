@@ -28,7 +28,7 @@
     "vue": "^3.4.21",
     "vue-boring-avatars": "^1.4.0",
     "vue-google-oauth2": "^1.5.10",
-    "vue-i18n": "^9.10.2",
+    "vue-i18n": "^9.13.1",
     "vue-qrcode": "^2.2.2",
     "vue-router": "^4.3.0",
     "vue-tippy": "^6.4.1",

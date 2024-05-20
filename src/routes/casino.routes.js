@@ -1,6 +1,6 @@
 export default [
   {
-    path: "/casino/home",
+    path: "casino/home",
     component: () => import("../layouts/CasinoHomeLayout.vue"),
     children: [
       {
@@ -9,32 +9,32 @@ export default [
       },
       {
         path: ":tab",
-        component: () => import("../pages/CasinoHomeTab.vue"), 
+        component: () => import("../pages/CasinoHomeTab.vue"),
       },
     ],
   },
   {
-    path: "/casino/games/:game",
+    path: "casino/games/:game",
     component: () => import("../pages/CasinoGame.vue"),
   },
   {
-    path: "/casino/providers",
+    path: "casino/providers",
     component: () => import("../pages/CasinoProviders.vue"),
   },
   {
-    path: "/casino/favourites",
+    path: "casino/favourites",
     component: () => import("../pages/CasinoFavourites.vue"),
   },
   {
-    path: "/casino/recent",
+    path: "casino/recent",
     component: () => import("../pages/CasinoRecent.vue"),
   },
   {
-    path: "/casino/group/:type",
+    path: "casino/group/:type",
     component: () => import("../pages/CasinoGroup.vue"),
   },
   {
-    path: "/casino/providers/:provider",
+    path: "casino/providers/:provider",
     component: () => import("../pages/CasinoProvider.vue"),
   },
 ];
