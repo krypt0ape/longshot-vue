@@ -35,4 +35,8 @@ export default [
       },
     ],
   },
+  {
+    path: "/sports/:sport/:category/:tournament/:event",
+    component: () => import("../pages/SportsEvent.vue"),
+  },
 ];
