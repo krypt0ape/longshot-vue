@@ -13,9 +13,11 @@ const model = defineModel();
 	<Async :loading="loading">
 		<div v-if="data">
 			<!-- <pre>{{data}}</pre> -->
-			<div v-for="t in data[0].tournaments" :key="t.id">
-				<div v-for="event in t.sportEvents" :key="event.id">
-					<RouterLink class="hover:text-brand-grey" :to="'/sports/' + data[0].id + '/' + t.id + '/' + event.id">{{ event.id }}</RouterLink>	
+			<div v-for="cat in data[0].categories" :key="cat.id">
+				<div v-for="t in cat.tournaments" :key="t.id">
+					<div v-for="event in t.sportEvents" :key="event.id">
+						<RouterLink class="hover:text-brand-grey" :to="'/sports/' + data[0].slug + '/' + cat.slug + '/'+ t.slug + '/' + event.slug">{{ event.slug }}</RouterLink>	
+					</div>
 				</div>
 			</div>
 		</div>
