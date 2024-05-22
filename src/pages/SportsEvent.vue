@@ -9,14 +9,16 @@ const path = "/sportsbook/" + route.params.event + "/markets";
 const { data, loading } = useApi("get", path);
 </script>
 <template>
-	<div class="text-white pl-12 mt-12 ">
-		<Async :loading="loading">
-			<div v-if="data">
-				<div v-for="e in data">
-					<!-- <pre>{{e}}</pre> -->
-					<SportsEventMarketCard :market="e" />
+	<div class="max-w-7xl mx-auto">
+		<div class="text-white pl-12 mt-12 max-w-[800px]">
+			<Async :loading="loading">
+				<div v-if="data">
+					<div v-for="e in data.markets">
+						<!-- <pre>{{e}}</pre> -->
+						<SportsEventMarketCard :market="e"  />
+					</div>
 				</div>
-			</div>
-		</Async>
+			</Async>
+		</div>
 	</div>
 </template>

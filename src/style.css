@@ -29,6 +29,12 @@ p, body {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+.green-gradient-text {
+	background: linear-gradient(180deg, #68D763 0%, #3AAA35 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 
 .green-gradient-bg {
 background: linear-gradient(180deg, #68D763 0%, #3AAA35 100%);
