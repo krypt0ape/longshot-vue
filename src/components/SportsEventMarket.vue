@@ -29,4 +29,5 @@ defineProps({
 			/>
 		</div>
 	</div>
+	<pre v-else>{{market}}</pre>
 </template>

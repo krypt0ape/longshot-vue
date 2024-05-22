@@ -12,6 +12,13 @@ const alignment = computed(()=>{
 		return heading.align;
 	})
 })	
+// TODO come back here and do this thing
+// add 5 to the variavle props.heading
+const addFive = (props) => {
+	return props.headings.map((heading)=>{
+		return heading.align + 5;
+	})
+}
 </script>
 <template>
 	<div class="mt-[20px] mb-[60px]">
