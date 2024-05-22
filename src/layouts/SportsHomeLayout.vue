@@ -1,9 +1,7 @@
 <script setup>
-
 import SportsTabs from "@/components/SportsTabs.vue";
 import SportsPromoBoxs from "@/components/SportsPromoBoxs.vue";
 import SportsEventSearch from "@/components/SportsEventSearch.vue";
-
 </script>
 <template>
   <div class="max-w-7xl mx-auto pt-[15px] relative px-4">
