@@ -18,7 +18,7 @@ defineProps({
 					<i :class="[open ? 'fa-chevron-down' : 'fa-chevron-left', 'fa-solid  text-white']"></i>
 				</div>
 			</DisclosureButton>
-			<DisclosurePanel class="text-gray-500 px-[32px] py-[15px] sports-event-market-card-panel">
+			<DisclosurePanel static class="text-gray-500 px-[20px] py-[20px] sports-event-market-card-panel">
 				<SportsEventMarket :market="market" />
 				<!-- <pre>{{ market }}</pre> -->
 			</DisclosurePanel>

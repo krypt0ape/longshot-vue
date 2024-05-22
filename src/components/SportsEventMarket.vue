@@ -8,10 +8,20 @@ defineProps({
 });
 </script>
 <template>
-	<div v-if="market.marketLines.length === 1" class="flex justify-between space-x-4">
+	<div
+		v-if="market.marketLines.length === 1"
+		:class="[
+			'grid gap-x-4 gap-y-2',
+			market.marketLines[0].marketLineOutcomes.length > 2
+					? 'grid-cols-3'
+					: 'grid-cols-2',
+		]"
+	>
 		<div
 			v-for="o in market.marketLines[0].marketLineOutcomes"
-			class="capitalize flex-1 "
+			:class="[
+				'capitalize',
+			]"
 		>
 			<SportsEventMarketLineOutcome
 				:market-line-outcome="o"
