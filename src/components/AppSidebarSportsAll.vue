@@ -9,7 +9,7 @@ const { data, refetch, loading } = useApi("get", "/sportsbook/sports");
 const items = computed(() =>
   data.value?.map((d) => ({
     title: d.name,
-    to: d.slug,
+    to: `/sports/${d.slug}`,
   }))
 );
 
