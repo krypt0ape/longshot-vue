@@ -53,8 +53,7 @@ onMounted(() => {
     <div>
       <SportsTournamentCard
         v-for="tournament in tournaments"
-        :icon="icon(tournament)"
-        :title="title(tournament)"
+        :title="tournament.name"
         :key="tournament.id"
       >
         <SportsEventCard

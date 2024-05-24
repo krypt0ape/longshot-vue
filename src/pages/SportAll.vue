@@ -12,20 +12,25 @@ const { data, refetch, loading } = useApi(
   "get",
   `/sportsbook/${sport.value}/categories`
 );
-
-onMounted(refetch);
 </script>
 <template>
   <div class="max-w-7xl mx-auto mt-[30px]">
-    <SportsCategoryCard v-for="category in data" :title="category.name">
+    <SportsCategoryCard
+      v-for="category in data?.categories"
+      :title="category.name"
+    >
       <p class="pt-0 p-5">
         <NeutralButton
           v-for="tournament in category.tournaments"
           :to="`/sports/${category.sport.slug}/${category.slug}/${tournament.slug}`"
           as="RouterLink"
-          class="!px-[15px] py-[14px] mr-3"
-          >{{ tournament.name }}</NeutralButton
-        >
+          class="!px-[15px] py-[14px] mt-2 mr-3"
+          >{{ tournament.name }}
+          <span
+            class="bg-green-100 text-green-800 text-xs font-medium px-2 pt-1 pb-0.5 rounded-lg ml-2 dark:bg-gray-700 dark:text-green-400 border border-green-400"
+            >{{ tournament.sportEvents.length }}</span
+          >
+        </NeutralButton>
       </p>
     </SportsCategoryCard>
   </div>

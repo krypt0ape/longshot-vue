@@ -35,12 +35,22 @@ const category = computed(() => {
   }
 });
 
+const tournament = computed(() => {
+  switch (name.toLowerCase()) {
+    case "england":
+    default:
+      return "fa-duotone fa-flag";
+  }
+});
+
 const className = computed(() => {
   switch (entity.toLowerCase()) {
     case "sport":
       return sport.value;
     case "category":
       return category.value;
+    case "tournament":
+      return tournament.value;
     default:
       throw new Error("Unknown entity");
   }
