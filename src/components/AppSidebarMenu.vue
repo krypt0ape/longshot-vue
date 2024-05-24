@@ -133,7 +133,12 @@ const route = useRoute();
                     ]"
                   >
                     <span class="truncate inline-block">
-                      <i :class="['mr-2', child.icon]" />{{ child.title }}
+                      <SportsEntityIcon
+                        class="mx-2"
+                        entity="sport"
+                        :name="child.title"
+                      />
+                      {{ child.title }}
                     </span>
                   </RouterLink>
                 </DisclosurePanel>

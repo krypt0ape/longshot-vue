@@ -6,12 +6,19 @@ defineProps({
   title: "required",
   loadmore: "",
 });
+
+const emit = defineEmits(["toggle"]);
+
+const handleToggle = (open) => {
+  emit("toggle", open);
+};
 </script>
 <template>
   <div class="sports-category-card mb-[20px]">
     <Disclosure v-slot="{ open }" :defaultOpen="true">
       <!-- Use the `open` state to conditionally change the direction of an icon. -->
       <DisclosureButton
+        @click="() => handleToggle(open)"
         class="flex justify-between w-full sports-category-card-heading px-[32px] py-[20px]"
       >
         <div class="flex space-x-4">

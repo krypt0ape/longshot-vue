@@ -1,5 +1,5 @@
 <script setup>
-import {  computed } from "vue";
+import { computed } from "vue";
 
 const { sportEvent } = defineProps({
   sportEvent: {
@@ -8,7 +8,7 @@ const { sportEvent } = defineProps({
   },
 });
 
-const specify = (string, marketLine) => {
+const specify = (sportEventName, string, marketLine) => {
   const competitors = {};
   let index = 0;
   for (const competitor of sportEvent.competitors) {
@@ -16,11 +16,14 @@ const specify = (string, marketLine) => {
     competitors[`$competitor${index}`] = competitor.name;
   }
 
-  const specifiers = marketLine?.specifiers.split("|").reduce((obj, str) => {
-    const [key, value] = str.split("=");
-    obj[key] = value;
-    return obj;
-  }, competitors);
+  const specifiers = marketLine?.specifiers.split("|").reduce(
+    (obj, str) => {
+      const [key, value] = str.split("=");
+      obj[key] = value;
+      return obj;
+    },
+    { ...competitors, $event: sportEventName }
+  );
 
   const word = [
     "first",
@@ -169,13 +172,19 @@ const status = computed(() => {
           class="text-brand-darkerGrey font-medium text-center pt-[10px] pb-[5px]"
         >
           <p>
-            {{ specify(marketLine.market.name, marketLine) }}
+            {{ specify(sportEvent.name, marketLine.market.name, marketLine) }}
           </p>
           <div
             v-for="marketLineOutcome in marketLine.marketLineOutcomes"
             :key="marketLineOutcome.id"
           >
-            {{ specify(marketLineOutcome.outcome.name, marketLine) }}
+            {{
+              specify(
+                sportEvent.name,
+                marketLineOutcome.outcome.name,
+                marketLine
+              )
+            }}
             <br />
             odds {{ marketLineOutcome.odds }}
             <br />
