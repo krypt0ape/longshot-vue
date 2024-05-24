@@ -1,7 +1,7 @@
 <script setup>
 import useBetslipStore from "@/stores/useBetslipStore";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
-
+import BetSlipItem from "@/components/BetSlipItem.vue";
 
 const store = useBetslipStore();
 
@@ -13,12 +13,7 @@ const store = useBetslipStore();
 			class="sticky top-0 bottom-0 w-[330px] pl-[30px] py-[30px] bg-brand-accentBgHeader h-full"
 		>
 			<p class="text-xl text-white">BetSlip</p>
-			<div class="text-white my-4 py-4 border-b " v-for="(bet, key) in store.betslip" :key="key">
-				<p>{{ bet.sportEventLabel }}</p>
-				<p>{{ bet.marketLabel }}</p>
-				<p>{{ bet.outcomeLabel }}</p>
-				<p>{{ bet.odds }}</p>
-			</div>
+			<BetSlipItem v-for="(bet, key) in store.betslip" :key="key" :bet="bet" />
 			<PrimaryButton @click="store.postBets" class="mt-[15px]">Place Bets</PrimaryButton>
 		</aside>
 	</transition>

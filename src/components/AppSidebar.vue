@@ -13,6 +13,7 @@ import AppSidebarCasinoProviders from "./AppSidebarCasinoProviders.vue";
 import AppSidebarSportsPrimary from "./AppSidebarSportsPrimary.vue";
 import AppSidebarSportsSecondary from "./AppSidebarSportsSecondary.vue";
 import AppSidebarSportsAll from "./AppSidebarSportsAll.vue";
+import AppSidebarOddsFormatSelector from "./AppSidebarOddsFormatSelector.vue";
 
 const store = useSidebar();
 const route = useRoute();
@@ -124,6 +125,7 @@ const sportsActive = computed(() => {
             ><AppSidebarSportsPrimary />
             <AppSidebarSportsSecondary />
             <AppSidebarSportsAll />
+			<AppSidebarOddsFormatSelector />
           </template>
           <AppSidebarPrimaryMenu />
           <AppSidebarSecondaryMenu />

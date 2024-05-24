@@ -9,6 +9,7 @@ import VueTippy from "vue-tippy";
 import "tippy.js/dist/tippy.css"; // optional for styling
 
 const pinia = createPinia();
+
 createApp(App)
 	.use(
 		VueTippy,

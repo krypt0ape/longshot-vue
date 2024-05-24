@@ -2,7 +2,7 @@
 import { marketName, eventName } from "@/utils/radarHelpers";
 import useBetslipStore from "@/stores/useBetslipStore";
 import { computed } from "vue";
-
+import useFormatOdds from "@/composables/useFormatOdds";
 const store = useBetslipStore();
 
 const props = defineProps({
@@ -28,6 +28,8 @@ const props = defineProps({
 	},
 });
 
+const formatOdds = useFormatOdds(props.marketLineOutcome.odds);
+
 const addToBetslip = () => {
 	store.addToBetslip({
 		sportEventId: props.event.id,
@@ -41,11 +43,9 @@ const addToBetslip = () => {
 };
 
 const outcomeLabel = computed(() => {
-	return marketName(
-		props.marketLineOutcome.outcome.name,
-		props.competitors
-	);
+	return marketName(props.marketLineOutcome.outcome.name, props.competitors);
 });
+
 </script>
 <template>
 	<div
@@ -60,7 +60,7 @@ const outcomeLabel = computed(() => {
 		</p>
 		<!-- TODO user preference odds format -->
 		<p class="green-gradient-text font-semibold">
-			{{ marketLineOutcome.odds }}
+			{{ formatOdds.odds }}
 		</p>
 	</div>
 </template>
