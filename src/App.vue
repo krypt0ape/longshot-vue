@@ -14,6 +14,7 @@ import SigninModal from "@/components/SigninModal.vue";
 import SignoutModal from "@/components/SignoutModal.vue";
 import ForgotPasswordModal from "@/components/ForgotPasswordModal.vue";
 import PromotionModal from "@/components/PromotionModal.vue";
+import BetSlip from "@/components/BetSlip.vue";
 
 const route = useRoute();
 
@@ -51,7 +52,7 @@ const topImage = computed(() => {
 					id="page"
 					:class="['flex-1  relative  min-h-screen flex flex-col']"
 				>
-					<div id="main-layout" class="flex-1 relative z-20 min-h-[500px]">
+					<div id="main-layout" class="flex flex-1 relative z-20 min-h-[500px]">
 						<router-view v-slot="{ Component }">
 							<transition name="page">
 								<component :is="Component" />
@@ -63,7 +64,7 @@ const topImage = computed(() => {
 					</div>
 				</div>
 			</section>
-			<aside></aside>
+			<BetSlip />
 
 			<PromotionModal />
 			<WalletModal />
@@ -87,5 +88,4 @@ const topImage = computed(() => {
 	filter: blur(1rem);
 }
 </style>
-@/stores/useMenuStore
-@/composables/useSidebarStore
+@/stores/useMenuStore @/composables/useSidebarStore

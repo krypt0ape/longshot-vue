@@ -1,26 +1,37 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import SportsEventMarket from "@/components/SportsEventMarket.vue";
+import {marketName} from "@/utils/radarHelpers"
+import { computed} from "vue";
 
-defineProps({
+const props = defineProps({
 	market: {
 		type: Object,
 		required: true,
 	},
+	event: {
+		type: Object,
+		required: true,
+	},
 });
+
+
+const specifier = computed(()=>{
+	return props.market.marketLines[0].specifiers
+})
 </script>
 <template>
 	<div class="sports-event-market-card my-6">
 		<Disclosure v-slot="{ open }">
 			<DisclosureButton class="px-[32px] py-[15px]  w-full">
 				<div class="flex justify-between items-center">
-					<p class="font-medium text-lg">{{ market.name }}</p>
+					<p class="font-medium text-lg">{{ marketName(market.name, event.competitors, specifier) }} - ID {{ market.id }}</p>
 					<i :class="[open ? 'fa-chevron-down' : 'fa-chevron-left', 'fa-solid  text-white']"></i>
 				</div>
 			</DisclosureButton>
-			<DisclosurePanel static class="text-gray-500 px-[20px] py-[20px] sports-event-market-card-panel">
-				<SportsEventMarket :market="market" />
-				<!-- <pre>{{ market }}</pre> -->
+			<DisclosurePanel  static class="text-gray-500 px-[20px] py-[20px] sports-event-market-card-panel">
+				<SportsEventMarket :market="market" :event="event"/>
+				<!-- <pre>{{ event }}</pre> -->
 			</DisclosurePanel>
 		</Disclosure>
 	</div>

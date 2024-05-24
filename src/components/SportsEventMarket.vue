@@ -5,6 +5,10 @@ defineProps({
 		type: Object,
 		required: true,
 	},
+	event: {
+		type: Object,
+		required: true,
+	},
 });
 </script>
 <template>
@@ -19,13 +23,18 @@ defineProps({
 	>
 		<div
 			v-for="o in market.marketLines[0].marketLineOutcomes"
+			:key="o.id"
 			:class="[
 				'capitalize',
 			]"
 		>
 			<SportsEventMarketLineOutcome
 				:market-line-outcome="o"
-				:competitors="market.marketLines[0].sportEvent.competitors"
+				:competitors="event.competitors"
+				:market-id="market.id"
+				:event="event"
+				:sport-event-label="event.name"
+				:market-label="market.name"
 			/>
 		</div>
 	</div>
