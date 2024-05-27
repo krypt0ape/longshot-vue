@@ -1,7 +1,7 @@
 <script setup>
 import { marketName, eventName } from "@/utils/radarHelpers";
 import useBetslipStore from "@/stores/useBetslipStore";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import useFormatOdds from "@/composables/useFormatOdds";
 const store = useBetslipStore();
 
@@ -60,7 +60,7 @@ const outcomeLabel = computed(() => {
 		</p>
 		<!-- TODO user preference odds format -->
 		<p class="green-gradient-text font-semibold">
-			{{ formatOdds.odds }}
+			{{ formatOdds.odds.value }}
 		</p>
 	</div>
 </template>
