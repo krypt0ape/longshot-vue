@@ -26,6 +26,10 @@ const props = defineProps({
 		type: Object,
 		required: true,
 	},
+	specifiers: {
+		type: String,
+		required: false,
+	},
 });
 
 const formatOdds = useFormatOdds(props.marketLineOutcome.odds);
@@ -43,7 +47,7 @@ const addToBetslip = () => {
 };
 
 const outcomeLabel = computed(() => {
-	return marketName(props.marketLineOutcome.outcome.name, props.competitors);
+	return marketName(props.marketLineOutcome.outcome.name, props.competitors, props.specifiers);
 });
 
 </script>

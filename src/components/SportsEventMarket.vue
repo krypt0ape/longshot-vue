@@ -35,8 +35,9 @@ defineProps({
 				:event="event"
 				:sport-event-label="event.name"
 				:market-label="market.name"
+				:specifiers="market.marketLines[0].specifiers"
 			/>
 		</div>
 	</div>
-	<!-- <pre v-else>{{market}}</pre> -->
+	<pre v-else>{{market}}</pre>
 </template>

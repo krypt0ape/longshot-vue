@@ -19,7 +19,8 @@ const { data, loading } = useApi("get", path);
 			<Async :loading="loading">
 				<div v-if="data">
 					<!-- <pre>{{data.event}}</pre> -->
-					<p class="text-3xl font-medium">{{ eventName(data.event) }}</p>
+					<p class="text-3xl font-medium">{{ eventName(data.event) }} </p>
+					<p class="text-xl mt-1">Status: {{ data.event.status}}</p>
 					<div v-for="e in data.markets" :key="e.id">
 						<SportsEventMarketCard :market="e"  :event="data.event"/>
 					</div>

@@ -19,19 +19,23 @@ const props = defineProps({
 const specifier = computed(()=>{
 	return props.market.marketLines[0].specifiers
 })
+
+const status = computed(()=>{
+	return props.market.marketLines[0].status
+})
 </script>
 <template>
 	<div class="sports-event-market-card my-6">
 		<Disclosure v-slot="{ open }">
 			<DisclosureButton class="px-[32px] py-[15px]  w-full">
 				<div class="flex justify-between items-center">
-					<p class="font-medium text-lg">{{ marketName(market.name, event.competitors, specifier) }} - ID {{ market.id }}</p>
+					<p class="font-medium text-lg">{{ marketName(market.name, event.competitors, specifier) }} - ID: {{ market.id }} - Status: {{status}}</p>
 					<i :class="[open ? 'fa-chevron-down' : 'fa-chevron-left', 'fa-solid  text-white']"></i>
 				</div>
 			</DisclosureButton>
-			<DisclosurePanel  static class="text-gray-500 px-[20px] py-[20px] sports-event-market-card-panel">
+			<DisclosurePanel static   class="text-gray-500 px-[20px] py-[20px] sports-event-market-card-panel">
 				<SportsEventMarket :market="market" :event="event"/>
-				<!-- <pre>{{ event }}</pre> -->
+				<!-- <pre>{{ market }}</pre> -->
 			</DisclosurePanel>
 		</Disclosure>
 	</div>

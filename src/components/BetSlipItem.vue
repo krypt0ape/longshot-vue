@@ -17,6 +17,6 @@ const formatOdds = useFormatOdds(props.bet.odds);
 		<p>{{ bet.sportEventLabel }}</p>
 		<p>{{ bet.marketLabel }}</p>
 		<p>{{ bet.outcomeLabel }}</p>
-		<p>{{ formatOdds.odds }}</p>
+		<p>{{ formatOdds.odds.value }}</p>
 	</div>
 </template>
