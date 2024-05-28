@@ -14,6 +14,10 @@ export default [
     ],
   },
   {
+    path: "/sports/my-bets",
+    component: () => import("../layouts/SportsMyBetsLayout.vue"),
+  },
+  {
     path: "/sports/:sport/:category/:tournament/:event",
     component: () => import("../pages/SportsEvent.vue"),
   },
