@@ -10,10 +10,12 @@ const store = useBetslipStore();
 	<transition name="slide">
 		<aside
 			v-if="store.betslipOpen"
-			class="sticky top-0 bottom-0 w-[330px] pl-[30px] py-[30px] bg-brand-accentBgHeader h-full"
+			class="sticky top-0 bottom-0 w-[330px] px-[30px] py-[30px] bg-brand-accentBgHeader h-screen flex flex-col justify-between"
 		>
-			<p class="text-xl text-white">BetSlip</p>
-			<BetSlipItem v-for="(bet, key) in store.betslip" :key="key" :bet="bet" />
+			<div>
+				<p class="text-xl text-white">BetSlip</p>
+				<BetSlipItem v-for="(bet, key) in store.betslip" :key="key" :bet="bet" />
+			</div>
 			<PrimaryButton @click="store.postBets" class="mt-[15px]">Place Bets</PrimaryButton>
 		</aside>
 	</transition>

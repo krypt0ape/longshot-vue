@@ -39,6 +39,7 @@ const gridData = computed(() => {
 					:sport-event-label="event.name"
 					:market-label="market.name"
 					:specifiers="market.marketLines[key].specifiers"
+					:suspended="market.marketLines[key].status !== 1 || o.active !== 1"
 				/>
 			</div>
 		</div>
@@ -52,6 +53,7 @@ const gridData = computed(() => {
 					:sport-event-label="event.name"
 					:market-label="market.name"
 					:specifiers="market.marketLines[key].specifiers"
+					:suspended="market.marketLines[key].status !== 1 || o.active !== 1"
 				/>
 			</div>
 		</div>

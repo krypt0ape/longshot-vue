@@ -36,6 +36,7 @@ defineProps({
 				:sport-event-label="event.name"
 				:market-label="market.name"
 				:specifiers="market.marketLines[0].specifiers"
+				:suspended="market.marketLines[0].status !== 1 || o.active !== 1"
 			/>
 		</div>
 	</div>
