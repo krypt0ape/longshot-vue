@@ -54,11 +54,13 @@ const addToBetslip = () => {
 };
 
 const outcomeLabel = computed(() => {
-	return marketName(
+	if(! props.marketLineOutcome.outcome) return '';
+	const label =  marketName(
 		props.marketLineOutcome.outcome.name,
 		props.competitors,
 		props.specifiers
 	);
+	return label.charAt(0).toUpperCase() + label.slice(1);
 });
 </script>
 <template>
@@ -68,14 +70,15 @@ const outcomeLabel = computed(() => {
 		:class="[
 			suspended ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-brand-accentBgHeader transition ',
 		]"
+		v-tippy="{ content: outcomeLabel, placement: 'top' }"
 	>
 		<div v-if="suspended" class="flex justify-between">
 			<p class="text-brand-darkGrey font-semibold">Suspended</p>
 		</div>
-		<div v-else class="flex justify-between">
+		<div  v-else class="flex justify-between" >
 			<p
 				v-if="marketLineOutcome.outcome"
-				class="text-brand-lightGrey font-semibold"
+				class="text-brand-lightGrey font-semibold truncate pr-2"
 			>
 				{{ outcomeLabel }}
 			</p>

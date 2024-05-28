@@ -15,7 +15,7 @@ defineProps({
 </script>
 <template>
 	<SportsEventMarketSingleMarketLine
-		v-if="market.marketLines.length === 1 && market.status === 0"
+		v-if="market.marketLines.length === 1"
 		:market="market"
 		:event="event"
 	/>
