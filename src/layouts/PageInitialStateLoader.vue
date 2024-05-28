@@ -10,9 +10,9 @@ import useAsyncApi from "@/composables/useAsyncApi";
 const ls = useLocalStorage();
 const { call: callIpApi } = useIpApi();
 
-// const userStore = useUserStore();
-// const { loading, error, call } = useAsync(userStore.getUser);
-// call();
+ const userStore = useUserStore();
+const { loading, error, call } = useAsync(userStore.getUser);
+call();
 onMounted(async () => {
 	//ls.set('COUNTRY_CODE', (await callIpApi()).countryCode)
 });
