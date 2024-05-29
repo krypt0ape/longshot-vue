@@ -33,6 +33,12 @@ const marketName = (label, competitors, specifier) => {
   if (label.includes("{hcp}")) {
     label = label.replace("{hcp}", specifier.replace("hcp=", ""));
   }
+  if (label.includes("{+hcp}")) {
+    label = label.replace("{+hcp}",  specifier.replace("hcp=", ""));
+  }
+  if (label.includes("{-hcp}")) {
+    label = label.replace("{-hcp}", specifier.replace("hcp=", ""));
+  }
   if (label.includes("{from}") && label.includes("{to}")) {
     const [from, to] = specifier.split("|");
     label = label.replace("{from}", from.replace("from=", ""));

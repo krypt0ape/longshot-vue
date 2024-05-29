@@ -29,13 +29,8 @@ const status = computed(() => {
       <DisclosureButton class="px-[32px] py-[15px] w-full">
         <div
           class="flex justify-between items-center"
-          :class="{
-            'bg-yellow-500': specifier && !specifier?.includes('variant='),
-            'bg-red-500': specifier,
-          }"
         >
           <p class="font-medium text-lg">
-            {{ specifier }} - specifier <br />
             {{ marketName(market.name, event.competitors, specifier) }} - ID:
             {{ market.id }} - Status: {{ status }}
           </p>

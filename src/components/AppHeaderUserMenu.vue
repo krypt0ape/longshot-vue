@@ -7,42 +7,32 @@ import useAuthModals from "@/composables/useAuthModals";
 import useUserStore from "@/stores/useUserStore";
 import Avatar from "vue-boring-avatars";
 import useRiskManagementStore from "@/stores/useRiskManagementStore";
+import useBetslipStore from "@/stores/useBetslipStore";
 
 const userStore = useUserStore();
-const {toggleSignoutModal} = useAuthModals();
+const { toggleSignoutModal } = useAuthModals();
 const openWallet = () => {};
 
 const riskManagementStore = useRiskManagementStore();
-
-const user = computed(()=>(userStore.user));
+const store = useBetslipStore();
+const user = computed(() => userStore.user);
 </script>
 <template>
-	<div class="flex items-center ">
+	<div class="flex items-center">
 		<div class="mr-6">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="18"
-				height="18"
-				viewBox="0 0 18 18"
-				fill="none"
+			<a
+				@click="store.toggleBetslip"
 				class="cursor-pointer"
 				v-tippy="{
-							content: 'Bet Slip',
-							placement: 'left',
-						}"
+					content: 'Bet Slip',
+					placement: 'left',
+				}"
 			>
-				<g clip-path="url(#clip0_676_3754)">
-					<path
-						d="M0.000274658 0.998195V3.0007H2.00277V17.003H3.75046C3.96927 16.1249 4.75059 15.4848 5.68152 15.4848C6.12456 15.4849 6.55489 15.6329 6.90422 15.9054C7.25355 16.1779 7.50187 16.5593 7.60977 16.9889L7.61259 17.0024H10.4178C10.6366 16.1244 11.4179 15.4843 12.3488 15.4843C12.7919 15.4843 13.2222 15.6324 13.5715 15.9048C13.9209 16.1773 14.1692 16.5587 14.2771 16.9884L14.2799 17.0019H16.0124V2.99957H17.9997V0.99707L0.000274658 0.998195ZM9.99759 11.4984H5.00259V9.9982H9.99759V11.4984ZM12.998 7.5007H5.00315V6.00051H12.998V7.5007Z"
-						fill="#A4ADBD"
-					/>
-				</g>
-				<defs>
-					<clipPath id="clip0_676_3754">
-						<rect width="18" height="18" fill="white" />
-					</clipPath>
-				</defs>
-			</svg>
+				<i
+		
+					class="fa-solid fa-receipt text-brand-grey text-2xl cursor-pointer"
+				></i>
+			</a>
 		</div>
 
 		<Popover v-slot="{ open }" class="relative">
@@ -50,14 +40,19 @@ const user = computed(()=>(userStore.user));
 				:class="open ? 'text-white' : 'text-white/90'"
 				class="group inline-flex items-center rounded-md focus:ring-0 focus:ring-offset-0 px-3 py-2 text-base font-medium hover:text-white bg-[#071420] border border-[#273646] focus:outline-none focus-visible:ring-0"
 			>
-			<!--  TODO user avatars -->
+				<!--  TODO user avatars -->
 				<!-- <img
 					:src="user.picture"
 					:alt="user.username"
 					class="w-8 h-8 rounded-full"
 				/> -->
-				<Avatar :size="30" variant="beam" :name="user.username"  :colors="['#3AAA35', '#A4ADBD'] " />
-				
+				<Avatar
+					:size="30"
+					variant="beam"
+					:name="user.username"
+					:colors="['#3AAA35', '#A4ADBD']"
+				/>
+
 				<p class="ml-3 font-medium hidden lg:block">{{ user.username }}</p>
 				<ChevronDownIcon
 					class="ml-2 h-6 w-6 transition duration-150 ease-in-out text-brand-darkerGrey"
