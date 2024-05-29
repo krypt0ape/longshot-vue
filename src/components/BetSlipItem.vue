@@ -37,7 +37,7 @@ const removeBet = () => {
 				<i class="fa-solid fa-times text-brand-grey text-2xl"></i>
 			</a>
 		</div>
-		<div class="p-[16px] font-semibold text-lg">
+		<div class="px-[16px] py-[10px] font-semibold text-lg">
 			<div class="flex justify-between text-sm">
 				<div >
 					<p class="text-brand-grey">{{ bet.marketLabel }}</p>
