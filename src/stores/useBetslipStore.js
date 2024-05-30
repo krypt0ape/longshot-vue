@@ -87,8 +87,8 @@ export default defineStore("betslip", () => {
 		};
 		if (!betslipOpen.value) {
 			toggleBetslip();
-			changeBetSlipTab('betslip');
-			changeBetSlipSubTab('single');
+			// changeBetSlipTab('betslip');
+			// changeBetSlipSubTab('single');
 		}
 	};
 
