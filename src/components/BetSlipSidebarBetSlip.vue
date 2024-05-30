@@ -6,6 +6,7 @@ import PrimaryTab from "@/components/Tabs/PrimaryTab.vue";
 import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import reduce from "lodash/reduce";
 
 const store = useBetslipStore();
 const route = useRoute();
@@ -26,6 +27,17 @@ const items = computed(() => {
 		},
 	];
 });
+
+const totalStake = computed(()=>{
+	return reduce(store.betslip, (acc, bet)=>{
+		return acc + bet.amount;
+	}, 0).toFixed(2);
+})
+const estPayout = computed(()=>{
+	return reduce(store.betslip, (acc, bet)=>{
+		return acc + ( bet.amount * bet.odds);
+	}, 0).toFixed(2);
+})
 </script>
 <template>
 	<div class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-between h-full">
@@ -54,7 +66,15 @@ const items = computed(() => {
 				/>
 			</transition-group>
 		</div>
-		<div class="bg-brand-accentBgHeader p-[16px]">
+		<div class="dark-gradient-bg p-[16px] text-brand-grey">
+			<div class="flex justify-between">
+				<p class="font-medium">Total Stake</p>
+				<p class="tracking-wider font-semibold">${{totalStake}}</p>
+			</div>
+			<div class="flex justify-between">
+				<p class="font-medium">Est. Payout</p>
+				<p class="text-brand-lightGrey tracking-wider  font-semibold">${{ estPayout }}</p>
+			</div>
 			<PrimaryButton @click="store.postBets" class="mt-[15px] !w-full relative"
 				>Place Bets
 				<svg
@@ -85,7 +105,7 @@ const items = computed(() => {
 <style scoped>
 .list-enter-active,
 .list-leave-active {
-	transition: transform 0.3s ease-out;
+	transition: transform 0.2s ease-out;
 }
 .list-enter-from,
 .list-leave-to {

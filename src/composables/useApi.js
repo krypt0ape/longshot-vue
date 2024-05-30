@@ -1,26 +1,33 @@
-import { onMounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import useAsyncApi from "./useAsyncApi";
 
 /**
  * Wraps aound async api and calls the api on mounted
  */
 export default function useApi(method, path, defaultOptions = {}) {
-  const {data, loading, error, call} = useAsyncApi(method, path);
+	const { data, loading, error, call } = useAsyncApi(method, path);
+	const hasMounted = ref(false);
 
-  onMounted(() => {
-    refetch(defaultOptions);
-  });
+	onMounted(() => {
+		if(hasMounted.value) return;
+		hasMounted.value = true;
+		refetch(defaultOptions);
+	});
 
-  const refetch = async (newOptions = null) => {
-	const options = newOptions || defaultOptions;
+	onUnmounted(() => {
+		hasMounted.value = false;
+	});
 
-	await call(options);
-  };
+	const refetch = async (newOptions = null) => {
+		const options = newOptions || defaultOptions;
 
-  return {
-    data,
-    loading,
-    error,
-    refetch,
-  };
+		await call(options);
+	};
+
+	return {
+		data,
+		loading,
+		error,
+		refetch,
+	};
 }

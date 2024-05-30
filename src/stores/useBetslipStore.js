@@ -61,7 +61,7 @@ export default defineStore("betslip", () => {
 			sportEventLabel,
 			outcomeLabel,
 			marketLabel,
-			amount: 100,
+			amount: 0,
 			ISO: "USD",
 			odds,
 		};
@@ -74,8 +74,8 @@ export default defineStore("betslip", () => {
 		delete betslip.value[betKey];
 	};
 
-	const updateBetAmount = ({ betKey, amount }) => {
-		betslip.value[betKey].amount = amount;
+	const updateBetAmount = (betKey, amount) => {
+		betslip.value[betKey].amount = parseFloat(amount);
 	};
 
 	return {

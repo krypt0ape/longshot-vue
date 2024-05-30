@@ -37,14 +37,14 @@ const active = ref("betslip");
 							<MenuItem>
 								<a
 									@click="active = 'betslip'"
-									class="block px-4 py-2 flex items-center hover:bg-brand-bodyBg rounded-md"
+									class="block px-4 py-2 flex items-center hover:bg-brand-bodyBg rounded-md cursor-pointer"
 									>Bet Slip <BetSlipBadge
 								/></a>
 							</MenuItem>
 							<MenuItem>
 								<a
 									@click="active = 'mybets'"
-									class="block px-4 py-2 flex items-center hover:bg-brand-bodyBg rounded-md"
+									class="block px-4 py-2 flex items-center hover:bg-brand-bodyBg rounded-md cursor-pointer"
 									>My Bets</a
 								>
 							</MenuItem>

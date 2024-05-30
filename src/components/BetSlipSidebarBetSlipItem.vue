@@ -3,6 +3,7 @@ import useFormatOdds from "@/composables/useFormatOdds";
 import Input from "./Form/Input.vue";
 import {ref, computed} from "vue";
 import useBetslipStore from "@/stores/useBetslipStore";
+import { buildBetKey } from "@/utils/buildBetKey";
 
 const props = defineProps({
 	bet: {
@@ -14,7 +15,19 @@ const props = defineProps({
 const store = useBetslipStore();
 const formatOdds = useFormatOdds(props.bet.odds);
 
-const betAmount = ref(0);
+
+const betAmount = computed({
+  get: () => props.bet.amount,
+  set: (value) => {
+	const key = buildBetKey(props.bet.sportEventId, props.bet.outcomeId,  props.bet.marketId);
+	if(value > 0){
+		store.updateBetAmount(key, value);
+	}else{
+		store.updateBetAmount(key, 0);
+	}
+  },
+});
+
 const payout = computed(() => {
 	return (betAmount.value * formatOdds.odds.value).toFixed(2);
 });
@@ -50,7 +63,7 @@ const removeBet = () => {
 					</p>
 				</div>
 			</div>
-			<div class="flex justify-between mt-2 text-sm">
+			<div class="flex justify-between mt-1 text-sm">
 				<div class="">
 					<Input class="mt-1 w-[160px]" v-model="betAmount" />
 				</div>
