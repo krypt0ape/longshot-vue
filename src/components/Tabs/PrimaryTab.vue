@@ -66,15 +66,15 @@ const tabBackground = computed(() => {
           </defs>
         </svg>
         <div class="relative z-20">
+			<slot v-if="$slots[0]" />
           <h4
-			v-if="$slots[0]"
+			v-else
             class="text-center font-display font-semibold text-xl tracking-widest uppercase group-hover:text-white transition ease-in duration-100">
             <div>
               <i v-if="item.icon" :class="item.icon" class="mb-[5px] mx-auto text-2xl" />
             </div>
             {{ item.title }}
           </h4>
-		  <slot v-else />
         </div>
       </div>
     </div>

@@ -1,19 +1,24 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import useAsync from "@/composables/useAsync";
 import useUserStore from "@/stores/useUserStore";
 import { useLocalStorage } from "@/composables/useLocalStorage";
 import useIpApi from "@/composables/useIpApi";
 import { decodeCredential } from "vue3-google-login";
 import useAsyncApi from "@/composables/useAsyncApi";
+import { LottieAnimation } from "lottie-web-vue";
+import LoaderJSON from "../lottie/LongShotLoderFaster.json";
 
 const ls = useLocalStorage();
 const { call: callIpApi } = useIpApi();
 
- const userStore = useUserStore();
-const { loading, error, call } = useAsync(userStore.getUser);
+const userStore = useUserStore();
+
+// Delay is added here to ensure the loader anim can finish
+const { loading, error, call } = useAsync(userStore.getUser, 1500);
 call();
 onMounted(async () => {
+	
 	//ls.set('COUNTRY_CODE', (await callIpApi()).countryCode)
 });
 
@@ -25,6 +30,7 @@ const errorMessage = computed(() => {
 	return error.message;
 });
 
+let anim = ref();
 </script>
 <template>
 	<div>
@@ -39,12 +45,36 @@ const errorMessage = computed(() => {
 				</p>
 			</div>
 		</div>
-		<div
-			v-else-if="loading"
-			class="fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center"
-		>
-			<img src="/img/ColorWhite_Full.png" class="animate-pulse w-[150px]" />
-		</div>
-		<slot v-else />
+		<transition name="fade">
+			<div
+				v-if="loading"
+				class="fixed top-0 left-0 w-screen h-screen z-[100] flex items-center justify-center bg-brand-bodyBg"
+			>
+				<div class="w-[350px]">
+					<LottieAnimation
+						:animation-data="LoaderJSON"
+						:auto-play="true"
+						:loop="true"
+						:speed="1"
+						ref="anim"
+					/>
+				</div>
+			</div>
+		</transition>
+		<slot v-if="!error && !loading" />
 	</div>
 </template>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+	opacity: 1;
+}
+</style>

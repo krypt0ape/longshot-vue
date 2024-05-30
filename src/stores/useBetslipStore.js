@@ -25,6 +25,26 @@ export default defineStore("betslip", () => {
 		}
 	};
 
+	const betSlipTab = computed(() => {
+		return route.query.betsliptab;
+	});
+
+	const changeBetSlipTab = (tab) => {
+		const query = { ...route.query };
+		query.betsliptab = tab;
+		router.replace({ query });
+	};
+
+	const betSlipSubTab = computed(() => {
+		return route.query.betslipsubtab;
+	});
+
+	const changeBetSlipSubTab = (tab) => {
+		const query = { ...route.query };
+		query.betslipsubtab = tab;
+		router.replace({ query });
+	};
+
 	const betslip = ref({});
 
 	const postBets = async () => {
@@ -67,6 +87,8 @@ export default defineStore("betslip", () => {
 		};
 		if (!betslipOpen.value) {
 			toggleBetslip();
+			changeBetSlipTab('betslip');
+			changeBetSlipSubTab('single');
 		}
 	};
 
@@ -86,5 +108,9 @@ export default defineStore("betslip", () => {
 		addToBetslip,
 		removeBet,
 		updateBetAmount,
+		betSlipTab, 
+		changeBetSlipTab,
+		betSlipSubTab,
+		changeBetSlipSubTab
 	};
 });
