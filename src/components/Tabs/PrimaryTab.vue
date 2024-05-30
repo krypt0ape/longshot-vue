@@ -45,10 +45,10 @@ const tabBackground = computed(() => {
 <template>
   <RouterLink :to="item.to ?? route.path" :scrollToTop="false" @click="item.action" :disabled="disabled">
     <div :class="[
-    'cursor-pointer transform rounded-lg overflow-hidden group p-[1px]',
+    'cursor-pointer transform rounded-t-lg overflow-hidden group p-[1px]',
     item.active ? 'text-white' : 'text-brand-darkerGrey',
   ]" :style="tabBorder">
-      <div class="rounded-lg w-full h-full py-[13px] flex items-center justify-center" :style="tabBackground">
+      <div class="rounded-t-lg w-full h-full py-[13px] flex items-center justify-center" :style="tabBackground">
         <svg xmlns="http://www.w3.org/2000/svg" width="199" height="36" viewBox="0 0 199 36" fill="none" :class="[
     item.active ? '' : '-translate-y-[35px]',
     'absolute  z-10 top-0 mx-auto transition ease-in duration-100  group-hover:translate-y-0 ',

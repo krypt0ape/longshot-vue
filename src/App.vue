@@ -14,7 +14,7 @@ import SigninModal from "@/components/SigninModal.vue";
 import SignoutModal from "@/components/SignoutModal.vue";
 import ForgotPasswordModal from "@/components/ForgotPasswordModal.vue";
 import PromotionModal from "@/components/PromotionModal.vue";
-import BetSlip from "@/components/BetSlip.vue";
+import BetSlipSidebar from "@/components/BetSlipSidebar.vue";
 
 const route = useRoute();
 
@@ -64,7 +64,7 @@ const topImage = computed(() => {
 					</div>
 				</div>
 			</section>
-			<BetSlip />
+			<BetSlipSidebar />
 
 			<PromotionModal />
 			<WalletModal />

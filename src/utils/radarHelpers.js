@@ -44,6 +44,9 @@ const marketName = (label, competitors, specifier) => {
     label = label.replace("{from}", from.replace("from=", ""));
     label = label.replace("{to}", to.replace("to=", ""));
   }
+  if(label.includes("1x2")){
+	return "Full Time Result";
+  }
   return label;
 };
 
