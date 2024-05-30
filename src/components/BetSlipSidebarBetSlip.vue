@@ -57,7 +57,7 @@ const estPayout = computed(()=>{
 			</PrimaryTab>
 		</div>
 
-		<div class="px-4 flex-1 bg-brand-sidebarBg">
+		<div class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
 			<transition-group name="list" tag="div">
 				<BetSlipSidebarBetSlipItem
 					v-for="(bet, key) in store.betslip"
@@ -66,7 +66,7 @@ const estPayout = computed(()=>{
 				/>
 			</transition-group>
 		</div>
-		<div class="dark-gradient-bg p-[16px] text-brand-grey">
+		<div class="dark-gradient-bg _betslipsidebar-betslip-bottom p-[16px] text-brand-grey">
 			<div class="flex justify-between">
 				<p class="font-medium">Total Stake</p>
 				<p class="tracking-wider font-semibold">${{totalStake}}</p>
@@ -125,4 +125,5 @@ const estPayout = computed(()=>{
 	width: 22px;
 	background: linear-gradient(180deg, #68d763 0%, #3aaa35 100%);
 }
+
 </style>

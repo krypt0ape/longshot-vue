@@ -41,7 +41,7 @@ const removeBet = () => {
 };
 </script>
 <template>
-	<div class="betslip-item mb-4">
+	<div class="betslip-item mb-4 overflow-hidden">
 		<div
 			class="bg-brand-accentBgHeader h-[50px] flex items-center justify-between px-[16px]"
 		>
