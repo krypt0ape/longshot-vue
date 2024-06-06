@@ -43,18 +43,18 @@ const removeBet = () => {
 <template>
 	<div class="betslip-item mb-4 overflow-hidden">
 		<div
-			class="bg-brand-accentBgHeader h-[50px] flex items-center justify-between px-[16px]"
+			class="bg-brand-accentBgHeader h-[40px] flex items-center justify-between px-[16px]"
 		>
-			<p class="text-brand-grey font-semibold">{{ bet.sportEventLabel }}</p>
+			<p class="text-brand-grey font-medium text-sm">{{ bet.sportEventLabel }}</p>
 			<a class="cursor-pointer" @click="removeBet">
-				<i class="fa-solid fa-times text-brand-grey text-2xl"></i>
+				<i class="fa-solid fa-times text-brand-grey text-xl"></i>
 			</a>
 		</div>
-		<div class="px-[16px] py-[10px] font-semibold text-lg">
+		<div class="px-[16px] py-[10px]  text-lg">
 			<div class="flex justify-between text-sm">
 				<div >
 					<p class="text-brand-grey">{{ bet.marketLabel }}</p>
-					<p class="text-white">{{ bet.outcomeLabel }}</p>
+					<p class="text-white font-medium">{{ bet.outcomeLabel }}</p>
 				</div>
 				<div>
 					<p>&nbsp;</p>

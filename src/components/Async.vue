@@ -51,8 +51,8 @@ watch(loading, (newVal, oldVal ) => {
 })
 </script>
 <template>
-	<span>
-		<i v-if="props.loading" class="fa-solid fa-spinner-third fa-spin"></i>
+	<span >
+		<i v-if="props.loading" class="fa-solid fa-spinner-third fa-spin fa-xs"></i>
 		<i v-else-if="sucess" class="fa-solid fa-check"></i>
 		<p v-else-if="props.error && errorType === 'message'" class="bg-red-500 text-white rounded-lg px-6 py-2 text-center">{{ props.error }}</p>
 		<slot v-else />

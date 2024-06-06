@@ -4,7 +4,6 @@ import { computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import useApiRequest from "@/composables/useApiRequest";
 import { PLACE_BET } from "@/api/sportsbook";
-import useNotificationStore from "./useNotificationStore";
 import forEach from "lodash/forEach";
 
 export default defineStore("betslip", () => {
@@ -12,7 +11,6 @@ export default defineStore("betslip", () => {
 	const router = useRouter();
 
 	const request = useApiRequest();
-	const notificationStore = useNotificationStore();
 
 	const betslipOpen = computed(() => {
 		return route.query.betslip === "open";

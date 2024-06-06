@@ -75,7 +75,7 @@ const estPayout = computed(() => {
 		</div>
 
 		<div class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
-			<transition-group name="list" tag="div">
+			<transition-group name="betslip-item" tag="div">
 				<BetSlipSidebarBetSlipItem
 					v-for="(bet, key) in store.betslip"
 					:key="key"
@@ -96,8 +96,8 @@ const estPayout = computed(() => {
 					${{ estPayout }}
 				</p>
 			</div>
-			<Async :loading="loading" :error="error">
-				<PrimaryButton @click="call" class="mt-[15px] !w-full relative">
+			<PrimaryButton @click="call" class="mt-[15px] !w-full relative">
+				<Async :loading="loading" :error="error" errorType="notification">
 					Place Bets
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ const estPayout = computed(() => {
 						height="23"
 						viewBox="0 0 20 23"
 						fill="none"
-						class="absolute right-3"
+						class="absolute right-3 top-2"
 					>
 						<g clip-path="url(#clip0_895_6974)">
 							<path
@@ -120,23 +120,25 @@ const estPayout = computed(() => {
 							</clipPath>
 						</defs>
 					</svg>
-				</PrimaryButton>
-			</Async>
+				</Async>
+			</PrimaryButton>
 		</div>
 	</div>
 </template>
 <style scoped>
-.list-enter-active,
-.list-leave-active {
-	transition: transform 0.2s ease-out;
+.betslip-item-enter-active,
+.betslip-item-leave-active {
+	transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
-.list-enter-from,
-.list-leave-to {
-	transform: translateX(100%);
+.betslip-item-enter-from,
+.betslip-item-leave-to {
+	transform: translateY(6%);
+	opacity: 0;
 }
-.list-enter-to,
-.list-leave-from {
-	transform: translateX(0);
+.betslip-item-enter-to,
+.betslip-item-leave-from {
+	transform: translateY(0);
+	opacity: 1;
 }
 ._betslip-badge {
 	display: flex;
