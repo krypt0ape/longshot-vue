@@ -35,11 +35,10 @@ export default function useAsyncApi(method, path) {
 			data.value = response.data;
 			return response.data;
 		} catch (err) {
+			loading.value = false;
 			console.error(err);
 			error.value = err;
-		} finally {
-			loading.value = false;
-		}
+		} 
 	};
 
 	return {

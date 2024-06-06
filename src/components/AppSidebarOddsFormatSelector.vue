@@ -9,7 +9,7 @@ const items = computed(()=>{
 	return [
 		{
 			icon: "fa-solid fa-percentage",
-			title: "Odds Format",
+			title: "Odds (" +  oddsFormat.oddsFormat.value.charAt(0).toUpperCase() + oddsFormat.oddsFormat.value.slice(1) + ")",
 			children: [
 				{
 					title: "Decimal",

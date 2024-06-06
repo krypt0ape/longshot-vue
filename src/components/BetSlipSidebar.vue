@@ -19,7 +19,7 @@ const active = ref("betslip");
 			class="sticky top-0 bottom-0 w-[370px] bg-brand-accentBgHeader h-screen flex flex-col justify-start"
 		>
 			<div
-				class="bg-brand-bodyBg flex items-center justify-between h-[70px] flex-none _betslip-header px-[16px]"
+				class="bg-brand-bodyBg  flex items-center justify-between h-[70px] flex-none _betslip-header px-[16px]"
 			>
 				<Menu as="div" class="relative inline-block text-left">
 					<MenuButton class="flex items-center">

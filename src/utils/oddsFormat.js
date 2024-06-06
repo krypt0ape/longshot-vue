@@ -6,7 +6,7 @@ const convertToAmerican = (raw) => {
     return rounded > 0 ? `+${rounded}` : rounded;
 };
 const convertToFractional = (raw) => {
-    return oddslib.from('decimal', raw).to('fractional');
+    return oddslib.from('decimal', raw).to('fractional', {precision: 2});
 };
 const convertToIndonesian = (raw) => {
     const v =  oddslib.from('decimal', raw).to('indonesian');
