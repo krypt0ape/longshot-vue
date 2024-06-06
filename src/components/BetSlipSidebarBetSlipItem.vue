@@ -81,8 +81,8 @@ const matchBet = () => {
 					<div>
 						<!-- TODO add icon for active currency -->
 					</div>
-					<a v-if="betAmount > 0" @click="matchBet" class="cursor-pointer" v-tippy="{ content: 'Repeat Stake On All Bets', placement: 'top' }">
-						<i class="fa-solid fa-repeat fa-lg text-brand-lightGrey"></i>
+					<a v-if="betAmount > 0" @click="matchBet" class="cursor-pointer pt-0.5" v-tippy="{ content: 'Repeat Stake On All Bets', placement: 'top' }">
+						<i class="fa-solid fa-repeat fa-lg text-brand-grey "></i>
 					</a>
 				</div>
 				<div  class='text-right'>
