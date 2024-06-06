@@ -56,7 +56,7 @@ const estPayout = computed(() => {
 	<div
 		class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-between h-full"
 	>
-		<div class="grid grid-cols-2 gap-x-4 px-4 bg-brand-sidebarBg py-[20px]">
+		<div class="grid grid-cols-2 gap-x-4 px-4 bg-brand-sidebarBg pt-[20px]">
 			<PrimaryTab
 				v-for="item in items"
 				:key="item.title"
@@ -75,8 +75,11 @@ const estPayout = computed(() => {
 			</PrimaryTab>
 		</div>
 
-		<div>
-
+		<div class="flex justify-between pt-1  pb-3 bg-brand-sidebarBg px-4">
+			<div></div>
+			<div>
+				<a @click="store.clearBetslip" class="hover:text-white text-brand-grey cursor-pointer transition uppercase text-xs tracking-wide font-semibold ">Clear Betslip</a>
+			</div>
 		</div>
 
 		<div class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">

@@ -150,6 +150,10 @@ export default defineStore("betslip", () => {
 		 });
 	}
 
+	const clearBetslip = () => {
+		betslip.value = {};
+	}
+
 	return {
 		betslipOpen,
 		toggleBetslip,
@@ -162,6 +166,7 @@ export default defineStore("betslip", () => {
 		changeBetSlipTab,
 		betSlipSubTab,
 		changeBetSlipSubTab,
-		matchBetAmountOnAllBets
+		matchBetAmountOnAllBets,
+		clearBetslip
 	};
 });
