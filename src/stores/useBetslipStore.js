@@ -54,14 +54,14 @@ export default defineStore("betslip", () => {
 		
 		// Show place bet success / fail  message
 		let sucessBets = 0;
-		const totalBets = betslip.value.length;
+		const totalBets = Object.keys(betslip.value).length;
 
-		forEach(req.data, (bet, key) => {
+	forEach(req.data, (bet, key) => {
 			// Some bets may fail so how we handle this is only remove the 
 			// succesfully placed bets from the betslip, some may have odds changes
 			// to accept for example. If successBets !==  bets.length then we can
 			// show a message to the user that some bets failed 
-			if (bet.sucess) {
+			if (bet.success) {
 				sucessBets++;
 				delete betslip.value[key];
 			}
@@ -78,7 +78,7 @@ export default defineStore("betslip", () => {
 				type:'success',
 				title: "Bets Placed!",
 				text: "All bets have been successfully placed, Good Luck!",
-				duration: 100000,
+				duration: 10000,
 			});
 			// we can also close the betslip here as its probably not needed
 			router.replace({ query: {} });
@@ -89,23 +89,24 @@ export default defineStore("betslip", () => {
 				type:'error',
 				title: "Unable to place bets!",
 				text: "See the betslip for more information on each bet",
-				duration: 100000,
+				duration: 10000,
 			});
 		}
 		else {
+			console.log(totalBets, sucessBets);
 			// Some bets have failed so we leave the betslip open so users can 
 			// see the errors on each bet and we can show a message to the user
 			notify({
 				type:'error',
 				title: "Unable to some of your bets!",
 				text: "Unable to place " + (totalBets - sucessBets) + " bets, see the betslip for more info.",
-				duration: 100000,
+				duration: 10000,
 			});
 		}
 	};
 
 	const addToBetslip = (data) => {
-		console.log(data)
+		// console.log(data)
 		const {
 			id,
 			sportEventId,

@@ -62,7 +62,10 @@ watch(store.betslip, () => {
 	// new bet entering the betslip. The reason we need to use a timeout is
 	// if we trigger this instantly, the el height is not updated yet.
 	setTimeout(() => {
-		el.value.scrollTo({ top: el.value.scrollHeight, behavior: "smooth" });
+		// Added if here as the "betslip empty" element doesn't have the ref="el"
+		if(el.value){
+			el.value.scrollTo({ top: el.value.scrollHeight, behavior: "smooth" });
+		}
 	}, 200);
 });
 
