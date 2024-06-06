@@ -15,6 +15,7 @@ import SignoutModal from "@/components/SignoutModal.vue";
 import ForgotPasswordModal from "@/components/ForgotPasswordModal.vue";
 import PromotionModal from "@/components/PromotionModal.vue";
 import BetSlipSidebar from "@/components/BetSlipSidebar.vue";
+import FlashNotifications from "@/components/FlashNotifications.vue";
 
 const route = useRoute();
 
@@ -73,6 +74,7 @@ const topImage = computed(() => {
 			<AcceptTermsModal />
 			<ForgotPasswordModal />
 			<SignoutModal />
+			<FlashNotifications />
 		</div>
 	</PageInitialStateLoader>
 </template>
