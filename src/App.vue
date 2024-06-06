@@ -73,6 +73,7 @@ const topImage = computed(() => {
 			<AcceptTermsModal />
 			<ForgotPasswordModal />
 			<SignoutModal />
+			<Notifications />
 		</div>
 	</PageInitialStateLoader>
 </template>

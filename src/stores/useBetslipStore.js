@@ -5,11 +5,12 @@ import { useRoute, useRouter } from "vue-router";
 import useApiRequest from "@/composables/useApiRequest";
 import { PLACE_BET } from "@/api/sportsbook";
 import forEach from "lodash/forEach";
+import { useNotification } from "@kyvg/vue3-notification";
 
 export default defineStore("betslip", () => {
 	const route = useRoute();
 	const router = useRouter();
-
+	const { notify } = useNotification();
 	const request = useApiRequest();
 
 	const betslipOpen = computed(() => {
@@ -73,27 +74,34 @@ export default defineStore("betslip", () => {
 		let notification;
 		if(totalBets === sucessBets){
 			// All bets have been successfully placed
-			notification.type= 'success';
-			notification.title = "Bets Placed!"
-			notification.message = 'All bets have been successfully placed, Good Luck!';
+			notify({
+				type:'success',
+				title: "Bets Placed!",
+				text: "All bets have been successfully placed, Good Luck!",
+				duration: 100000,
+			});
 			// we can also close the betslip here as its probably not needed
 			router.replace({ query: {} });
 		}
-		else if (successBets === 0)  {
+		else if (sucessBets === 0)  {
 			// All bets have failed
-			notification.type= 'error';
-			notification.title = "Unable to place bets!"
-			notification.message = 'See the betslip for more information on each bet';
+			notify({
+				type:'error',
+				title: "Unable to place bets!",
+				text: "See the betslip for more information on each bet",
+				duration: 100000,
+			});
 		}
 		else {
 			// Some bets have failed so we leave the betslip open so users can 
 			// see the errors on each bet and we can show a message to the user
-			notification.type= 'error';
-			notification.title = "Unable to some of your bets!"
-			notification.message = 'Unable to place ' + (totalBets - successBets) + ' bets, see the betslip for more info.';
+			notify({
+				type:'error',
+				title: "Unable to some of your bets!",
+				text: "Unable to place " + (totalBets - sucessBets) + " bets, see the betslip for more info.",
+				duration: 100000,
+			});
 		}
-
-		notificationStore.addFlashNotification(notification);
 	};
 
 	const addToBetslip = (data) => {

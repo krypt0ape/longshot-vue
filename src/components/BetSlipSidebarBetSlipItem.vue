@@ -91,6 +91,9 @@ const matchBet = () => {
 				</div>
 			</div>
 		</div>
+		<div v-if="bet.error" class="border-dashed text-xs mx-4 mb-2 bg-brand-accentBgHeader px-3 py-2 text-brand-lightGrey border-2 border-red-700  rounded-lg">
+			<p>{{bet.error}}</p>
+		</div>
 	</div>
 </template>
 <style scoped>

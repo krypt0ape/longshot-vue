@@ -113,7 +113,7 @@ const  {toggleSigninModal} = useAuthModals();
 			</div>
 		</div>
 
-		<div ref="el" class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
+		<div v-if="Object.keys(store.betslip).length" ref="el" class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
 			<transition-group name="betslip-item" tag="div">
 				<BetSlipSidebarBetSlipItem
 					v-for="(bet, key) in store.betslip"
@@ -121,6 +121,13 @@ const  {toggleSigninModal} = useAuthModals();
 					:bet="bet"
 				/>
 			</transition-group>
+		</div>
+		<div v-else class="flex-1 bg-brand-sidebarBg px-4 flex items-center justify-center">
+			<div class="text-center">
+				<i class="fa-regular fa-tickets text-3xl  mb-2 text-brand-grey "></i>
+				<p class="text-brand-lightGrey text-center">Bet Slip is empty</p>
+				<p class="text-brand-grey">Please add a selection to place a bet</p>
+			</div>
 		</div>
 		<div
 			class="dark-gradient-bg text-sm _betslipsidebar-betslip-bottom px-4 py-4 text-brand-grey"
