@@ -76,7 +76,7 @@ const estPayout = computed(() => {
 		</div>
 
 		<div>
-			
+
 		</div>
 
 		<div class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
@@ -135,9 +135,12 @@ const estPayout = computed(() => {
 .betslip-item-leave-active {
 	transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
-.betslip-item-enter-from,
-.betslip-item-leave-to {
+.betslip-item-enter-from {
 	transform: translateY(6%);
+	opacity: 0;
+}
+.betslip-item-leave-to {
+	transform: translateY(-6%);
 	opacity: 0;
 }
 .betslip-item-enter-to,
