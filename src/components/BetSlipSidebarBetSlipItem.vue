@@ -72,7 +72,7 @@ const matchBet = () => {
 			</div>
 			<div class="flex justify-between mt-1 text-sm">
 				<div class='flex items-center gap-x-2'>
-					<div class="w-[120px]">
+					<div class="w-[150px]">
 						<Input class="mt-1 " v-model="betAmount" >
 							<!-- <div class="dollar-wrapper mt-0.5 mr-2 text-sm text-white rounded-full h-[20px] w-[20px] flex items-center justify-center">$</div> -->
 							<p class='text-brand-grey mr-2 text-[16px] mt-0.5'>$</p>
