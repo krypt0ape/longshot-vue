@@ -9,6 +9,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import reduce from "lodash/reduce";
 import useAsync from "@/composables/useAsync";
 import Async from "@/components/Async.vue";
+import SelectedCurrencyIcon from "@/components/CryptoCurrencyIcons/SelectedCurrencyIcon.vue";
 
 const store = useBetslipStore();
 const route = useRoute();
@@ -106,16 +107,16 @@ const betsHaveZeroValue  = computed(()=>{
 			</transition-group>
 		</div>
 		<div
-			class="dark-gradient-bg _betslipsidebar-betslip-bottom p-[16px] text-brand-grey"
+			class="dark-gradient-bg  text-sm _betslipsidebar-betslip-bottom px-4 py-4 text-brand-grey"
 		>
 			<div class="flex justify-between">
 				<p class="font-medium">Total Stake</p>
-				<p class="tracking-wider font-semibold">${{ totalStake }}</p>
+				<p class="tracking-wider font-semibold flex ">${{ totalStake }} <SelectedCurrencyIcon class="h-5 w-5 ml-2 mt-0.5" /></p>
 			</div>
-			<div class="flex justify-between">
+			<div class="flex justify-between mt-0.5">
 				<p class="font-medium">Est. Payout</p>
-				<p class="text-brand-lightGrey tracking-wider font-semibold">
-					${{ estPayout }}
+				<p class="text-brand-lightGrey tracking-wider font-semibold flex">
+					${{ estPayout }} <SelectedCurrencyIcon class="h-5 w-5 ml-2 mt-0.5" />
 				</p>
 			</div>
 			<div v-if="betsHaveZeroValue" class="border-dashed text-sm bg-brand-accentBgHeader px-3 py-2 text-brand-lightGrey border-2 border-red-700 mt-2 rounded-lg">

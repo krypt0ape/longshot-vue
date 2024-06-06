@@ -4,6 +4,7 @@ import Input from "./Form/Input.vue";
 import {ref, computed, onMounted} from "vue";
 import useBetslipStore from "@/stores/useBetslipStore";
 import { buildBetKey } from "@/utils/buildBetKey";
+import SelectedCurrencyIcon from "@/components/CryptoCurrencyIcons/SelectedCurrencyIcon.vue";
 
 const props = defineProps({
 	bet: {
@@ -72,7 +73,10 @@ const matchBet = () => {
 			<div class="flex justify-between mt-1 text-sm">
 				<div class='flex items-center gap-x-2'>
 					<div class="w-[120px]">
-						<Input class="mt-1 " v-model="betAmount" />
+						<Input class="mt-1 " v-model="betAmount" >
+							<!-- <div class="dollar-wrapper mt-0.5 mr-2 text-sm text-white rounded-full h-[20px] w-[20px] flex items-center justify-center">$</div> -->
+							<p class='text-brand-grey mr-2 text-[16px] mt-0.5'>$</p>
+						</Input>	
 					</div>
 					<div>
 						<!-- TODO add icon for active currency -->
@@ -83,7 +87,7 @@ const matchBet = () => {
 				</div>
 				<div  class='text-right'>
 					<p class="text-sm text-brand-grey text-nowrap ">Est. Payout</p>
-					<p class="font-bold text-brand-grey">{{payout}}</p>
+					<p class="font-bold text-brand-grey flex mt-0.5 ">${{payout}}<SelectedCurrencyIcon class="h-5 w-5 ml-2" /></p>
 				</div>
 			</div>
 		</div>
@@ -95,5 +99,10 @@ const matchBet = () => {
 	border: 1px solid rgba(61, 75, 89, 0.5);
 	background: linear-gradient(335deg, #171f2b 24.05%, #2c3e4e 61.46%);
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+.dollar-wrapper {
+	background: linear-gradient(180deg, #4fa630 0%, #205e1d 100%);
+	box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.1) inset,
+		0px 1px 0px 0px rgba(0, 0, 0, 0.2);
 }
 </style>
