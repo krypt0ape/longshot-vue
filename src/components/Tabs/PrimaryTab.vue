@@ -16,16 +16,24 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
-	inline:{
+	inline: {
 		type: Boolean,
 		default: false,
-		description: "If true, the tab text and icon will be displayed inline"
+		description: "If true, the tab text and icon will be displayed inline",
 	},
-	background:{
+	background: {
 		type: String,
 		default: "#0e1725",
-		description: "The background color of the tab"
-	}
+		description: "The background color of the tab",
+	},
+	size: {
+		type: String,
+		default: "md",
+		description: "The size of the tab",
+		validator(value) {
+			return ["sm", "md"].includes(value);
+		},
+	},
 });
 
 const svgFill = computed(() => {
@@ -35,8 +43,12 @@ const svgFill = computed(() => {
 const tabBorder = computed(() => {
 	if (props.item.active) {
 		return props.color === "primary"
-			? "background: linear-gradient(180deg, #38A433 0%, " + props.background + " 100%);"
-			: "background: linear-gradient(180deg, #FA00FF 0%, " + props.background + " 100%);";
+			? "background: linear-gradient(180deg, #38A433 0%, " +
+					props.background +
+					" 100%);"
+			: "background: linear-gradient(180deg, #FA00FF 0%, " +
+					props.background +
+					" 100%);";
 	}
 
 	return false;
@@ -45,11 +57,19 @@ const tabBorder = computed(() => {
 const tabBackground = computed(() => {
 	if (props.item.active) {
 		return props.color === "primary"
-			? "background: linear-gradient(180deg, #203e33 0%, " + props.background + " 100%);"
-			: "background: linear-gradient(180deg, #6A2B74 0%," + props.background + " 100%);";
+			? "background: linear-gradient(180deg, #203e33 0%, " +
+					props.background +
+					" 100%);"
+			: "background: linear-gradient(180deg, #6A2B74 0%," +
+					props.background +
+					" 100%);";
 	}
 
-	return "background: linear-gradient(180deg, #182330 0%, " + props.background + " 100%);";
+	return (
+		"background: linear-gradient(180deg, #182330 0%, " +
+		props.background +
+		" 100%);"
+	);
 });
 </script>
 <template>
@@ -67,7 +87,11 @@ const tabBackground = computed(() => {
 			:style="tabBorder"
 		>
 			<div
-				class="rounded-t-lg w-full h-full py-[13px] flex items-center justify-center"
+				class="rounded-t-lg w-full h-full flex items-center justify-center"
+				:class="{
+					'py-[13px]': size === 'md',
+					'py-[10px]': size === 'sm',
+				}"
 				:style="tabBackground"
 			>
 				<svg
@@ -117,14 +141,18 @@ const tabBackground = computed(() => {
 				</svg>
 				<div class="relative z-20">
 					<h4
-						:class="[inline ? 'flex items-center gap-x-3' : '']"
-						class="text-center font-display font-semibold text-xl tracking-widest uppercase group-hover:text-white transition ease-in duration-100"
+						:class="{
+							'text-xl': size === 'md',
+							'text-md': size === 'sm',
+							'flex items-center gap-x-3': inline,
+						}"
+						class="text-center font-display font-semibold  tracking-widest uppercase group-hover:text-white transition ease-in duration-100"
 					>
 						<div>
 							<i
 								v-if="item.icon"
 								:class="item.icon"
-								class="mb-[5px] mx-auto text-xl"
+								class="mb-[5px] mx-auto"
 							/>
 						</div>
 						{{ item.title }}

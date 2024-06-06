@@ -144,6 +144,12 @@ export default defineStore("betslip", () => {
 		betslip.value[betKey].amount = parseFloat(amount);
 	};
 
+	const matchBetAmountOnAllBets = (amount) => {
+		forEach(betslip.value, (bet, key) => {
+			updateBetAmount(key, amount)
+		 });
+	}
+
 	return {
 		betslipOpen,
 		toggleBetslip,
@@ -155,6 +161,7 @@ export default defineStore("betslip", () => {
 		betSlipTab, 
 		changeBetSlipTab,
 		betSlipSubTab,
-		changeBetSlipSubTab
+		changeBetSlipSubTab,
+		matchBetAmountOnAllBets
 	};
 });

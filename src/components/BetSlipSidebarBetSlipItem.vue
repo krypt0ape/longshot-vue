@@ -39,6 +39,10 @@ const removeBet = () => {
 		marketId: props.bet.marketId,
 	});
 };
+
+const matchBet = () => {
+	store.matchBetAmountOnAllBets(props.bet.amount);
+};
 </script>
 <template>
 	<div class="betslip-item mb-4 overflow-hidden">
@@ -64,8 +68,16 @@ const removeBet = () => {
 				</div>
 			</div>
 			<div class="flex justify-between mt-1 text-sm">
-				<div class="">
-					<Input class="mt-1 w-[160px]" v-model="betAmount" />
+				<div class='flex items-center gap-x-2'>
+					<div class="w-[120px]">
+						<Input class="mt-1 " v-model="betAmount" />
+					</div>
+					<div>
+						<!-- TODO add icon for active currency -->
+					</div>
+					<a v-if="betAmount > 0" @click="matchBet" class="cursor-pointer" v-tippy="{ content: 'Repeat Stake On All Bets', placement: 'top' }">
+						<i class="fa-solid fa-repeat fa-lg text-brand-lightGrey"></i>
+					</a>
 				</div>
 				<div  class='text-right'>
 					<p class="text-sm text-brand-grey text-nowrap ">Est. Payout</p>

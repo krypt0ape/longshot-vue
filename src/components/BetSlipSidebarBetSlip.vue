@@ -64,6 +64,7 @@ const estPayout = computed(() => {
 				:inline="true"
 				color="primary"
 				background="#071420"
+				size="sm"
 			>
 				<h4
 					class="text-center flex font-display font-semibold items-center uppercase group-hover:text-white transition ease-in duration-100"
@@ -72,6 +73,10 @@ const estPayout = computed(() => {
 					<p>{{ item.title }}</p>
 				</h4>
 			</PrimaryTab>
+		</div>
+
+		<div>
+			
 		</div>
 
 		<div class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
