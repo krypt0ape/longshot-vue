@@ -41,10 +41,11 @@ const props = defineProps({
 const formatOdds = useFormatOdds(props.marketLineOutcome.odds);
 
 const addToBetslip = () => {
+	console.log(props);
 	if (props.suspended) return;
 	store.addToBetslip({
 		id: props.marketLineOutcome.id,
-		specifiers: props.marketLineOutcome.specifiers,
+		specifiers: props.specifiers,
 		sportEventId: props.event.id,
 		sportEventLabel: eventName(props.event),
 		marketId: parseInt(props.marketId),
@@ -73,7 +74,8 @@ const isOutcomeInBetslip = computed(() => {
 	const key = buildBetKey(
 		props.event.id,
 		props.marketLineOutcome.outcomeId,
-		props.marketId
+		props.marketId,
+		props.specifiers
 	);
 	return (store.betslip[key]);
 });

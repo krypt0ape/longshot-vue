@@ -97,6 +97,7 @@ export default defineStore("betslip", () => {
 	};
 
 	const addToBetslip = (data) => {
+		console.log(data)
 		const {
 			id,
 			sportEventId,
@@ -106,9 +107,10 @@ export default defineStore("betslip", () => {
 			marketId,
 			marketLabel,
 			odds,
+			specifiers
 		} = data;
 		// Create a unique key for the bet object
-		const key = buildBetKey(sportEventId, outcomeId, marketId);
+		const key = buildBetKey(sportEventId, outcomeId, marketId, specifiers);
 		// If the bet is already in the betslip,
 		// remove it
 		if (betslip.value[key]) {
@@ -127,6 +129,7 @@ export default defineStore("betslip", () => {
 			amount: 0,
 			ISO: "USD",
 			odds,
+			specifiers
 		};
 		if (!betslipOpen.value) {
 			toggleBetslip();

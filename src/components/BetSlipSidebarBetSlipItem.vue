@@ -20,7 +20,7 @@ const formatOdds = useFormatOdds(props.bet.odds);
 const betAmount = computed({
   get: () => props.bet.amount,
   set: (value) => {
-	const key = buildBetKey(props.bet.sportEventId, props.bet.outcomeId,  props.bet.marketId);
+	const key = buildBetKey(props.bet.sportEventId, props.bet.outcomeId,  props.bet.marketId, props.bet.specifier);
 	if(value > 0){
 		store.updateBetAmount(key, value);
 	}else{

@@ -72,6 +72,7 @@ const betsHaveZeroValue = computed(() => {
 
 const canPlaceBet = computed(() => {
 	if (betsHaveZeroValue.value) return false;
+	if(Object.keys(store.betslip).length === 0) return false;
 	return true;
 });
 

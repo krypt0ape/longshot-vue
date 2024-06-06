@@ -14,9 +14,8 @@ const { data, loading } = useApi("get", path);
 
 </script>
 <template>
-	<div class="max-w-7xl mx-auto">
-		<div class="text-white pl-12 mt-12 max-w-[800px]">
-			<Async :loading="loading">
+	<div class="max-w-[850px] mx-auto mt-12 text-white">
+		<Async :loading="loading">
 				<div v-if="data">
 					<!-- <pre>{{data.event}}</pre> -->
 					<p class="text-3xl font-medium">{{ eventName(data.event) }} </p>
@@ -26,6 +25,5 @@ const { data, loading } = useApi("get", path);
 					</div>
 				</div>
 			</Async>
-		</div>
 	</div>
 </template>
