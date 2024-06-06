@@ -6,7 +6,7 @@ import SportsEventSearch from "@/components/SportsEventSearch.vue";
 <template>
   <div class="max-w-7xl mx-auto pt-[15px] relative px-4">
     <SportsPromoBoxs />
-    <div class="pb-8">
+    <div class="pb-4 -mt-4">
       <SportsEventSearch />
     </div>
     <SportsTabs />
