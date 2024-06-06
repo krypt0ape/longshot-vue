@@ -8,6 +8,7 @@ import vue3GoogleLogin from "vue3-google-login";
 import VueTippy from "vue-tippy";
 import "tippy.js/dist/tippy.css"; // optional for styling
 import Notifications from '@kyvg/vue3-notification'
+import 'tippy.js/themes/light.css'
 
 const pinia = createPinia();
 
@@ -22,6 +23,7 @@ createApp(App)
 			defaultProps: {
 				placement: "auto-end",
 				allowHTML: true,
+				theme: "light",
 			}, // => Global default options * see all props
 		}
 	) 
