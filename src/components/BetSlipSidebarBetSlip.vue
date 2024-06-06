@@ -125,7 +125,7 @@ const  {toggleSigninModal} = useAuthModals();
 		<div v-else class="flex-1 bg-brand-sidebarBg px-4 flex items-center justify-center">
 			<div class="text-center">
 				<i class="fa-regular fa-tickets text-3xl  mb-2 text-brand-grey "></i>
-				<p class="text-brand-lightGrey text-center">Bet Slip is empty</p>
+				<p class="text-brand-lightGrey text-center font-semibold">Bet Slip is empty</p>
 				<p class="text-brand-grey">Please add a selection to place a bet</p>
 			</div>
 		</div>
