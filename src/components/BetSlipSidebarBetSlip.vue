@@ -61,6 +61,10 @@ watch(store.betslip, () => {
 		el.value.scrollTo({ top: el.value.scrollHeight, behavior: 'smooth' });
 	}, 200)
 });
+
+const betsHaveZeroValue  = computed(()=>{
+	return Object.values(store.betslip).some(bet=>bet.amount === 0);
+})
 </script>
 <template>
 	<div
@@ -114,7 +118,10 @@ watch(store.betslip, () => {
 					${{ estPayout }}
 				</p>
 			</div>
-			<PrimaryButton @click="call" class="mt-[15px] !w-full relative">
+			<div v-if="betsHaveZeroValue" class="border-dashed bg-brand-accentBgHeader px-3 py-2 text-brand-lightGrey border-2 border-red-700 mt-2 rounded-lg">
+				<p>The minimum stake is <strong>$0.05</strong>, please update your stakes.</p>
+			</div>
+			<PrimaryButton @click="call" class="mt-[15px] !w-full relative" :disabled="betsHaveZeroValue">
 				<Async :loading="loading" :error="error" errorType="notification">
 					Place Bets
 					<svg

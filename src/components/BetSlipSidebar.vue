@@ -57,7 +57,7 @@ const active = ref("betslip");
 			</div>
 			<div class="relative flex-1">
 				<transition name="fade">
-					<BetSlipSidebarBetSlip v-if="active === 'betslip'" />
+				<BetSlipSidebarBetSlip v-if="active === 'betslip'" />
 				</transition>
 				<transition name="fade">
 					<BetSlipSidebarMyBets v-if="active === 'mybets'" />
