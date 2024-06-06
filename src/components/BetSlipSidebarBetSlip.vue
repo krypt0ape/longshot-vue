@@ -3,7 +3,7 @@ import useBetslipStore from "@/stores/useBetslipStore";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 import BetSlipSidebarBetSlipItem from "@/components/BetSlipSidebarBetSlipItem.vue";
 import PrimaryTab from "@/components/Tabs/PrimaryTab.vue";
-import { computed, ref } from "vue";
+import { computed, ref, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import reduce from "lodash/reduce";
@@ -51,6 +51,16 @@ const estPayout = computed(() => {
 		0
 	).toFixed(2);
 });
+
+const el = ref(null);
+watch(store.betslip, () => {
+	// This scrolls down to the bottom of the betslip so the user can see the 
+	// new bet entering the betslip. The reason we need to use a timeout is 
+	// if we trigger this instantly, the el height is not updated yet.
+	setTimeout(()=>{
+		el.value.scrollTo({ top: el.value.scrollHeight, behavior: 'smooth' });
+	}, 200)
+});
 </script>
 <template>
 	<div
@@ -75,14 +85,14 @@ const estPayout = computed(() => {
 			</PrimaryTab>
 		</div>
 
-		<div class="flex justify-between pt-1  pb-3 bg-brand-sidebarBg px-4">
+		<div class="flex justify-between pt-2  pb-2 bg-brand-sidebarBg px-4">
 			<div></div>
 			<div>
-				<a @click="store.clearBetslip" class="hover:text-white text-brand-grey cursor-pointer transition uppercase text-xs tracking-wide font-semibold ">Clear Betslip</a>
+				<a v-if="Object.keys(store.betslip).length" @click="store.clearBetslip" class="hover:text-white text-brand-grey cursor-pointer transition uppercase text-xs tracking-wide font-semibold ">Clear Betslip</a>
 			</div>
 		</div>
 
-		<div class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
+		<div  ref="el" class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
 			<transition-group name="betslip-item" tag="div">
 				<BetSlipSidebarBetSlipItem
 					v-for="(bet, key) in store.betslip"

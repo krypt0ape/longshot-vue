@@ -1,7 +1,7 @@
 <script setup>
 import useFormatOdds from "@/composables/useFormatOdds";
 import Input from "./Form/Input.vue";
-import {ref, computed} from "vue";
+import {ref, computed, onMounted} from "vue";
 import useBetslipStore from "@/stores/useBetslipStore";
 import { buildBetKey } from "@/utils/buildBetKey";
 
@@ -43,9 +43,11 @@ const removeBet = () => {
 const matchBet = () => {
 	store.matchBetAmountOnAllBets(props.bet.amount);
 };
+
+
 </script>
 <template>
-	<div class="betslip-item mb-4 overflow-hidden">
+	<div  class="betslip-item mb-4 overflow-hidden">
 		<div
 			class="bg-brand-accentBgHeader h-[40px] flex items-center justify-between px-[16px]"
 		>
