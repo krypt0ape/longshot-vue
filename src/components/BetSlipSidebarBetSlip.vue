@@ -62,7 +62,10 @@ watch(store.betslip, () => {
 	// new bet entering the betslip. The reason we need to use a timeout is
 	// if we trigger this instantly, the el height is not updated yet.
 	setTimeout(() => {
-		el.value.scrollTo({ top: el.value.scrollHeight, behavior: "smooth" });
+		// Added if here as the "betslip empty" element doesn't have the ref="el"
+		if(el.value){
+			el.value.scrollTo({ top: el.value.scrollHeight, behavior: "smooth" });
+		}
 	}, 200);
 });
 
@@ -113,7 +116,7 @@ const  {toggleSigninModal} = useAuthModals();
 			</div>
 		</div>
 
-		<div ref="el" class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
+		<div v-if="Object.keys(store.betslip).length" ref="el" class="px-4 flex-1 bg-brand-sidebarBg overflow-scroll">
 			<transition-group name="betslip-item" tag="div">
 				<BetSlipSidebarBetSlipItem
 					v-for="(bet, key) in store.betslip"
@@ -121,6 +124,13 @@ const  {toggleSigninModal} = useAuthModals();
 					:bet="bet"
 				/>
 			</transition-group>
+		</div>
+		<div v-else class="flex-1 bg-brand-sidebarBg px-4 flex items-center justify-center">
+			<div class="text-center">
+				<i class="fa-regular fa-tickets text-3xl  mb-2 text-brand-grey "></i>
+				<p class="text-brand-lightGrey text-center font-semibold">Bet Slip is empty</p>
+				<p class="text-brand-grey">Please add a selection to place a bet</p>
+			</div>
 		</div>
 		<div
 			class="dark-gradient-bg text-sm _betslipsidebar-betslip-bottom px-4 py-4 text-brand-grey"
