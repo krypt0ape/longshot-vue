@@ -18,11 +18,11 @@ export default [
     component: () => import("../layouts/SportsMyBetsLayout.vue"),
   },
   {
-    path: "/sports/:sport/:category/:tournament/:event",
+    path: "/sports/:sportSlug/:categorySlug/:tournamentSlug/:event",
     component: () => import("../pages/SportsEvent.vue"),
   },
   {
-    path: "/sports/:sport",
+    path: "/sports/:sportSlug",
     component: () => import("../layouts/SportLayout.vue"),
     children: [
       {

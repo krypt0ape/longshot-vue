@@ -6,11 +6,11 @@ import SportsCategoryCard from "@/components/SportsCategoryCard.vue";
 import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 
 const route = useRoute();
-const sport = computed(() => route.params.sport);
+const sportSlug = computed(() => route.params.sportSlug);
 
 const { data, refetch, loading } = useApi(
   "get",
-  `/sportsbook/${sport.value}/categories`
+  `/sportsbook/${sportSlug.value}/categories`
 );
 </script>
 <template>
@@ -22,7 +22,7 @@ const { data, refetch, loading } = useApi(
       <p class="pt-0 p-5">
         <NeutralButton
           v-for="tournament in category.tournaments"
-          :to="`/sports/${category.sport.slug}/${category.slug}/${tournament.slug}`"
+          :to="`/sports/${sportSlug}/${category.slug}/${tournament.slug}`"
           as="RouterLink"
           class="!px-[15px] py-[14px] mt-2 mr-3"
           >{{ tournament.name }}

@@ -6,10 +6,10 @@ import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 
 const route = useRoute();
 
-const sport = computed(() => route.params.sport);
+const sportSlug = computed(() => route.params.sportSlug);
 </script>
 <template>
-  <div class="text-white z-10">
+  <div class="w-full text-white z-10">
     <div
       class="z-[-1] absolute glow-green -top-[170px] mx-auto left-0 right-0 opacity-75"
     >
@@ -27,7 +27,7 @@ const sport = computed(() => route.params.sport);
       <h1
         class="text-3xl uppercase font-semibold inline-block relative top-[5px]"
       >
-        {{ sport }}
+        {{ sportSlug }}
       </h1>
     </div>
     <div class="max-w-7xl mx-auto pt-[15px] relative px-4">

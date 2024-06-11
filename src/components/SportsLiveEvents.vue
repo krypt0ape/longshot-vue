@@ -1,12 +1,20 @@
 <script setup>
-import { onMounted } from "vue";
-import useApi from "@/composables/useApi";
+import { ref, watch } from "vue";
+import useAsyncApi from "@/composables/useAsyncApi";
+
 import SportsLiveEventsTypeSelect from "@/components/SportsLiveEventsTypeSelect.vue";
 import SportsIconTabs from "@/components/SportsIconTabs.vue";
 import SportsTournamentCard from "@/components/SportsTournamentCard.vue";
 import SportsEventCard from "@/components/SportsEventCard.vue";
+import SportsCategoryCard from "@/components/SportsCategoryCard.vue";
 
-const { data, refetch, loading } = useApi("get", "/sportsbook/list");
+const { data, call } = useAsyncApi("get");
+
+const sportSlug = ref();
+
+watch(sportSlug, (nVal) => {
+  call({ path: `/sportsbook/${nVal}/live/events` });
+});
 </script>
 
 <template>
@@ -17,12 +25,21 @@ const { data, refetch, loading } = useApi("get", "/sportsbook/list");
       <SportsLiveEventsTypeSelect />
     </div>
     <div class="my-[30px]">
-      <SportsIconTabs />
+      <SportsIconTabs v-model="sportSlug" />
     </div>
     <div>
-      <SportsTournamentCard v-for="(index, data) in data" :title="event.name">
-        <!-- <SportsEventCard /> -->
-      </SportsTournamentCard>
+      <template v-for="category in data">
+        <SportsTournamentCard
+          v-for="tournament in category.tournaments"
+          :title="tournament.name"
+        >
+          <SportsEventCard
+            v-for="event in tournament.sportEvents"
+            :key="event.id"
+            :sport-event="event"
+          />
+        </SportsTournamentCard>
+      </template>
 
       <div class="text-brand-light flex ml-[30px] space-x-4 items-center">
         <span

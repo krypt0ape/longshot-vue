@@ -6,18 +6,18 @@ const route = useRoute();
 const items = computed(() => [
   {
     title: "Live & Upcoming",
-    to: `/sports/${route.params?.sport}`,
-    active: route.path.endsWith(`/sports/${route.params?.sport}`),
+    to: `/sports/${route.params?.sportSlug}`,
+    active: route.path.endsWith(`/sports/${route.params?.sportSlug}`),
   },
   {
     title: "Outrights",
-    to: `/sports/${route.params?.sport}/outrights`,
-    active: route.path.endsWith(`/sports/${route.params?.sport}/outrights`),
+    to: `/sports/${route.params?.sportSlug}/outrights`,
+    active: route.path.endsWith(`/sports/${route.params?.sportSlug}/outrights`),
   },
   {
-    title: `All ${route.params?.sport}`,
-    to: `/sports/${route.params?.sport}/all`,
-    active: route.path.endsWith(`/sports/${route.params?.sport}/all`),
+    title: `All ${route.params?.sportSlug}`,
+    to: `/sports/${route.params?.sportSlug}/all`,
+    active: route.path.endsWith(`/sports/${route.params?.sportSlug}/all`),
   },
 ]);
 </script>

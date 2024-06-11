@@ -1,63 +1,57 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import useApi from "@/composables/useApi";
+import useAsyncApi from "@/composables/useAsyncApi";
 import SportsCategoryCard from "@/components/SportsCategoryCard.vue";
 import SportsTournamentCard from "@/components/SportsTournamentCard.vue";
 import SportsEventCard from "@/components/SportsEventCard.vue";
 
 const route = useRoute();
-const sport = computed(() => route.params.sport);
 
-const { data } = useApi("get", `/sportsbook/${sport.value}/categories`);
+const sportSlug = computed(() => route.params.sportSlug);
 
-const tournaments = {};
+const { data } = useApi("get", `/sportsbook/${sportSlug.value}/categories`);
 
-const getCategoryTournaments = async () => {};
+const tournaments = ref({});
 
-const handleToggle = async (categoryId, open) => {
+const getCategoryTournaments = async (categorySlug) => {
+  const { data: tournaments, call: getTournaments } = useAsyncApi("get");
+  await getTournaments({
+    path: `/sportsbook/${sportSlug.value}/${categorySlug}/tournaments`,
+  });
+  return tournaments;
+};
+
+const handleToggle = async (categorySlug, open) => {
   if (!open) {
     return;
   }
-
-  tournaments[categoryId] = tournaments[categoryId] || getCategoryTournaments();
+  tournaments.value[categorySlug] =
+    tournaments.value[categorySlug] ||
+    (await getCategoryTournaments(categorySlug));
 };
 </script>
+
 <template>
   <div class="max-w-7xl mx-auto mt-[30px]">
     <h1>
       <i class="fa-solid fa-fire mr-3" />Popular
-      <span class="capitalize">{{ sport }}</span>
+      <span class="capitalize">{{ sportSlug }}</span>
     </h1>
-
-    <!-- <SportsCategoryCard v-for="category in popular.categories" :name="category.name">
-      <SportsTournamentCard
-        v-for="tournament in category.tournaments"
-        :icon="icon(tournament)"
-        :title="title(tournament)"
-        :key="tournament.id"
-      >
-        <SportsEventCard
-          v-for="sportEvent in tournament.sportEvents"
-          :key="sportEvent.id"
-          :sport-event="sportEvent"
-        />
-      </SportsTournamentCard>
-    </SportsCategoryCard> -->
-
     <h1>
       <i class="fa-solid fa-fire mr-3" />All
-      <span class="capitalize">{{ sport }}</span>
+      <span class="capitalize">{{ sportSlug }}</span>
     </h1>
     <SportsCategoryCard
       v-for="category in data?.categories"
       :title="category.name"
-      @toggle="(open) => handleToggle(tournaments[category.id], open)"
+      @toggle="(open) => handleToggle(category.slug, !open)"
     >
-      {{ typeof tournaments[category.id] }}
+      {{ tournaments }}
       <SportsTournamentCard
-        v-if="typeof tournaments[category.id] !== 'function'"
-        v-for="tournament in tournaments[category.id]"
+        v-if="typeof tournaments[category.slug] !== 'function'"
+        v-for="tournament in tournaments[category.slug]"
         :title="tournament.name"
         :key="tournament.id"
       >

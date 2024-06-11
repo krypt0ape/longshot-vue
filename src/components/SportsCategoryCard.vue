@@ -15,7 +15,7 @@ const handleToggle = (open) => {
 </script>
 <template>
   <div class="sports-category-card mb-[20px]">
-    <Disclosure v-slot="{ open }" :defaultOpen="true">
+    <Disclosure v-slot="{ open }" :defaultOpen="false">
       <!-- Use the `open` state to conditionally change the direction of an icon. -->
       <DisclosureButton
         @click="() => handleToggle(open)"

@@ -1,15 +1,14 @@
 <script setup>
-import { ref, watch } from 'vue'
-import SportsList from "@/components/SportsList.vue";
-import SportsPreEvents from "@/components/SportsPreEvents.vue";
+import { ref } from "vue";
+import SportsLiveEvents from "@/components/SportsLiveEvents.vue";
+import SportsPopularEvents from "@/components/SportsPopularEvents.vue";
 
-const sportId = ref(null)
-
+const sportId = ref(null);
 </script>
 
 <template>
   <div class="text-white">
-    <SportsList v-model="sportId" />
-    <SportsPreEvents v-if="sportId" :limit="3" :sportId="sportId" />
+    <SportsLiveEvents />
+    <SportsPopularEvents />
   </div>
 </template>

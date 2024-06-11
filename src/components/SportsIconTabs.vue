@@ -1,43 +1,41 @@
 <script setup>
+import { onMounted, defineModel } from "vue";
 
+import useApi from "@/composables/useApi";
+
+import SportsEntityIcon from "@/components/SportsEntityIcon.vue";
+
+const { data, refetch, loading } = useApi("get", "/sportsbook/live/events");
+
+const model = defineModel();
+
+onMounted(async () => {
+  await refetch();
+  model.value = data.value[0]?.slug;
+});
 </script>
 <template>
-	<div class="flex space-x-4">
-		<TabsSecondaryTab 
-			:tab="{
-				icon: 'fa-solid fa-futbol',
-				title: 'Soccer',
-				active: true,
-				to: '/casino/home',
-				total: 8
-			}"
-		/>
-		<TabsSecondaryTab 
-			:tab="{
-				icon: 'fa-solid fa-tennis-ball',
-				title: 'Tennis',
-				active: false,
-				to: '/casino/home',
-				total: 18
-			}"
-		/>
-		<TabsSecondaryTab 
-			:tab="{
-				icon: 'fa-solid fa-basketball',
-				title: 'Basketball Basketball Basketball',
-				active: false,
-				to: '/casino/home',
-				total: 8
-			}"
-		/>
-		<TabsSecondaryTab 
-			:tab="{
-				icon: 'fa-solid fa-hockey-puck',
-				title: 'Ice Hockey',
-				active: false,
-				to: '/casino/home',
-				total: 8
-			}"
-		/>
-	</div>
+  <div
+    v-for="sport in data"
+    :key="sport.slug"
+    @click="() => (model = sport.slug)"
+    :class="{
+      'active border-green-900 text-white': model === sport.slug,
+      'border-brand-grey text-brand-grey': model !== sport.slug,
+    }"
+    class="border-solid p-5 m-2 cursor-pointer rounded-lg border-2 inline-block"
+  >
+    <SportsEntityIcon entity="sport" :name="sport.name" />
+    <span
+      class="bg-red-500 text-white text-xs font-medium py-1 px-2 rounded-full"
+      >{{ sport.sportEvents?.length || 0 }}</span
+    >
+    <p>{{ sport.name }}</p>
+  </div>
 </template>
+
+<style lang="scss" scoped="true">
+.active {
+  background: linear-gradient(rgb(32, 62, 51) 0%, rgb(14, 23, 37) 100%);
+}
+</style>

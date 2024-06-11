@@ -20,7 +20,7 @@ const sport = computed(() => {
     case "basketball":
       return "fa-solid fa-basketball";
     case "tennis":
-      return "fa-solid fa-tennis-ball";
+      return "fa-duotone fa-tennis-ball";
     case "soccer":
     default:
       return "fa-solid fa-futbol";
