@@ -8,8 +8,8 @@ export default [
         component: () => import("../pages/SportsLobby.vue"),
       },
       {
-        path: ":tab",
-        component: () => import("../pages/SportsHomeTab.vue"),
+        path: "starting-soon",
+        component: () => import("../pages/SportsStartingSoon.vue"),
       },
     ],
   },

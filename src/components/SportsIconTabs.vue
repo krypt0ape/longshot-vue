@@ -1,22 +1,24 @@
 <script setup>
-import { onMounted, defineModel } from "vue";
-
-import useApi from "@/composables/useApi";
+import { onMounted, defineModel, defineProps } from "vue";
 
 import SportsEntityIcon from "@/components/SportsEntityIcon.vue";
 
-const { data, refetch, loading } = useApi("get", "/sportsbook/live/events");
-
 const model = defineModel();
 
-onMounted(async () => {
-  await refetch();
-  model.value = data.value[0]?.slug;
+const { options } = defineProps({
+  options: {
+    required: true,
+    type: Array,
+  },
+});
+
+onMounted(() => {
+  model.value = options[0]?.slug;
 });
 </script>
 <template>
   <div
-    v-for="sport in data"
+    v-for="sport in options"
     :key="sport.slug"
     @click="() => (model = sport.slug)"
     :class="{

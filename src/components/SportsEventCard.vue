@@ -1,7 +1,12 @@
 <script setup>
 import { computed } from "vue";
+import NeutralButton from "@/components/Buttons/NeutralButton.vue";
 
 const { sportEvent } = defineProps({
+  to: {
+    type: String,
+    required: true,
+  },
   sportEvent: {
     type: Object,
     required: true,
@@ -16,14 +21,18 @@ const specify = (sportEventName, string, marketLine) => {
     competitors[`$competitor${index}`] = competitor.name;
   }
 
-  const specifiers = marketLine?.specifiers.split("|").reduce(
-    (obj, str) => {
-      const [key, value] = str.split("=");
-      obj[key] = value;
-      return obj;
-    },
-    { ...competitors, $event: sportEventName }
-  );
+  const specifiers =
+    marketLine?.specifiers
+      .split("|")
+      .filter((v) => v.length)
+      .reduce(
+        (obj, str) => {
+          const [key, value] = str.split("=");
+          obj[key] = value;
+          return obj;
+        },
+        { ...competitors, $event: sportEventName }
+      ) ?? {};
 
   const word = [
     "first",
@@ -122,7 +131,7 @@ const status = computed(() => {
 </script>
 <template>
   <div
-    class="grid grid-cols-12 px-[24px] py-[21px] border-t border-t-[#426575]"
+    class="grid grid-cols-12 px-[24px] py-[21px] border-t border-t-[#426575] text-white"
   >
     <div class="col-span-5 grid grid-cols-5">
       <div class="col-span-4">
@@ -140,6 +149,9 @@ const status = computed(() => {
             <p v-if="status.status === 'live'" class="text-brand-darkerGrey">
               TODO: ROUND NAME
             </p>
+            <NeutralButton :to="to" class="font-light" as="RouterLink">
+              <i class="fa-duotone fa-link mr-4" />To Event
+            </NeutralButton>
           </div>
           <div class="flex space-x-4">
             <IconsTvPlay />
@@ -181,7 +193,8 @@ const status = computed(() => {
             {{
               specify(
                 sportEvent.name,
-                marketLineOutcome.outcome.name,
+                // marketLineOutcome.outcome.name,
+                marketLine.market.name,
                 marketLine
               )
             }}

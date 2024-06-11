@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import useAsyncApi from "@/composables/useAsyncApi";
-import SportsLiveEventsTypeSelect from "@/components/SportsLiveEventsTypeSelect.vue";
+import SportsEventsTypeSelect from "@/components/SportsEventsTypeSelect.vue";
 import SportsIconTabs from "@/components/SportsIconTabs.vue";
 import SportsTournamentCard from "@/components/SportsTournamentCard.vue";
 import SportsEventCard from "@/components/SportsEventCard.vue";
@@ -45,7 +45,7 @@ onMounted(() => {
     <div class="flex items-center">
       <i class="fa-solid fa-play-circle text-brand-darkerGrey text-2xl" />
       <h3 class="text-white font-semibold text-lg px-4">Live Events</h3>
-      <SportsLiveEventsTypeSelect />
+      <SportsEventsTypeSelect />
     </div>
     <div class="my-[30px]">
       <SportsIconTabs />
