@@ -1,14 +1,14 @@
-export const useLocalStorage = () => ({
-  get(k, defaultValue) {
+export const useLocalStorage = (k) => ({
+  get(defaultValue) {
     if (!localStorage.getItem(k) && defaultValue) {
-      this.set(k, defaultValue);
+      this.set(defaultValue);
     }
     return localStorage.getItem(k)
       ? JSON.parse(localStorage.getItem(k))
       : undefined;
   },
 
-  set(k, stringifiable) {
+  set(stringifiable) {
     localStorage.setItem(k, JSON.stringify(stringifiable));
   },
 });

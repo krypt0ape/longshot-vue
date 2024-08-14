@@ -47,7 +47,7 @@ const items = computed(() => {
 });
 </script>
 <template>
-	<div class="grid grid-cols-6 space-x-4 max-w-7xl mx-auto py-[25px]">
+	<div class="grid grid-cols-6 space-x-4 max-w-7xl mx-auto pt-[15px] pb-[30px]">
 		<PrimaryTab v-for="item in items" :key="item.title" :item="item" color="secondary"/>
 	</div>
 </template>

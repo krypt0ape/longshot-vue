@@ -1,5 +1,5 @@
 <script setup>
-import { useUserStore } from "@/stores/useUserStore";
+import  useUserStore from "@/stores/useUserStore";
 import Modal from '@/components/Modal.vue'
 import WalletRiskKycCheck from '@/components/WalletRiskKycCheck.vue'
 import WalletRiskKycPending from '@/components/WalletRiskKycPending.vue'
@@ -19,7 +19,10 @@ const route = useRoute()
 const router = useRouter()
 
 const store = useUserStore();
-const activeTab = computed(() => route.query.modal === 'wallet' ? route.query.tab : null)
+const activeTab = computed(() => {
+	if(!route.query.modal === 'wallet') return null; 
+	return route.query.tab || 'deposit' 
+})
 
 const components = {
   WalletRiskKycCheck,

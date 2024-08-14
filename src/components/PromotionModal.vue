@@ -1,7 +1,10 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 import VueCountdown from "@chenfengyuan/vue-countdown";
-// import { VMarkdownView } from "vue3-markdown";
+import { useRoute, useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+import { VMarkdownView } from "vue3-markdown";
+import Modal from "./Modal.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -9,6 +12,13 @@ const open = computed(() => {
 	return route.query.modal === "promotions";
 });
 const { locale, locales, t } = useI18n();
+
+// const { loading, error, data } = useAsyncApi("post", "/contentful/entries", {
+// 	content_type: "promotion",
+// 	"fields.slug": route.params.slug,
+// 	locale: locale.value !== "en" ? locale.value : "en-US",
+// });
+
 const countdown = computed(() => {
 	if (!promotion.value) return 0;
 	return (
@@ -51,23 +61,19 @@ watch(open, async (newValue) => {
 				{{ promotion?.fields.title }}
 			</h2>
 			<img :src="promotion.fields.image.fields.file.url" class="w-[350px]" />
-			<client-only>
-				<vue-countdown
-					:time="countdown"
-					v-slot="{ days, hours, minutes, seconds }"
-				>
-					{{ days }} Day | {{ hours }} Hour | {{ minutes }} Mins |
-					{{ seconds }} seconds
-				</vue-countdown>
-			</client-only>
-			<!-- <client-only>
-				<VMarkdownView :content="promotion.fields.summary"></VMarkdownView>
-			</client-only> -->
+			<vue-countdown
+				:time="countdown"
+				v-slot="{ days, hours, minutes, seconds }"
+			>
+				{{ days }} Day | {{ hours }} Hour | {{ minutes }} Mins |
+				{{ seconds }} seconds
+			</vue-countdown>
+			<VMarkdownView :content="promotion.fields.summary"></VMarkdownView>
 		</div>
 		<div v-if="promotion" class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-			<NuxtLink :to="'/promotions/' + promotion.fields.slug">
+			<RouterLink :to="'/promotions/' + promotion.fields.slug">
 				Read More
-			</NuxtLink>
+			</RouterLink>
 		</div>
 	</Modal>
 </template>

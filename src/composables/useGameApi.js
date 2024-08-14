@@ -1,6 +1,5 @@
 import axios from "axios";
 import { ref } from "vue";
-import { useAuth0 } from "@auth0/auth0-vue";
 import { useLocalStorage } from "@/composables/useLocalStorage";
 
 export const useGameApi = () => {
@@ -9,7 +8,7 @@ export const useGameApi = () => {
   const ls = useLocalStorage();
   const token = ref();
 
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  
 
   const startSession = async (identifier, currency) => {
     if (isAuthenticated.value) {

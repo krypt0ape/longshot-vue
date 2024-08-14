@@ -9,7 +9,7 @@ export default [
       },
       {
         path: ":tab",
-        component: () => import("../pages/CasinoHomeTab.vue"),
+        component: () => import("../pages/CasinoHomeTab.vue"), 
       },
     ],
   },
@@ -26,7 +26,15 @@ export default [
     component: () => import("../pages/CasinoFavourites.vue"),
   },
   {
+    path: "/casino/recent",
+    component: () => import("../pages/CasinoRecent.vue"),
+  },
+  {
     path: "/casino/group/:type",
     component: () => import("../pages/CasinoGroup.vue"),
+  },
+  {
+    path: "/casino/providers/:provider",
+    component: () => import("../pages/CasinoProvider.vue"),
   },
 ];

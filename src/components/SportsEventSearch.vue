@@ -32,7 +32,7 @@ function onSelect(person) {
 }
 </script>
 <template>
-	<div class="sports-event-search mt-[25px]">
+	<div class="sports-event-search ">
 		<Combobox @update:modelValue="onSelect">
 			<div class="relative">
 				<MagnifyingGlassIcon

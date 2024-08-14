@@ -1,45 +1,33 @@
-import { ref, onMounted } from "vue";
-import { useAuth0 } from "@auth0/auth0-vue";
-import { request } from "../api/api";
+import { onMounted, onUnmounted, ref } from "vue";
+import useAsyncApi from "./useAsyncApi";
 
-export default function useApi(method, path, defaultOptions, callback = null) {
-  const data = ref();
-  const loading = ref(true);
-  const error = ref(null);
-  const token = ref(null);
+/**
+ * Wraps aound async api and calls the api on mounted
+ */
+export default function useApi(method, path, defaultOptions = {}) {
+	const { data, loading, error, call } = useAsyncApi(method, path);
+	const hasMounted = ref(false);
 
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+	onMounted(() => {
+		if(hasMounted.value) return;
+		hasMounted.value = true;
+		refetch(defaultOptions);
+	});
 
-  onMounted(() => {
-    refetch();
-  });
+	onUnmounted(() => {
+		hasMounted.value = false;
+	});
 
-  const refetch = async (options = defaultOptions) => {
-    if (isAuthenticated.value) {
-      token.value = await getAccessTokenSilently();
-    }
+	const refetch = async (newOptions = null) => {
+		const options = newOptions || defaultOptions;
 
-    try {
-      let response = await request({
-        method: method,
-        path: path,
-        data: { ...defaultOptions, ...options },
-        token: token.value,
-      });
-      callback && callback(data.value);
-      data.value = response.data;
-    } catch (err) {
-      // console.error(err);
-      error.value = err;
-    } finally {
-      loading.value = false;
-    }
-  };
+		await call(options);
+	};
 
-  return {
-    data,
-    loading,
-    error,
-    refetch,
-  };
+	return {
+		data,
+		loading,
+		error,
+		refetch,
+	};
 }

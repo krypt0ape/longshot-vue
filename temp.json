@@ -1,0 +1,257 @@
+
+{
+	"id": 90,
+	"name": "2nd half - total",
+	"countryCode": null,
+	"groups": "all|score|2nd_half",
+	"rank": 0,
+	"tab": null,
+	"marketLines": [
+	  {
+		"id": 18,
+		"marketId": 90,
+		"sportEventId": "sr:match:49593321",
+		"productId": "3",
+		"specifiers": "total=1",
+		"status": 1,
+		"timestamp": "1716576525063",
+		"createdAt": "2024-05-24T17:38:32.756Z",
+		"updatedAt": "2024-05-24T18:49:09.619Z",
+		"marketLineOutcomes": [
+		  {
+			"id": 99,
+			"marketLineId": 18,
+			"outcomeId": "12",
+			"odds": "1.25",
+			"probabilities": "0.7730698135590074",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.758Z",
+			"updatedAt": "2024-05-24T17:38:32.758Z",
+			"outcome": {
+			  "id": "12",
+			  "name": "over {total}"
+			}
+		  },
+		  {
+			"id": 100,
+			"marketLineId": 18,
+			"outcomeId": "13",
+			"odds": "3.95",
+			"probabilities": "0.2269301864409925",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.758Z",
+			"updatedAt": "2024-05-24T17:38:32.758Z",
+			"outcome": {
+			  "id": "13",
+			  "name": "under {total}"
+			}
+		  }
+		]
+	  },
+	  {
+		"id": 19,
+		"marketId": 90,
+		"sportEventId": "sr:match:49593321",
+		"productId": "3",
+		"specifiers": "total=2",
+		"status": 1,
+		"timestamp": "1716576525063",
+		"createdAt": "2024-05-24T17:38:32.759Z",
+		"updatedAt": "2024-05-24T18:49:10.191Z",
+		"marketLineOutcomes": [
+		  {
+			"id": 101,
+			"marketLineId": 19,
+			"outcomeId": "12",
+			"odds": "2.55",
+			"probabilities": "0.36891906777327776",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.760Z",
+			"updatedAt": "2024-05-24T17:38:32.760Z",
+			"outcome": {
+			  "id": "12",
+			  "name": "over {total}"
+			}
+		  },
+		  {
+			"id": 102,
+			"marketLineId": 19,
+			"outcomeId": "13",
+			"odds": "1.53",
+			"probabilities": "0.6310809322267222",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.760Z",
+			"updatedAt": "2024-05-24T17:38:32.760Z",
+			"outcome": {
+			  "id": "13",
+			  "name": "under {total}"
+			}
+		  }
+		]
+	  },
+	  {
+		"id": 22,
+		"marketId": 90,
+		"sportEventId": "sr:match:49593321",
+		"productId": "3",
+		"specifiers": "total=1.5",
+		"status": 1,
+		"timestamp": "1716576525063",
+		"createdAt": "2024-05-24T17:38:32.767Z",
+		"updatedAt": "2024-05-24T18:49:12.342Z",
+		"marketLineOutcomes": [
+		  {
+			"id": 107,
+			"marketLineId": 22,
+			"outcomeId": "12",
+			"odds": "1.77",
+			"probabilities": "0.5414147543798137",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.768Z",
+			"updatedAt": "2024-05-24T17:38:32.768Z",
+			"outcome": {
+			  "id": "12",
+			  "name": "over {total}"
+			}
+		  },
+		  {
+			"id": 108,
+			"marketLineId": 22,
+			"outcomeId": "13",
+			"odds": "2.07",
+			"probabilities": "0.4585852456201863",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.768Z",
+			"updatedAt": "2024-05-24T17:38:32.768Z",
+			"outcome": {
+			  "id": "13",
+			  "name": "under {total}"
+			}
+		  }
+		]
+	  },
+	  {
+		"id": 20,
+		"marketId": 90,
+		"sportEventId": "sr:match:49593321",
+		"productId": "3",
+		"specifiers": "total=1.25",
+		"status": 1,
+		"timestamp": "1716576525063",
+		"createdAt": "2024-05-24T17:38:32.761Z",
+		"updatedAt": "2024-05-24T18:49:10.997Z",
+		"marketLineOutcomes": [
+		  {
+			"id": 103,
+			"marketLineId": 20,
+			"outcomeId": "12",
+			"odds": "1.51",
+			"probabilities": "0.6368296949774136",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.763Z",
+			"updatedAt": "2024-05-24T17:38:32.763Z",
+			"outcome": {
+			  "id": "12",
+			  "name": "over {total}"
+			}
+		  },
+		  {
+			"id": 104,
+			"marketLineId": 20,
+			"outcomeId": "13",
+			"odds": "2.55",
+			"probabilities": "0.36317030502258635",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.763Z",
+			"updatedAt": "2024-05-24T17:38:32.763Z",
+			"outcome": {
+			  "id": "13",
+			  "name": "under {total}"
+			}
+		  }
+		]
+	  },
+	  {
+		"id": 21,
+		"marketId": 90,
+		"sportEventId": "sr:match:49593321",
+		"productId": "3",
+		"specifiers": "total=2.25",
+		"status": 1,
+		"timestamp": "1716576525063",
+		"createdAt": "2024-05-24T17:38:32.764Z",
+		"updatedAt": "2024-05-24T18:49:11.257Z",
+		"marketLineOutcomes": [
+		  {
+			"id": 105,
+			"marketLineId": 21,
+			"outcomeId": "12",
+			"odds": "3.0",
+			"probabilities": "0.31051866112439375",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.765Z",
+			"updatedAt": "2024-05-24T17:38:32.765Z",
+			"outcome": {
+			  "id": "12",
+			  "name": "over {total}"
+			}
+		  },
+		  {
+			"id": 106,
+			"marketLineId": 21,
+			"outcomeId": "13",
+			"odds": "1.4",
+			"probabilities": "0.6894813388756063",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.765Z",
+			"updatedAt": "2024-05-24T17:38:32.765Z",
+			"outcome": {
+			  "id": "13",
+			  "name": "under {total}"
+			}
+		  }
+		]
+	  },
+	  {
+		"id": 23,
+		"marketId": 90,
+		"sportEventId": "sr:match:49593321",
+		"productId": "3",
+		"specifiers": "total=1.75",
+		"status": 1,
+		"timestamp": "1716576525063",
+		"createdAt": "2024-05-24T17:38:32.770Z",
+		"updatedAt": "2024-05-24T18:49:13.208Z",
+		"marketLineOutcomes": [
+		  {
+			"id": 109,
+			"marketLineId": 23,
+			"outcomeId": "12",
+			"odds": "2.02",
+			"probabilities": "0.46882006582374236",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.771Z",
+			"updatedAt": "2024-05-24T17:38:32.771Z",
+			"outcome": {
+			  "id": "12",
+			  "name": "over {total}"
+			}
+		  },
+		  {
+			"id": 110,
+			"marketLineId": 23,
+			"outcomeId": "13",
+			"odds": "1.8",
+			"probabilities": "0.5311799341762576",
+			"active": 1,
+			"createdAt": "2024-05-24T17:38:32.771Z",
+			"updatedAt": "2024-05-24T17:38:32.771Z",
+			"outcome": {
+			  "id": "13",
+			  "name": "under {total}"
+			}
+		  }
+		]
+	  }
+	]
+  }

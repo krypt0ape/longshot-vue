@@ -2,13 +2,15 @@
 import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import AppSidebarMenu from "./AppSidebarMenu.vue";
-import { request } from "@/api/api";
 import useApi from "@/composables/useApi";
+import useUserStore from "@/stores/useUserStore";
 
 const { t, locale } = useI18n();
 
+const userStore = useUserStore();
+
 const { loading, error, data } = useApi("post", "/contentful/entry", {
-	id: "6XnHoRun8rLi8078PDlks3",
+	data: { id: "6XnHoRun8rLi8078PDlks3" },
 });
 
 const items = computed(() => {
@@ -26,8 +28,10 @@ const items = computed(() => {
 		to: "/promotions/category/all",
 		icon: "fa-solid fa-grid-2-plus",
 	});
-	return [
-		{
+	const items = [];
+
+	if (userStore.user) {
+		items.push({
 			icon: "fa-solid fa-user",
 			title: t("global.profile"),
 			children: [
@@ -52,7 +56,9 @@ const items = computed(() => {
 					to: "/",
 				},
 			],
-		},
+		});
+	}
+	return items.concat([
 		{
 			icon: "fa-solid fa-award",
 			title: t("primary_sidebar.promotions"),
@@ -73,7 +79,7 @@ const items = computed(() => {
 			title: t("primary_sidebar.blog"),
 			to: "/blog/category/all",
 		},
-	];
+	]);
 });
 </script>
 <template>

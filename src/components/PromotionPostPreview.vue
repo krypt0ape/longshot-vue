@@ -12,12 +12,10 @@ defineProps({
 		</h2>
 		<img :src="promotion.fields.image.fields.file.url" class="w-[350px]" />
 		<p class="text-slate-200 mb-2">
-			<client-only>
-				<VMarkdownView :content="promotion.fields.summary"></VMarkdownView>
-			</client-only>
+			<VMarkdownView :content="promotion.fields.summary"></VMarkdownView>
 		</p>
-		<NuxtLink class="text-white" :to="`/blog/${promotion.fields.slug}`"
-			>Read more</NuxtLink
+		<RouterLink class="text-white" :to="`/blog/${promotion.fields.slug}`"
+			>Read more</RouterLink
 		>
 	</div>
 </template>

@@ -1,39 +1,52 @@
 <script setup>
-import { computed } from 'vue';
-import SportsLiveEventsTypeSelect from "@/components/SportsLiveEventsTypeSelect.vue";
+import { ref, watch } from "vue";
+import useApi from "@/composables/useApi";
+import useAsyncApi from "@/composables/useAsyncApi";
+
+import SportsEventsTypeSelect from "@/components/SportsEventsTypeSelect.vue";
 import SportsIconTabs from "@/components/SportsIconTabs.vue";
 import SportsTournamentCard from "@/components/SportsTournamentCard.vue";
 import SportsEventCard from "@/components/SportsEventCard.vue";
 
-defineProps({
-  limit: {
-    type: Number,
-    default: 5,
-  },
+const { data: sports } = useApi("get", "/sportsbook/live/events");
+const { data, call } = useAsyncApi("get");
+
+const sportSlug = ref();
+
+watch(sportSlug, (nVal) => {
+  call({ path: `/sportsbook/${nVal}/live/events` });
 });
 </script>
+
 <template>
   <div class="max-w-7xl mx-auto">
-    <div class="flex items-center ">
+    <div class="flex items-center">
       <i class="fa-solid fa-play-circle text-brand-darkerGrey text-2xl" />
       <h3 class="text-white font-semibold text-lg px-4">Live Events</h3>
-      <SportsLiveEventsTypeSelect />
+      <SportsEventsTypeSelect />
     </div>
     <div class="my-[30px]">
-      <SportsIconTabs />
+      <SportsIconTabs v-if="sports" v-model="sportSlug" :options="sports" />
     </div>
     <div>
-      <SportsTournamentCard icon="fa-solid fa-futbol" title="International / WAFF Championship, Women">
-        <SportsEventCard />
-      </SportsTournamentCard>
-      <SportsTournamentCard icon="fa-solid fa-futbol" title="International / WAFF Championship, Women">
-        <SportsEventCard />
-      </SportsTournamentCard>
-      <SportsTournamentCard icon="fa-solid fa-futbol" title="International / WAFF Championship, Women">
-        <SportsEventCard />
-      </SportsTournamentCard>
+      <template v-for="category in data">
+        <SportsTournamentCard
+          v-for="tournament in category.tournaments"
+          :title="tournament.name"
+        >
+          <SportsEventCard
+            v-for="event in tournament.sportEvents"
+            :key="event.id"
+            :sport-event="event"
+            :to="`/sports/${sportSlug}/${category.slug}/${tournament.slug}/${event.slug}`"
+          />
+        </SportsTournamentCard>
+      </template>
+
       <div class="text-brand-light flex ml-[30px] space-x-4 items-center">
-        <span class="bg-brand-dark-light flex items-center justify-center rounded-full h-[25px] w-[25px]">
+        <span
+          class="bg-brand-dark-light flex items-center justify-center rounded-full h-[25px] w-[25px]"
+        >
           <i class="fa-solid fa-chevron-right text-xs" />
         </span>
         <p class="font-medium">View All</p>

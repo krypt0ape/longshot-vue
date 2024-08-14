@@ -4,15 +4,18 @@ import promotionRoutes from "./promotion.routes";
 import sportsBookRoutes from "./sportsbook.routes";
 import casinoRoutes from "./casino.routes";
 import affiliateRoutes from "./affiliate.routes";
+import policyRoutes from "./policy.routes";
 
 const routes = [
 	{ path: "/", component: () => import("../pages/Home.vue") },
-	// {
-	// 	path: "/polcies/:slug",
-	// 	component: () => import("../pages/PolicySingle.vue"),
-	// },
-    { path: "/complete-signup", component: () => import("../pages/CompleteSignup.vue") },
-].concat(blogRoutes, casinoRoutes, sportsBookRoutes, affiliateRoutes);
+].concat(
+	blogRoutes,
+	casinoRoutes,
+	sportsBookRoutes,
+	affiliateRoutes,
+	promotionRoutes,
+	policyRoutes
+);
 
 const router = createRouter({
 	history: createWebHistory(),

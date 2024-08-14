@@ -20,9 +20,17 @@ h1, h2, h3, h4, h5, h6 {
 p, body {
 	font-family: "Inter", sans-serif;
 }
-
+.no-select {
+	user-select: none;
+  }
 .purple-gradient-text {
 	background: linear-gradient(180deg, #fb80ff 0%, #9550ad 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.green-gradient-text {
+	background: linear-gradient(180deg, #68D763 0%, #3AAA35 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -39,14 +47,28 @@ background: linear-gradient(180deg, #68D763 0%, #3AAA35 100%);
 	background-blend-mode: luminosity, normal;
 	filter: blur(32px);
 	width: 981px;
-height: 272px;
-flex-shrink: 0;
+	height: 272px;
+	flex-shrink: 0;
 }
 
 .glow-green {
 	border-radius: 981px;
-	/* background: url('/img/GREEN-GLOW-TOP.png') lightgray 50% / cover no-repeat, #4A9532; */
-	background: #4A9532 url('/img/GREEN-GLOW-TOP.png') 50% / cover no-repeat;
+	background: linear-gradient(rgba(74, 149, 50, 0.40), rgba(74, 149, 50, 0.40)), url('/img/GREEN-GLOW-TOP.png') 50% / cover no-repeat;
 	background-blend-mode: luminosity, normal;
 	filter: blur(32px);
+	width: 981px;
+	height: 272px;
+	flex-shrink: 0;
+}
+
+.dark-gradient-bg {
+	border: 1px solid rgba(61, 75, 89, 0.5);
+    background: linear-gradient(335deg, #171f2b 24.05%, #2c3e4e 61.46%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.vue-notification.success {
+	background: linear-gradient(180deg, #4fa630 0%, #205e1d 100%) !important;
+	border-left-color: #205e1d !important;
+	color: #fff;
 }

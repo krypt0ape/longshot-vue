@@ -97,8 +97,8 @@ import  AppFooterPolicyMenu from "./AppFooterPolicyMenu.vue";
 				<h3 class="text-white mb-[24px] text-lg font-semibold">
 					{{ $t("global.preferences") }}
 				</h3>
-				<AppFooterLanguageMenu />
-				<AppFooterOddsSelector />
+				<!-- <AppFooterLanguageMenu /> -->
+				<!-- <AppFooterOddsSelector /> -->
 			</div>
 		</div>
 		<div class="border-[#303D4B] border-t border-b py-[32px] max-w-7xl mx-auto">

@@ -13,9 +13,11 @@ const {
 	error,
 	data: categoryData,
 } = useApi("post", "/contentful/entries", {
-	content_type: "blotPostType",
-	select: "fields.name,fields.icon,fields.order,fields.slug",
-	locale: locale.value !== "en" ? locale.value : "en-US",
+	data: {
+		content_type: "blotPostType",
+		select: "fields.name,fields.icon,fields.order,fields.slug",
+		locale: locale.value !== "en" ? locale.value : "en-US",
+	},
 });
 
 const categories = computed(() => {
@@ -41,7 +43,13 @@ const categories = computed(() => {
 <template>
 	<div>
 		<AsyncContent :loading="loading" :error="error">
-			<template #loader />
+			<template #loader>
+				<div class="bg-brand-darkBg h-[75px]">
+					<div class="animate-pulse bg-brand-accentBgHeader h-[75px]">
+						&nbsp;
+					</div>
+				</div>
+			</template>
 			<PostListTabs
 				heading="Blog"
 				slug="/blog/category"

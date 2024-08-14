@@ -1,9 +1,7 @@
 import snsWebSdk from "@sumsub/websdk";
 import useApi from "./useApi";
-import { useAuth0 } from "@auth0/auth0-vue";
 
 export default function useKyc() {
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   /**
    * @param accessToken - access token that you generated on the backend in Step 2

@@ -25,7 +25,7 @@ const size = computed(() => {
   if (props.xlarge) return "px-8 py-4 text-xl tracking-wider rounded-xl";
   if (props.small) return "px-3 py-1 text-sm rounded-2xl";
   if (props.xsmall) return "px-2.5 py-1 text-xs rounded-md";
-  return "px-[16px] py-[13px] text-md font-medium rounded-lg";
+  return "px-[16px] py-[13px] text-md  rounded-lg";
 });
 
 const classString = computed(() => {
@@ -36,18 +36,23 @@ const classString = computed(() => {
     str += " cursor-pointer  hover:opacity-80";
   }
   return str + " justify-center items-center " + size.value;
+
 })
 </script>
 <template>
-  <component :is="props.as" v-bind="$attrs" :class="classString">
+  <component :is="props.as" v-bind="$attrs" :class="classString" class="focus:ring-0 focus:ring-offset-0">
     <slot />
   </component>
 </template>
 <style>
 .base-btn {
   border-radius: 10px;
-  line-height: 13px;
-  font-weight: 700;
+  line-height: 13px;		
+  font-weight: 600;
   display: inline-flex;
+}
+.base-btn:focus-visible  {
+	outline: 2px solid #A4ADBD;
+  	outline-offset: 2px;
 }
 </style>

@@ -1,48 +1,50 @@
 import { ref } from "vue";
-import { request } from "../api/api";
-import { useAuth0 } from "@auth0/auth0-vue";
+import useApiRequest from "./useApiRequest";
 
+/**
+ * useAsyncApi - returns a call function to call
+ * the api when required, it holds the response in
+ * local state and returns from the call function so
+ * it can be handled by the component as required.
+ */
 export default function useAsyncApi(method, path) {
-  const { getAccessTokenSilently, isAuthenticated, isLoading } = useAuth0();
+	const data = ref(null);
+	const loading = ref(false);
+	const error = ref(null);
 
-  const auth0Ready = async () => {
-    setTimeout(async () => !isLoading.value || (await auth0Ready()), 50);
-  };
+	const request = useApiRequest();
 
-  const loading = ref(true);
-  const error = ref(null);
-  const token = ref();
+	const call = async (options = {}) => {
+		try {
+			loading.value = true;
 
-  const call = async (data = undefined, uri = "", params = undefined) => {
-    await auth0Ready();
+			const baseOptions = {
+				method: method,
+				path: path,
+			};
 
-    if (isAuthenticated.value) {
-      token.value = await getAccessTokenSilently();
-    }
+			const requestOptions = {
+				...baseOptions,
+				...options,
+			};
 
-    try {
-      loading.value = true;
+			let response = await request(requestOptions);
 
-      const r = await request({
-        method: method,
-        path: `${path}/${uri}`,
-        data,
-        params,
-        token: token.value ?? null,
-      });
+			loading.value = false;
 
-      loading.value = false;
+			data.value = response.data;
+			return response.data;
+		} catch (err) {
+			loading.value = false;
+			console.error(err);
+			error.value = err;
+		} 
+	};
 
-      return r.data;
-    } catch (err) {
-      loading.value = false;
-      error.value = err;
-    }
-  };
-
-  return {
-    loading,
-    error,
-    call,
-  };
+	return {
+		loading,
+		error,
+		call,
+		data,
+	};
 }

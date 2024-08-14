@@ -4,9 +4,10 @@ import CasinoProvidersLogo from "@/components/CasinoProvidersLogo.vue";
 import CasinoSearch from "@/components/CasinoSearch.vue";
 import useApi from "@/composables/useApi";
 import PageHeader from "@/components/PageHeader.vue";
+import BetFeedCasino from "@/components/BetFeedCasino.vue";
 
 const { data, loading, error } = useApi("get", "/provider/list", {
-	limit: 12,
+	data: { limit: 100, }
 });
 </script>
 <template>
@@ -20,14 +21,20 @@ const { data, loading, error } = useApi("get", "/provider/list", {
 			<div class="py-2">
 				<CasinoSearch />
 			</div>
-			<div class="grid grid-cols-6 gap-6 mt-8">
+			<div v-if="loading" class="grid grid-cols-6 gap-6 mt-10">
+					<div v-for="i in 36" :key="i" class=" rounded-xl animate-pulse bg-[#273646] h-[105px] w-[182px]">&nbsp;</div>
+			</div>
+			<div v-else class="grid grid-cols-6 gap-6 mt-8">
 				<div
-					v-for="provider in data"
+					v-for="provider in data?.rows"
 					:key="provider.identifier"
 					class="bg-brand-accentBgHeader px-2 py-2 shadow-xl rounded-xl flex items-center justify-center"
 				>
 					<CasinoProvidersLogo :provider="provider" />
 				</div>
+			</div>
+			<div class="mt-10">
+				<BetFeedCasino />
 			</div>
 		</div>
 	</div>

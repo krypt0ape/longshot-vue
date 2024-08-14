@@ -1,5 +1,6 @@
 <script setup>
 import ProgressBar from "@/components/ProgressBar.vue";
+
 </script>
 <template>
 	<div>
@@ -16,9 +17,9 @@ import ProgressBar from "@/components/ProgressBar.vue";
 				</div>
 			</div>
 			<div class="pt-4">
-				<ProgressBar fillPercent="30" />
+				<ProgressBar :fillPercent="30" />
 			</div>
-			<div class="flex justify-between mt-8">
+			<div class="flex justify-between mt-5">
 				<div>
 					<p class="text-brand-grey"><i class="fa-solid fa-circle-caret-right mr-3"></i>Your VIP Progress</p>
 				</div>

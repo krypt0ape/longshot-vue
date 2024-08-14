@@ -13,7 +13,7 @@ import BlogCategoryTabs from "@/components/BlogCategoryTabs.vue";
 		/>
 		<div class="relative z-20">	
 			<BlogCategoryTabs />
-			<router-view  :key="$route.fullPath"></router-view>
+			<router-view  :key="$route.path"></router-view>
 		</div>
 	</div>
 </template>

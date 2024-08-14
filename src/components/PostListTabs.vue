@@ -13,7 +13,7 @@ defineProps({
 const route = useRoute()
 </script>
 <template>
-	<div class="bg-[#0B1825] pt-[25px]  relative z-20 ">
+	<div class="bg-brand-darkBg pt-[25px]  relative z-20 ">
 		<div class="max-w-7xl mx-auto flex items-center">
 			<div class="flex items-center border-b-2 border-transparent ">
 				<h2

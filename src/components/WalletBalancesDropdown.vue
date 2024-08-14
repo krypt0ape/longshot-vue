@@ -3,6 +3,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import { computed } from "vue";
 import { useLocalStorage } from "@/composables/useLocalStorage";
+import CryptoCurrencyIconsUsdt from "@/components/CryptoCurrencyIcons/Usdt.vue";
 
 const openWallet = () => { };
 

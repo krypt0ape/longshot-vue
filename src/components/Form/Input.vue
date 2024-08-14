@@ -3,6 +3,10 @@ import { Transition, onMounted, ref, getCurrentInstance } from "vue";
 
 const model = defineModel()
 
+defineOptions({
+	inheritAttrs: false
+})
+
 const props = defineProps({
   type: {
     default: "text",
@@ -19,6 +23,8 @@ const props = defineProps({
     default: false
   }
 });
+
+const emit = defineEmits(["blur"]);
 
 const input = ref(null);
 
@@ -44,6 +50,9 @@ const instance = getCurrentInstance()
 
 const id = ref(instance.uid)
 
+const handleBlur = () => {
+ 	emit('blur', model.value)
+}
 </script>
 
 <template>
@@ -56,12 +65,13 @@ const id = ref(instance.uid)
         <slot name="left"></slot>
       </div>
       <div class="flex items-center">
-        <input :id="id" ref="input" :readonly="readonly" :type="type" autocomplete="one-time-code" :class="[
-      'app-input text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg border-brand-accentStroke border-solid border-2',
+        <input :id="id" ref="input" :readonly="readonly" :type="type"  :class="[
+      'app-input py-[10px] px-[12px] text-brand-lightGrey ring-0 focus-visible:outline-none bg-brand-bodyBg  border-solid border-2 rounded-lg',
       disabled ? 'cursor-not-allowed  text-brand-darkerGrey opacity-80' : '',
-      $slots.left ? 'pl-[90px]' : 'pl-4',
+	  error ? 'border-red-500' : 'border-brand-accentStroke',
+      $slots.left ? 'pl-[40px]' : 'pl-4',
       label && type === 'checkbox' ? '' : 'w-full'
-    ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" :bind="$attrs" />
+    ]" :value="model" :placeholder="placeholder" :disabled="disabled" @input="onInput" v-bind="$attrs" @blur="handleBlur"/>
         <label v-if="label && type === 'checkbox'" :for="id"
           class="text-white cursor-pointer ms-2 text-sm font-medium dark:text-gray-300">{{
       label }}</label>
@@ -75,8 +85,8 @@ const id = ref(instance.uid)
       <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
         enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
         leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
-        <p v-if="error" class="text-red-500 font-medium pt-2 bg-dark rounded-b-lg w-full">
-          <i class="fa-solid fa-times mr-2" />{{ error }}
+        <p v-if="error" class="text-red-500 text-right opacity-75 font-medium pt-1 absolute right-0 -bottom-[25px] text-sm bg-dark rounded-b-lg w-full">
+          {{ error }}
         </p>
       </Transition>
     </div>
@@ -84,10 +94,7 @@ const id = ref(instance.uid)
 </template>
 <style>
 .app-input {
-  border-radius: 5px !important;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) !important;
-  padding: 16px 20px 16px 20px !important;
-  border-radius: 5px !important;
 }
 
 .app-input::placeholder {

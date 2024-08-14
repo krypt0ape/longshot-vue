@@ -1,10 +1,20 @@
+<script setup>
+import LoaderBar from "@/components/LoaderBar.vue";
+defineProps({
+	loading: Boolean
+})
+</script>
 <template>
-			<div class="header-row py-4 relative z-20 overflow-hidden">
-			<div class="mx-auto max-w-7xl flex items-center relative">
+		<div class="header-row py-4 relative z-20 overflow-hidden " >
+			<div  class="mx-auto max-w-7xl flex items-center relative">
+				<div  v-if="loading" class="h-[40px] flex items-center">
+					<LoaderBar/> 
+				</div>	
 				<h2
-					class="text-4xl font-semibold text-white mt-2 uppercase tracking-widest"
+					v-else
+					class="text-4xl font-semibold text-brand-lightGrey mt-2 uppercase "
 				>
-					<slot />
+					<slot  />
 				</h2>
 			</div>
 			<div class="absolute right-0 top-0">

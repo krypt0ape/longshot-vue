@@ -1,9 +1,9 @@
-<script setup client>
+<script setup >
 import Authentificator from "./Authentificator.vue";
 import PrimaryButton from "./Buttons/PrimaryButton.vue";
 import SecondaryButton from "./Buttons/SecondaryButton.vue";
 import NeutralButton from "./Buttons/NeutralButton.vue";
-import useSidebarStore from "@/stores/useSidebarStore";
+import useSidebar from "@/composables/useSidebar";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import AppHeaderWallet from "./AppHeaderWallet.vue";
@@ -11,7 +11,7 @@ import AppHeaderUserMenu from "./AppHeaderUserMenu.vue";
 
 const route = useRoute();
 
-const store = useSidebarStore();
+const store = useSidebar();
 const casinoActive = computed(() => {
   return route.path.startsWith("/casino");
 });
@@ -26,12 +26,22 @@ const logo = computed(() => {
   return "/img/ColorWhite_Full.png";
 });
 
+const logoLink = computed(() => {
+  if (casinoActive.value) {
+	return "/casino/home";
+  }
+  if (sportsActive.value) {
+	return "/sports/home";
+  }
+  return "/";
+});
+
 </script>
 <template>
   <div class="app-header bg-brand-accentBgHeader">
     <div class="flex justify-between items-center h-[70px] max-w-7xl mx-auto px-4">
       <div class="w-[150px] xl:w-[250px]">
-        <RouterLink to="/">
+        <RouterLink :to="logoLink">
           <img :src="logo" class="w-[100px] py-[10px] hidden sm:block" />
           <img src="/android-chrome-512x512.png" class="w-[50px] rounded-xl py-[10px] sm:hidden" />
         </RouterLink>
@@ -52,4 +62,3 @@ const logo = computed(() => {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 </style>
-@/stores/useMenuStore
