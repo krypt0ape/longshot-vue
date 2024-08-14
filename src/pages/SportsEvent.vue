@@ -16,14 +16,17 @@ onMounted(() => {
   socket.value = wss();
 
   socket.value.on("EVENT", (data) => {
+	console.log("EVENT");
     console.log(data);
   });
 
   socket.value.on("EVENT_MARKET_LINES", (data) => {
+	console.log("EVENT_MARKET_LINES");
     console.log(data);
   });
 
   socket.value.on("EVENT_MARKET_LINE_OUTCOMES", (data) => {
+	console.log("EVENT_MARKET_LINE_OUTCOMES");
     console.log(data);
   });
 

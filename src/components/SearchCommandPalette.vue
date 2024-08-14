@@ -91,7 +91,7 @@ const props = defineProps({
 
 const emit = defineEmits(["search", "clear"]);
 
-const model = defineModel();
+const model = define();
 
 const search = () => {
 	addSearchHistory(model.value);

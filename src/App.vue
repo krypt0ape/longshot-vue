@@ -89,4 +89,3 @@ const topImage = computed(() => {
 	filter: blur(1rem);
 }
 </style>
-@/stores/useMenuStore @/composables/useSidebarStore
